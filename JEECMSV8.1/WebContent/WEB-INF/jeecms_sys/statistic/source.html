@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/jeecms_sys/head.html"/>
+<script src="${base}/res/plug/echarts/echarts.min.js" type="text/javascript"></script>
+<script src="${base}/res/plug/echarts/dataTool.min.js"  type="text/javascript" ></script>
+<script src="${base}/res/plug/echarts/china.js"  type="text/javascript" ></script>
+<script src="${base}/res/plug/echarts/world.js"  type="text/javascript" ></script>
+<script src="${base}/res/plug/echarts/bmap.min.js"  type="text/javascript" ></script>
+<script class="code" type="text/javascript">
+$(function() {
+var countData=[];
+var xdata=[];
+var engine = [],direct=[],link=[];
+<#if flag==2||flag==4>
+	<#list keys as s>
+		var values${s_index}=[];
+		<#list resultMap["${s}"] as v>
+	    	values${s_index}.push(${v[0]});
+	    	xdata=${v[1]};
+	    </#list>
+	</#list>
+<#else>
+	<#list keys as s>
+		var values${s_index}=[];
+		<#list resultMap["${s}"] as v>
+			var date="${v[1]}".split(" ")[0];
+			var timeArray=date.split("-");
+			var day=timeArray[1]+"/"+timeArray[2];
+			//var day=new Date(timeArray[0],timeArray[1]-1,timeArray[2]);
+			values${s_index}.push(${v[0]});
+			xdata=day;
+	    </#list>
+	</#list>
+</#if>
+//基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('placeholder'));
+// 指定图表的配置项和数据
+var option = {	
+ title: {
+     text: '',
+ },
+ tooltip: {
+     trigger: 'axis'
+ },
+ legend: {
+     data:[
+           <#list keys as s>
+   			"${s}"
+   			<#if s_has_next>,</#if>
+   			</#list>
+           ]
+ },
+ grid: {
+     left: '1%',
+     right: '1%',
+     bottom: '1%',
+     containLabel: true
+ },
+ toolbox: {
+     feature: {
+         saveAsImage: {}
+     }
+ },
+ xAxis: {
+     type: 'category',
+     boundaryGap: false,
+     data: xdata
+ },
+ yAxis: {
+     type: 'value'
+ },
+ series: [
+	<#list keys as s>
+	{
+        name:'${s}',
+        type:'line',
+        stack: '${s}',
+        data:values${s_index}
+    }
+	<#if s_has_next>,</#if>
+	</#list>
+ ]
+};
+// 使用刚指定的配置项和数据显示图表。
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+};
+<#if type??>
+<#if type=="source"||type=="engine">
+//基于准备好的dom，初始化echarts实例
+var pieChart = echarts.init(document.getElementById('pieplaceholder'));
+//饼图
+var pieOption = {
+	    title : {
+	        text: '',
+	        subtext: '',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+	    legend: {
+	        orient: 'vertical',
+	        left: 'left',
+	        
+	        data: [
+					<#list keys as s>
+					"${s}"
+					<#if s_has_next>,</#if>
+					</#list>
+	               ]
+	    },
+	    series : [
+	        {
+	            name: '',
+	            type: 'pie',
+	            radius : '55%',
+	            center: ['50%', '60%'],
+	            data:[
+					<#list keys as s>
+					 {value:${totalMap["${s}"]}, name:'${s}'}
+					<#if s_has_next>,</#if>
+					</#list>
+	            ],
+	            itemStyle: {
+	                emphasis: {
+	                    shadowBlur: 10,
+	                    shadowOffsetX: 0,
+	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	                }
+	            }
+	        }
+	    ]
+	};
+pieChart.setOption(pieOption, true);
+</#if>
+</#if>
+});
+</script>
+</head>
+<body>
+<div class="page-positon ove">
+  <div class="position-div"><@s.m "global.position"/>: <@s.m "statistic.function.source"/></div>
+</div>
+<div class="statistic">
+  <div class="sta-tab" style="margin-top:0px;">
+    <div class="sta-tab-nav">
+    <a <#if flag==4>class="day on"<#else>class="day"</#if> target="rightFrame" href="v_list.do?flag=4&type=${type}"><span></span><@s.m "statistic.function.days"/></a>
+    <a <#if flag==1>class="month on"<#else>class="month"</#if> target="rightFrame" href="v_list.do?flag=1&type=${type}"><span></span><@s.m "statistic.function.month"/></a>
+    <a <#if flag==2>class="year on"<#else>class="year"</#if> target="rightFrame" href="v_list.do?flag=2&type=${type}"><span></span><@s.m "statistic.function.years"/></a>
+    <a <#if flag==3>class="int on"<#else>class="int"</#if> target="rightFrame" href="v_list.do?flag=3&type=${type}"><span></span><@s.m "statistic.report.section"/></a>
+    </div>
+    <div class="tab-con">
+      <#if flag==3>
+      <div class="tab-con-top">
+        <form action="v_list.do" target="rightFrame" >
+      	<input name="begin" value="${begin!?string('yyyy-MM-dd')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate" style="width:100px; margin-right:8px;"/>
+        <input name="end" value="${end!?string('yyyy-MM-dd')}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="Wdate" style="width:100px; margin-right:8px;"/>
+        <input name="flag" value="3" type="hidden"/>
+        <input type="submit" class="query" value="<@s.m 'global.query'/>" style="background-color:#3dc6ed;">
+        </form>
+      </div>
+      </#if>
+      
+      <#if type??>
+	      <#if type=="source"||type=="engine">
+	       <div class="tab-main" style="padding-left:320px; position:relative;">
+	         <div id="pieplaceholder" style="width:300px;height:300px; position:absolute; left:10px; top:50px;"></div>
+	         <div id="placeholder"  style="float:left; width:640px;height:300px; top:50px;"></div>
+	        </div>
+	       <#else>
+	       <div class="tab-main" style="position:relative;">
+	       	<div id="placeholder"  style="float:left; width: 99%; height: 300px; top:50px;"></div>
+	        </div>
+	       </#if>
+	   <#else>
+	   <div class="tab-main" style="position:relative;">
+	   	<div id="placeholder"  style="float:left; width: 99%; height: 300px; top:50px;"></div>
+       </div>
+       </#if>
+     
+    </div>
+  </div>
+</div>
+</body>
+</html>

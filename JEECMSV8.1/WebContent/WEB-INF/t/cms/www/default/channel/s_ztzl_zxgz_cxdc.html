@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>创新调查</title>
+<meta name="channel" content="创新调查">
+<style type="text/css">
+<!--
+body { margin:0px;color:#01256F; font-size:12px; text-decoration:none;font-family:"宋体";text-align:center; background-color:#ffffff;}
+a{ color:#00266B; font-size:12px;text-decoration:none;outline: none;star:expression(this.onFocus=this.blur());}
+a:link{color:#00266B;  font-size:12px;text-decoration:none;}
+a:visited{color:#00266B;  font-size:12px;text-decoration:none;}
+a:hover{color:#00266B; font-size:12px;text-decoration: none;}
+a:active {outline: none;star:expression(this.onFocus=this.blur()); }
+ul { list-style-type:none; margin:0px; padding:0px;}
+li { text-align:left;}
+img{ border:0px;}
+/* 字体 行高 */
+.jg2{ letter-spacing: 2px;}
+
+.bold {font-weight: bold; }
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh26{line-height:26px;}
+.lh30{line-height:30px;}
+.dh{ width:1003px; margin:0px auto; border:0px;}
+.dh1{ width:1003px; margin:0px auto; height:170px; background:url(/${res}/cxdc/images/i-gjcxzs-1.jpg) no-repeat;}
+.dh2{ width:1003px; margin:0px auto; height:43px; background:url(/${res}/cxdc/images/i-07.jpg) no-repeat;}
+
+
+.gzwj{ width:1003px; height:145px; background:url(/${res}/cxdc/images/i-06.jpg) no-repeat; margin:0px auto;}
+.news1{ width:380px; float:left; padding-left:55px;}
+.news1 span{ float:right; color:#71767A;}
+.news1 li{ background:url(/${res}/cxdc/images/i-dot1.jpg) no-repeat 8px 5px; text-align:left; padding-left:20px; line-height:22px;}
+
+.jcbg{ width:1003px; height:390px; background:url(/${res}/cxdc/images/i-081.jpg) no-repeat; margin:0px auto;}
+.bottom{ width:1003px; height:60px; color:#626262; padding-top:15px; text-align:center; margin:0px auto; line-height:24px;}
+.bottom a{ color:#626262;  font-size:12px;text-decoration:none;}
+.bottom a:link{ color:#626262;  font-size:12px;text-decoration:none;}
+.bottom a:visited{ color:#626262;  font-size:12px;text-decoration:none;}
+-->
+</style>
+</head>
+
+<body>
+[#include "../include/cxdc/header.html" /]
+<div class="dh1"><img src="/${res}/cxdc/images/blank55.gif" border="0" usemap="#Map2" />
+<map name="Map2" id="Map2">
+<area shape="rect" coords="95,21,840,107" href="/${res}/cxdc/cxdcgzdt/201507/t20150713_120680.htm" target=_blank/>
+<area shape="rect" coords="835,136,863,153" href="[@cms_channel id='903']${tag_bean.url}[/@cms_channel]" onfocus="if(this.blur)this.blur();"/>
+</map>
+</div>
+<div class="gzwj">
+<div class="news1">
+	<ul>
+		[@cms_content_list count='12' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='903' orderBy='24']
+			[#list tag_list as a]
+				[#if a_index < 6]
+					<li>
+						<span>${a.date?string(dateFormat)}</span>
+						<a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank">
+							[@text_cut s=a.title len=titLen append=append/]
+						</a>
+					</li>
+				[/#if]
+			[/#list]
+		[/@cms_content_list]
+	</ul>
+</div>
+<div class="news1">
+	<ul>
+		[@cms_content_list count='12' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='903' orderBy='24']
+			[#list tag_list as a]
+				[#if a_index > 5]
+					<li>
+						<span>${a.date?string(dateFormat)}</span>
+						<a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank">
+							[@text_cut s=a.title len=titLen append=append/]
+						</a>
+					</li>
+				[/#if]
+			[/#list]
+		[/@cms_content_list]
+	</ul>
+</div>
+</div>
+
+<div class="dh2"><img src="/${res}/cxdc/images/blank7.gif" border="0" usemap="#Map3" />
+<map name="Map3" id="Map3">
+  <area shape="rect" coords="403,12,427,26" href="[@cms_channel id='904']${tag_bean.url}[/@cms_channel]" onfocus="if(this.blur)this.blur();"></area>
+   		<area shape="rect" coords="834,10,859,26" href="[@cms_channel id='905']${tag_bean.url}[/@cms_channel]" onfocus="if(this.blur)this.blur();"></area> 
+</map></div>
+
+<div class="jcbg">
+<div class="news1" style="height:100px">
+	<ul>
+		[@cms_content_list count='6' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='904' orderBy='24']
+			[#list tag_list as a]
+				<li>
+					<span>${a.date?string(dateFormat)}</span>
+					<a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank">
+						[@text_cut s=a.title len=titLen append=append/]
+					</a>
+				</li>
+			[/#list]
+		[/@cms_content_list]
+	</ul>
+</div>
+
+<div class="news1">
+	<ul>
+		[@cms_content_list count='6' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='905' orderBy='24']
+			[#list tag_list as a]
+				<li>
+					<span>${a.date?string(dateFormat)}</span>
+					<a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank">
+						[@text_cut s=a.title len=titLen append=append/]
+					</a>
+				</li>
+			[/#list]
+		[/@cms_content_list]
+	</ul>
+</div>
+<div style=" width:700px;text-align:left; height:40px;padding-left:55px; padding-top:13px; padding-bottom:7px; float:left;"><img src="/${res}/cxdc/images/i-gzdt1.jpg" border="0" usemap="#Map4" />
+<map name="Map4" id="Map4">
+  <area shape="rect" coords="343,9,367,27" href="[@cms_channel id='906']${tag_bean.url}[/@cms_channel]" onfocus="if(this.blur)this.blur();"></area>
+    		<area shape="rect" coords="781,9,804,27" href="[@cms_channel id='907']${tag_bean.url}[/@cms_channel]" onfocus="if(this.blur)this.blur();"></area> 
+  </map></div>
+
+<div class="news1">
+	<ul>
+		[@cms_content_list count='6' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='906' orderBy='24']
+			[#list tag_list as a]
+				<li>
+					<span>${a.date?string(dateFormat)}</span>
+					<a href="[#if a.attachments?size > 0][#list a.attachments as zndoc]${zndoc.path!}[#break][/#list][/#if]" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank">
+						[@text_cut s=a.title len=titLen append=append/]
+					</a>
+				</li>
+			[/#list]
+		[/@cms_content_list]
+	</ul>
+</div>
+<div class="news1">
+	<ul>
+		[@cms_content_list count='6' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='907' orderBy='24']
+			[#list tag_list as a]
+				<li>
+					<span>${a.date?string(dateFormat)}</span>
+					<a href="[#if a.attachments?size > 0][#list a.attachments as zndoc]${zndoc.path!}[#break][/#list][/#if]" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank">
+						[@text_cut s=a.title len=titLen append=append/]
+					</a>
+				</li>
+			[/#list]
+		[/@cms_content_list]
+	</ul>
+</div>
+</div>
+
+[#include "../include/cxdc/footer.html" /]
+</body>
+</html>

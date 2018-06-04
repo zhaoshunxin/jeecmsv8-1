@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/inc/css.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/ztzl/inc/kjrw.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor kjrw">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        [@cms_content_list channelId=channel.id orderBy='2' channelOption='1']
+        [#list tag_list as a]
+        <div class="kjrw_detail">
+        	<div class="kjrw_img">
+            	<a href="${a.url}" target="_blank">
+                	<img src="${a.typeImg!}" width="120" height="150"/>
+                </a>
+            </div>
+            <span class="kjrw_name">
+            	${a.title!}
+            </span>
+            <span class="kjrw_rewards">
+            	${a.attr.rewards!}
+            </span>
+        </div>
+        [/#list]
+        [/@cms_content_list]
+       
+       	<div class="returntop">
+        	<a href="#bg" class="fhdb"></a>
+        </div>
+        
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/ztzl/inc/ztzl.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/css.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.9.1.js" type="text/javascript"></script>
+    
+    <script>
+    	$(function(){
+			var floor_height = $("#floor").height();
+			$("#floor_ztzl_left").height(floor_height);
+			$("#floor_ztzl_middle").height(floor_height);
+			$("#floor_ztzl_right").height(floor_height);
+		});	
+    </script>
+</head>
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor floor_bottom_line" id="floor">
+    	<div class="floor_ztzl_left color_00477d" id="floor_ztzl_left">
+			[#include "../include/xwzx_left_menu.html"/]
+        </div>
+        <div class="floor_ztzl_middle" id="floor_ztzl_middle">
+        	<div class="floor_ztzl_middle_banner">
+                [@cms_channel id=channel.id]
+                <img src="${tag_bean.titleImg!site.defImg}"/>
+                [/@cms_channel]
+            </div>
+            <div class="dqwz">
+                [#include "../include/current_position.html"/]
+            </div>
+            <div class="floor_ztzl_middle_content">
+               <table cellspacing="0" cellpadding="0" width="100%" border="0">				
+								<tbody>
+									<tr> 
+										<td>    				
+											 <table class="hei" cellspacing="1" cellpadding="2" width="100%" bgcolor="#FFFFFF" border="0">
+												 <tbody>
+													<tr bgcolor="#336699">
+														<td colspan="2" valign="middle" bgcolor="#BFD1E5">
+															  <div align="center" class="STYLE33">
+																	<font color="#ffffff">文章标题 </font>
+															  </div>
+													    </td>
+														<td width="546" bgcolor="#BFD1E5">
+															   <div align="center" class="STYLE33">
+																	<strong><font color="#ffffff"> 发布时间 </font></strong>
+															   </div>
+														</td>
+														<td width="25%" bgcolor="#BFD1E5">
+																<div align="center" class="STYLE33">
+																	<strong><font color="#ffffff"> 所属栏目</font></strong>
+																</div>
+														</td>
+													</tr>
+								[#assign now_year=.now?string('yyyy')?number]
+								[#assign now_month=.now?string('MM')?number]
+								[#assign now_day=.now?string('dd')?number]
+							
+								[#if ((now_month-1)=4)||((now_month-1)=6)||((now_month-1)=9)||((now_month-1)=11)]
+									[#assign now_count=(now_year*365)+((now_month-1)*30)+now_day]
+								[#elseif (now_month-1)=2]
+									[#assign now_count=(now_year*365)+((now_month-1)*30)+now_day]
+								[#else]
+									[#assign now_count=(now_year*365)+((now_month-1)*31)+now_day]
+								[/#if]
+
+					[#assign tcount=0]
+					[#assign tpage=0]
+					[#assign endid=0]
+					[@cms_content_list siteId='1' orderBy='24']
+							[#list tag_list as b]
+								[#assign c_year=b.date?string('yyyy')?number]
+								[#assign c_month=b.date?string('MM')?number]
+								[#assign c_day=b.date?string('dd')?number]								
+
+								[#if ((c_month-1)=4)||((c_month-1)=6)||((c_month-1)=9)||((c_month-1)=11)]
+									[#assign c_count=(c_year*365)+((c_month-1)*30)+c_day]
+								[#elseif (c_month-1)=2]
+									[#assign c_count=(c_year*365)+((c_month-1)*30)+c_day]
+								[#else]
+									[#assign c_count=(c_year*365)+((c_month-1)*31)+c_day]
+								[/#if]			
+
+								[#if channel.id==660]
+									[#if (now_count-c_count)!=0]
+										[#assign tcount=b_index]										
+										[#assign tpage=((b_index+channel.pageSize-1)/channel.pageSize)?floor]
+										[#assign endid=b.id]
+										[#break]
+									[/#if]
+								[/#if]
+								[#if channel.id==661]
+									[#if (now_count-c_count) gte 7]
+										[#assign tcount=b_index]										
+										[#assign tpage=((b_index+channel.pageSize-1)/channel.pageSize)?floor]
+										[#assign endid=b.id]
+										[#break]
+									[/#if]
+								[/#if]
+								[#if channel.id==662]
+									[#if (now_count-c_count) gte 14]
+										[#assign tcount=b_index]										
+										[#assign tpage=((b_index+channel.pageSize-1)/channel.pageSize)?floor]
+										[#assign endid=b.id]
+										[#break]
+									[/#if]
+								[/#if]
+								[#if channel.id==663]
+									[#if ((now_year=c_year)&&(now_month-c_month)>1) || (((now_year-c_year)=1)&&(now_month=12)&&(c_month=1))]
+										[#assign tcount=b_index]										
+										[#assign tpage=((b_index+channel.pageSize-1)/channel.pageSize)?floor]
+										[#assign endid=b.id]
+										[#break]
+									[/#if]
+								[/#if]
+							[/#list]
+					[/@cms_content_list]
+
+					[@cms_content_page count='20' titLen='40' dateFormat='yyyy-MM-dd' append='...' siteId='1' orderBy='24']
+							[#list tag_pagination.list as a]	
+																
+								[#if a.id == endid]
+									[#break]
+								[/#if]
+													<tr bgcolor="#ffffff" height="26">
+														<td width="5%" align="middle" bgcolor="F7F7F7">
+															<div align="center">
+																<img src="/${res}images/fk.jpg" width="8" height="9">
+															</div>
+														</td>
+														<td width="48%" bgcolor="F7F7F7">
+															<a href="${a.url}" target="_blank" class="hui12">
+																${a.title}
+															</a>
+														</td>
+														<td width="546" align="middle" bgcolor="#E9E9E9" class="blk" style34="">
+															${a.date?string(dateFormat)}
+														</td>
+														<td width="25%" align="middle" bgcolor="#F7F7F7" class="blk">
+															${a.channel.name}
+														</td>
+													</tr>
+							[/#list]					
+													<tr>
+														<td></td>
+														<td></td>
+														<td></td>
+													</tr>							
+													<tr bgcolor="#ffffff">
+														<td colspan="5" align="middle">&nbsp;
+															<div align="right">
+[#assign p=tag_pagination/]
+																<div[#if pageClass??] class="${pageClass}"[/#if][#if pageStyle??] style="${pageStyle}"[/#if]>
+共${tcount}条记录 ${p.pageNo}/${tpage}页
+[#if p.firstPage]&nbsp;<a disabled="disabled">首页</a> <a disabled="disabled">上一页</a>[#t/]
+[#else]&nbsp;<a href="#" onclick="location.href=encodeURI('${hrefFormer}${hrefLatter}');">首页</a> <a href="#" onclick="location.href=encodeURI('${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}');">上一页</a>[#t/]
+[/#if]
+[#if p.pageNo==tpage]&nbsp;<a disabled="disabled">下一页</a> <a disabled="disabled">尾页</a>
+[#else]&nbsp;<a href="#" onclick="location.href=encodeURI('${hrefFormer}_${p.nextPage}${hrefLatter}');">下一页</a> <a href="#" onclick="location.href=encodeURI('${hrefFormer}_${tpage}${hrefLatter}');">尾页</a>
+[/#if]
+&nbsp;第<select onChange="if(this.value==1){location.href=encodeURI('${hrefFormer}${hrefLatter}')}else{location.href=encodeURI('${hrefFormer}_'+this.value+'${hrefLatter}')}this.disabled='disabled'">
+[#list 1..tpage as i]
+  <option value="${i}" [#if p.pageNo==i]selected="selected"[/#if]>${i}</option>
+[/#list]
+</select>页
+</div>
+															</div>
+														</td>								   
+													</tr>
+					[/@cms_content_page]
+												  </tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>			
+					
+            </div>
+        </div>
+        <div class="floor_ztzl_right" id="floor_ztzl_right">
+        	[#include "../include/bsfw.html"/]
+        </div>
+    
+    </div>
+    [#include "../include/footer_gray.html"/]
+</div>
+</div>
+</body>
+</html>

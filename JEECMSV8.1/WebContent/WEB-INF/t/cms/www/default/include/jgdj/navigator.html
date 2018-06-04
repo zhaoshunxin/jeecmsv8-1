@@ -1,0 +1,8 @@
+<a href="/html/">网站首页</a> 
+	[@cms_channel_list parentId=839]
+		[#list tag_list as a]
+			[#if a.id == 853 || a.id == 854 || a.id == 855 || a.id == 856 || a.id == 857 || a.id == 858 || a.id == 859 || a.id == 860]
+			 | <a href="${a.url}">${a.name}</a>
+			[/#if]
+		[/#list]
+	[/@cms_channel_list]

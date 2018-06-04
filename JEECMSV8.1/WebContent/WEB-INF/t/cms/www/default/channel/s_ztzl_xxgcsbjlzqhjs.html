@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>学习贯彻十八届六中全会精神</title>
+<meta name="channel" content="学习贯彻十八届六中全会精神">
+<link href="/${res}/ztzl/xxgcsbjlzqhjs/css/1j.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+
+<div class="top"></div>
+<div class="menu">
+	<a href="/index.htm">网站首页</a>
+	[@cms_channel_list parentId=957]
+	[#list tag_list as a]
+		&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${a.url}">${a.name}</a>
+	[/#list]
+	[/@cms_channel_list]
+</div>
+
+<table class="part2" cellspacing="0" cellpadding="0" >
+  <tr>
+    <td valign="top" style="padding-top:18px; padding-left:20px;" >
+	<img src="/${res}/ztzl/xxgcsbjlzqhjs/images/i-zyjs.jpg" border="0" usemap="#Map" />
+	<div class="right2">
+	<ul>
+ 		[@cms_content_list count='5' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=971  orderBy='2']
+		[#list tag_list as b]
+		<li><a  href="${b.url}" title="${b.title}(${b.date?string(dateFormat)})" target="_blank" >
+		[@text_cut s=b.title len=titLen append=append/]</a></li>
+		[/#list]
+		[/@cms_content_list]
+	 </ul>
+	</div>	
+	<img src="/${res}/ztzl/xxgcsbjlzqhjs/images/i-dzyw.jpg" border="0" usemap="#Map2"  />
+	<div class="right2">
+	<ul>
+     	[@cms_content_list count='2' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=973  orderBy='2']
+		[#list tag_list as b]
+		<li><a  href="/${b.url}" title="${b.title}(${b.date?string(dateFormat)})" target="_blank" >[@text_cut s=b.title len=titLen append=append/]</a></li>
+		[/#list]
+		[/@cms_content_list]
+	 </ul>
+	</div>	
+	
+	</td>
+	<td  valign="top"  width=480>
+		[@cms_content_list count='1' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=972 orderBy='2']
+		[#list tag_list as b]
+		<div class="tu">
+			<a  href="/${b.url}" target="_blank"  title="${b.title}">
+			<img src="${b.typeImg!}" width=400 height=307 alt="${b.title}"></a>
+		</div>
+		<div class="txt lh30 bold"><a href="/${b.url}" title="${b.title}(${b.date?string(dateFormat)})" target="_blank">${b.title}</a></div>
+		[/#list]
+		[/@cms_content_list]
+	</td>
+  </tr>
+</table>
+
+<table class="all">
+  <tr>
+    <td>
+	<div class="lb1">	
+	<img src="/${res}/ztzl/xxgcsbjlzqhjs/images/i-jcdt.jpg" border="0" usemap="#Map3"  />
+	<ul>
+     [@cms_content_list count='5' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=974  orderBy='2']
+		[#list tag_list as b]
+		<li><a  href="/${b.url}" title="${b.title}(${b.date?string(dateFormat)})" target="_blank" >${b.title}</a></li>
+		[/#list]
+		[/@cms_content_list]
+
+	 </ul>	
+	 </div>
+	 
+	 <div class="lb1">	
+	<img src="/${res}/ztzl/xxgcsbjlzqhjs/images/i-xxth.jpg" border="0" usemap="#Map4" />
+	<ul>
+	    [@cms_content_list count='5' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=975 orderBy='2']
+		[#list tag_list as b]
+		<li style="float:left"><a  href="/${b.url}" title="${b.title}(${b.date?string(dateFormat)})" target="_blank" >${b.title}</a></li>
+		[/#list]
+		[/@cms_content_list]
+	 </ul>	
+	 </div>
+	 
+	
+	</td>
+  </tr>
+</table>
+
+<div class="all"><img src="/${res}/ztzl/xxgcsbjlzqhjs/images/i-xglj.jpg" /></div>
+
+<div class="xglj">
+	[@cms_content_list count='5' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=976  orderBy='2']
+	[#list tag_list as b]
+	<a href="${b.url}"><img src="${b.typeImg!}" border="0" /></a>
+	[#if b_has_next]
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	[/#if]
+	[/#list]
+	[/@cms_content_list]
+</div>
+
+<div class="bottom">
+[#include "../include/footer_ztzl.html"/]
+</div>
+
+<map name="Map" id="Map">
+  <area shape="rect" coords="408,14,453,32" href="[@cms_channel id='971']${tag_bean.url}[/@cms_channel]" /></map>
+<map name="Map2" id="Map2">
+  <area shape="rect" coords="414,14,464,31" href="[@cms_channel id='973']${tag_bean.url}[/@cms_channel]" /></map>
+<map name="Map3" id="Map3">
+  <area shape="rect" coords="418,21,461,36" href="[@cms_channel id='974']${tag_bean.url}[/@cms_channel]" /></map>
+<map name="Map4" id="Map4">
+  <area shape="rect" coords="368,22,409,37" href="[@cms_channel id='975']${tag_bean.url}[/@cms_channel]" /></map>
+</body>
+</html>

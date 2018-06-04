@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+</head>
+<body>
+<div class="div_center">
+	[#include "../include/xwzx_mtjj_top.html"/]
+    <div class="mtjj_content_floor">
+    	<div class="dqwz">
+            [#include "../include/current_position.html"/]
+        </div>
+    	<div class="mtjj_floor">
+            [#if channel.id = 198 || channel.id = 199 || channel.id = 719 ]
+            <div class="mtjj_title">
+                <a href="${channel.url}">
+                    <img src="${channel.contentImg!}" border="0" />
+                </a>
+            </div>
+            <div class="mtjj_content">
+                [@cms_content_page channelId=channel.id orderBy='4' count='15' titLen='40' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                <ul class="mtjj_ul1">
+                    [#list tag_list as b]
+                    <li>
+                        <a href="${b.url}" title="${b.title}" target="_blank">[@text_cut s=b.title len=titLen append=append/](${b.date?string(dateFormat)})</a>
+                    </li>
+                    [/#list]
+                    
+                </ul>
+                <table width="95%" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td height="60" align="center" class="pageno">
+                        	[@cms_pagination sysPage='1'/]
+                        </td>
+                    </tr>
+                </table>
+                [/@cms_content_page]
+            </div>
+            [#else]
+            <div class="mtjjtitlebg">
+                ${channel.name}
+            </div>
+            <div class="mtjj_content">
+                <ul class="mtjj_ul1">
+                    [@cms_content_list channelId=channel.id orderBy='4' count='8' titLen='40' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                    [#list tag_list as b]
+                    <li>
+                        <a href="${b.url}" title="${b.title}" target="_blank">[@text_cut s=b.title len=titLen append=append/](${b.date?string(dateFormat)})</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+          
+                </ul>
+            </div>
+            [/#if]
+            
+        </div>
+    </div>
+	
+    [#include "../include/footer_gray.html"/]
+</div>
+</body>
+</html>

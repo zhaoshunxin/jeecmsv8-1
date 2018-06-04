@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/zzjg/inc/zzjg.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        
+        <div class="zssydw_marker">
+        	${channel.name}
+        </div>
+        
+        <div class="zssydw_detalcontent">
+        	[@cms_channel_list parentId=channel.id]
+            [#list tag_list as a]
+            [#if a.link??&&a.link!='']
+            <div class="zssydw_title">
+                <a href="${a.url}" target="_blank">${a.name}</a>
+            </div>
+
+			[#else]
+            <div class="zssydw_title">
+            	${a.name}
+            </div>
+            <div class="zssydw_content">
+            	${a.txt!}
+            </div>
+            [/#if]
+            [/#list]
+            [/@cms_channel_list]
+
+        
+        </div>
+        
+        
+        <div  class="zzjg_floor">
+            <a href="#bg" class="fhdb"></a>
+        </div>
+        
+       
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

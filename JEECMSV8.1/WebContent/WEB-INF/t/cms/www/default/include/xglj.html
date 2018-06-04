@@ -1,0 +1,14 @@
+<div class="links">相关链接&nbsp;&nbsp;
+	[@cms_channel_list parentId='665']
+		[#list tag_list as a]
+			  <select style="width:119" class="wipt" onchange="handle_select(this)" size="1" name="DH_ZF" id="DH_ZF">
+				  <option selected="">&nbsp;${a.name}&nbsp;</option> 
+				  [@cms_content_list channelId=a.id orderBy='1']
+					[#list tag_list as b]
+					  <option value="${b.url}">${b.title}</option>
+					[/#list]
+				  [/@cms_content_list]			  
+			  </select>
+		[/#list]
+	[/@cms_channel_list]
+</div>

@@ -1,0 +1,118 @@
+<style>
+.h-nor{text-align:center; margin-top:10px; font-size:20px;}
+.acqu-list{text-align:left; width:1100px; margin:0 auto; margin-top:20px; padding-bottom:20px; font-size:14px; border-bottom:1px solid #e7e7e7;}
+.error{color:red; float:right;}
+.success{color:green; float:right;}
+.con-1100{display:inline-block; margin:16px 0 30px;font-size:11px;width:1100px;color:#999999;font-family:arial;position:relative;height:14px;text-align:center}
+.top01{display:inline-block;border-right:#ffffff 1px solid;border-top:#ffffff 1px solid;background:#dcdcdc;width:1100px;border-bottom:#cccccc 1px solid;height:14px;text-align:left}
+.top02{overflow:hidden;width:100%;position:absolute;height:12px}
+.percent{font-size:10px;width:1100px;color:white;font-family:arial;position:absolute;height:14px;text-align:center}
+</style>
+
+<#assign top>
+		<div class="top01">
+		<div class="top02">
+			<img id="bar" src="${base}/res/jeecms/img/admin/vote_bar.gif"/>
+		</div>
+		<div id="percent" class="percent" ></div>
+		</div>
+		<p></p>
+		<div id="messageBox" class="con-1100"></div>
+		<p></p>
+</#assign>
+
+<#if acqu??>
+	<#if list?size gt 0>
+		${top}
+		<#--
+		<div style="width:600px;text-align:center"><a href="#"><@s.m "cmsAcquisition.pauseAcquisition"/></a>    <a href="#"><@s.m "cmsAcquisition.stopAcquisition"/></a></div>
+		-->
+		<div class="h-nor">${acqu.name}<@s.m "cmsAcquisition.total"/><@s.m "cmsAcquisition.y"/>${acqu.totalNum!}<@s.m "cmsAcquisition.g"/><@s.m "cmsAcquisition.url"/>  <@s.m "cmsAcquisition.analysing"/><@s.m "cmsAcquisition.d"/>${acqu.currNum!}<@s.m "cmsAcquisition.g"/><@s.m "cmsAcquisition.url"/></div>
+		<div class="h-nor"><@s.m "cmsAcquisition.d"/>${acqu.currNum!}<@s.m "cmsAcquisition.g"/><@s.m "cmsAcquisition.url"/><@s.m "cmsAcquisition.total"/><@s.m "cmsAcquisition.y"/>${acqu.totalItem!}<@s.m "cmsAcquisition.g"/><@s.m "cmsAcquisition.content"/></div>
+	<#else>
+		<div class="h-nor"><@s.m "cmsAcquisition.analysing"/>${acqu.name}...</div>
+	</#if>
+<#else>
+	<#if list?size gt 0>	
+		<div class="h-nor">${top}</div>
+		<#else>
+		<div class="h-nor"><@s.m "cmsAcquisition.noAcquisitionRunning"/></div>
+	</#if>
+</#if>
+<#if list?size gt 0>
+<div style="margin-top:50px; text-align:center;">
+		<#list list as temp>
+		<div class="acqu-list">
+		<@s.m "cmsAcquisition.d"/>${temp.seq}<@s.m "cmsAcquisition.t"/> 
+		${temp.contentUrl}  
+		<#if temp.title??>【${temp.title!}】</#if>  
+		<#switch temp.description>
+  		<#case "SUCCESS">
+   			<span class="success"><@s.m "cmsAcquisition.success"/></span>
+    	<#break>
+    	
+ 		<#case "TITLESTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.titleStartNotFound"/></span>
+    	<#break>
+  		<#case "TITLEENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.titleEndNotFound"/></span>
+   		<#break>
+   		<#case "CONTENTSTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.contentStartNotFound"/></span>
+    	<#break>
+     	<#case "CONTENTENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.contentEndNotFound"/></span>
+    	<#break>
+    	
+    	<#case "AUTHORSTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.authorStartNotFound"/></span>
+    	<#break>
+  		<#case "AUTHORENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.authorEndNotFound"/></span>
+   		<#break>
+   		<#case "VIEWSTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.viewStartNotFound"/></span>
+    	<#break>
+  		<#case "VIEWENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.viewEndNotFound"/></span>
+   		<#break>
+   		<#case "ORIGINSTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.originStartNotFound"/></span>
+    	<#break>
+  		<#case "ORIGINENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.originEndNotFound"/></span>
+   		<#break>
+   		<#case "DESCRISTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.originStartNotFound"/></span>
+    	<#break>
+  		<#case "DESCRIENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.originEndNotFound"/></span>
+   		<#break>
+   		<#case "RELEASESTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.releaseTimeStartNotFound"/></span>
+    	<#break>
+  		<#case "RELEASEENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.releaseTimeEndNotFound"/></span>
+   		<#break>
+   		
+   		<#case "VIEWIDSTARTNOTFOUND">
+   			<span class="error"><@s.m "cmsAcquisition.errorCause.viewIdStartNotFound"/></span>
+    	<#break>
+  		<#case "VIEWIDENDNOTFOUND">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.viewIdEndNotFound"/></span>
+   		<#break>
+   		
+    	<#case "TITLEEXIST">
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.titleExistNotFound"/></span>
+    	<#break>
+  		<#default>
+    		<span class="error"><@s.m "cmsAcquisition.errorCause.unknow"/></span>
+		</#switch>
+		
+		</div>
+		</#list>
+		</div>
+		<script>
+		percent=${percent}
+		</script>
+</#if>

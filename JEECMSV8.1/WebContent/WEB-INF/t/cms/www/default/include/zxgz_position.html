@@ -1,0 +1,9 @@
+            	<a href='${base}/'>科技部门户</a>  &gt; 
+                [#list channel.nodeList as n]
+					[#if n.tplChannel != '/WEB-INF/t/cms/www/default/channel/s_blank.html']
+                	                     	<a href='${n.url}'>${n.name}</a>					
+                                        [#else]
+                                                ${n.name}                                              
+                                        [/#if]
+                                        [#if n_has_next] &gt; [/#if]
+                [/#list]

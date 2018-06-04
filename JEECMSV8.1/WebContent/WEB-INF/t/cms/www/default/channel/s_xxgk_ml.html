@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+[#macro printTree treeChannel]
+	[@cms_channel_list parentId=treeChannel.id]
+	[#list tag_list as c]
+		{"id":"${c.id}","pId":"${c.parent.id}","name":"${c.name}", [#if c.url !="#"]url:"${c.url}",[/#if] target:"DataList",open:[#if c.id!=468]true[#else]false[/#if] },
+		[#if c.id != 538 && c.id!=533&& c.id!=529&& c.id!=530]
+				[@printTree treeChannel=c /]
+		[/#if]
+	[/#list]
+	[/@cms_channel_list]
+[/#macro]
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <meta name="channel" content="信息公开">
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/xxgk.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/css/zTreeStyle.css" rel="stylesheet" type="text/css" ignoreapd="1">
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/${res}/js/jquery.ztree.core.js"></script>
+	<script type="text/javascript">
+        var setting = {
+            view: {
+                dblClickExpand: false,
+                showLine: true,
+                selectedMulti: false
+            },
+            data: {
+                simpleData: {
+                    enable:true,
+                    idKey: "id",
+                    pIdKey: "pId",
+                    rootPId: ""
+                }
+            },
+            callback: {
+                beforeClick: function(treeId, treeNode) {
+                    var zTree = $.fn.zTree.getZTreeObj("tree");
+                    if (treeNode.isParent) {
+                        zTree.expandNode(treeNode);
+                        return false;
+                    } else {
+                        $("#DataList").attr("src",treeNode.file + ".html");
+                        return true;
+                    }
+                }
+            }
+    
+        };
+     
+      
+        var zNodes=[
+            [@cms_channel id=454]
+            [@printTree treeChannel=tag_bean/]
+            [/@cms_channel]
+    
+        ]  
+      
+        $(document).ready(function(){  
+            $.fn.zTree.init($("#tree"), setting, zNodes);  
+        });  
+    </script>
+<style>
+.curSelectedNode {
+     background-color: white;
+      color: red;
+      border: none;
+}
+</style>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+    [#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+	<div class="floor">
+    	<div class="xxgk_left">
+        	[@cms_channel_list parentId=110  hasContent='false']
+    		[#list tag_list as c]
+            [#if c.id==454] 
+                [@cms_channel id=110]
+                <span class="xxgk_menu_cur">
+                	<a href="${tag_bean.url}">${c.name}</a>
+                </span>
+                [/@cms_channel]
+         	[#else]
+            	<span class="xxgk_menu">
+                	<a href="${c.url}">${c.name}</a>
+                </span>
+            [/#if]
+            
+            [#if c.id==454]
+            	<ul id="tree" class="ztree"></ul>
+            [/#if]
+            [#if c_has_next]
+            	<div class="separator"></div>
+            [/#if]
+            [/#list]
+            [/@cms_channel_list]
+            
+        </div>
+    	<div class="xxgk_right">
+            [@cms_channel id=454]
+                <iframe name="DataList" id="DataList" src="${tag_bean.url}" frameborder="0" height="100%" width="100%" style="height: 650px;"></iframe>    
+            [/@cms_channel]
+        </div>
+    </div>
+</div>
+</div>
+[#include "../include/footer.html"/]
+</body>
+</html>

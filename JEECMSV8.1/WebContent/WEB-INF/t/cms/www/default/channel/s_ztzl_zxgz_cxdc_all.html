@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>创新调查</title>
+<meta name="channel" content="创新调查">
+<style type="text/css">
+<!--
+body { margin:0px;color:#5E5E5E; font-size:12px; text-decoration:none;font-family:"宋体";text-align:center; background-color:#ffffff;}
+a{ color:#5E5E5E; font-size:12px;text-decoration:none;outline: none;star:expression(this.onFocus=this.blur());}
+a:link{color:#5E5E5E;  font-size:12px;text-decoration:none;}
+a:visited{color:#5E5E5E;  font-size:12px;text-decoration:none;}
+a:hover{color:#5E5E5E; font-size:12px;text-decoration: none;}
+a:active {outline: none;star:expression(this.onFocus=this.blur()); }
+ul { list-style-type:none; margin:0px; padding:0px;}
+li { text-align:left;}
+img{ border:0px;}
+/* 字体 行高 */
+.jg2{ letter-spacing: 2px;}
+
+.bold {font-weight: bold; }
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh26{line-height:26px;}
+.lh30{line-height:30px;}
+.dh{ width:1003px; margin:0px auto; border:0px;}
+.j2{ width:1003px; margin:0px auto; border:0px; background:url(/${res}/cxdc/images/line-bg.jpg) repeat-y;}
+.j31{ width:1003px; margin:0px auto; border:0px; background:url(/${res}/cxdc/images/3j-bg1.jpg) no-repeat;}
+.j25 {width:203px; height:422px; background:url(/${res}/cxdc/images/2j-left-bg.jpg) no-repeat; text-align:center}
+.j25 ul{ width:177px; height:30px; margin:8px auto; }
+
+.y12{ width:630px; color:#C28141; font-size:12px;text-decoration:none; line-height:24px; text-align:left; border-bottom:1px solid #B7B6BB; padding-top:10px; margin:0px auto;}
+.y12 a{ color:#C28141; font-size:12px;text-decoration:none;}
+.y16 {  color:#B76A10; font-size:16px;text-decoration:none; font-weight:bold;letter-spacing: 2px; padding-left:50px; margin:20px auto; text-align:left;}
+
+.nav2{ width:600px; margin:10px auto;}
+.nav2 li{ background:url(/${res}/cxdc/images/2j-dot2.jpg) no-repeat 0px 11px; padding-left:10px; font-size:14px;}
+.nav2 a{ font-size:14px; text-decoration:none;}
+.fy{ height:40px;line-height:30px; text-align:center;}
+.bottom{ width:1003px; height:60px; color:#626262; padding-top:15px; text-align:center; margin:0px auto; line-height:24px;}
+.bottom a{ color:#626262;  font-size:12px;text-decoration:none;}
+.bottom a:link{ color:#626262;  font-size:12px;text-decoration:none;}
+.bottom a:visited{ color:#626262;  font-size:12px;text-decoration:none;}
+-->
+</style>
+</head>
+
+<body>
+[#include "../include/cxdc/header.html" /]
+<img src="/${res}/cxdc/images/i-02.jpg" /></div>
+<table class="j2" cellspacing="0" cellpadding="0" >
+<tr><td valign="top">
+<div class="j31">
+<table width="900" border="0" cellspacing="0" cellpadding="0" style=" margin:0px auto; padding-top:20px;">
+  <tr>
+    <td class="j25" valign="top"><a href="/cxdc/"><img src="/${res}/cxdc/images/2j-left-1.jpg" /></a><p>
+		[@cms_channel_list parentId='835']
+			[#list tag_list as a]
+				<ul><a href="${a.url}"><img src="${a.titleImg!}" /></a></ul>
+			[/#list]
+		[/@cms_channel_list]
+	</td>
+    <td valign="top">
+	
+	<div class="y12">
+		[#include "../include/zxgz_position.html" /]
+	</div>
+		<div class="y16">${channel.name}>></div>
+	<div class="nav2 lh26">
+	<ul>
+		[@cms_content_page count='20' titLen='24' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='24']
+			[#list tag_list as a]
+				 <li>
+					<span></span>
+					[#if channel.id == 906 || channel.id == 907]
+						<a href="[#if a.attachments?size > 0][#list a.attachments as zndoc]${zndoc.path!}[#break][/#list][/#if]"   target="_blank" >
+						${a.title}(${a.date?string(dateFormat)})
+						</a>
+					[#else]
+						<a href="${a.url}"   target="_blank" >
+						${a.title}(${a.date?string(dateFormat)})
+						</a>
+					[/#if]
+				</li>
+			[/#list]		
+	 </ul>
+	</div>
+	<div class="fy">
+	<table width="95%" cellspacing="0" cellpadding="0" align="center">
+	  <tr>
+            <td height="60" align="center" class="pageno">
+				[@cms_pagination sysPage='1'/]
+				[/@cms_content_page]
+			</td>
+        </tr>
+	  </table>
+	</div>
+	</td>
+  </tr>
+</table>
+
+</div></td></tr></table>
+
+<div class="dh"><img src="/${res}/cxdc/images/line-bottom.jpg" /></div>
+[#include "../include/cxdc/footer.html" /]
+
+</body>
+</html>

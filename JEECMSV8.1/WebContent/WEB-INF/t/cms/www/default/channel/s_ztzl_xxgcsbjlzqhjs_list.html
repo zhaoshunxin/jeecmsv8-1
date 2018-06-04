@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>学习贯彻十八届六中全会精神</title>
+<meta name="channel" content="学习贯彻十八届六中全会精神">
+
+<style type="text/css">
+<!--
+html{margin:0px; padding:0px; overflow-x:visible; background-color:#EFEBE2;}
+body {background-color:#A70103; margin:0px auto; text-align:center;overflow-x:hidden; font-size:12px;} 
+
+a{ color:#303030; font-size:12px;text-decoration:none;outline: none;star:expression(this.onFocus=this.blur());}
+a:link{color:#303030;  font-size:12px;text-decoration:none;}
+a:visited{color:#303030  font-size:12px;text-decoration:none;}
+a:hover{color:#303030; font-size:12px;text-decoration: none;}
+a:active {outline: none;star:expression(this.onFocus=this.blur()); }
+ul { list-style-type:none; margin:0px; padding:0px;}
+li { text-align:left;}
+img{ border:0px;}
+/* 字体 行高 */
+
+.bold {font-weight: bold; }
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh26{line-height:26px;}
+.lh30{line-height:30px;}
+
+.top{ width:962px; height:248px; margin:0px auto; background:url(/${res}/ztzl/xxgcsbjlzqhjs/images/top-banner.jpg) no-repeat;}
+.menu{ width:960px; height:27px;background-color:#CC0001; margin:0px auto; font-size:16px; font-weight:bold; color:#FDF756; padding-top:5px; letter-spacing:5px;}
+.menu a{ font-size:14px; font-weight:bold; color:#FDF756;}
+.menu a:visited{text-decoration:none;}
+.menu a:hover{text-decoration:underline;}
+.menu a:active {outline: none;star:expression(this.onFocus=this.blur()); }
+
+.part2{ width:960px; margin:0px auto; background-color:#FFFFFF;}
+
+.left { width:242px; height:590px; margin-top:15px;  background:url(/${res}/ztzl/xxgcsbjlzqhjs/images/2j-left1.jpg) no-repeat; margin-left:15px; }
+.left a{ display:block;  float:left; height:36px; margin-left:10px;}
+.left .l1{ width:200px; height:35px;}
+.left .l2{ width:200px; height:40px;}
+.left .l3{ width:200px; height:38px;}
+.left .l4{ width:200px; height:38px;}
+.left .l5{ width:200px; height:38px;}
+.left .l6{ width:200px; height:38px;}
+
+.right{ width:690px; height:480px;  margin-top:10px;}
+.red16{ width:630px; height:30px; line-height:30px;text-align:left;  font-size:16px; color:#676261; font-weight:bold; padding-left:0px; border-bottom: 2px #B41A18 solid; margin:auto; margin-left:40px; letter-spacing:1px;}
+
+.right2{ width:640px; line-height:32px; margin:5px auto; font-size:14px; margin-left:40px}
+.right2 a{ font-size:14px; letter-spacing:2px}
+.right2 li{ background:url(/${res}/ztzl/xxgcsbjlzqhjs/images/2j-dot1.jpg) no-repeat 8px 10px; padding-left:20px;}
+.right2 span{ float:right;}
+
+.bottom{ width:960px; height:100px; background-color:#A70103; margin:auto; line-height:30px; font-size:14px; color:#ffffff; padding-top:20px;}
+.bottom a{ font-size:14px; color:#ffffff;}
+-->
+</style>
+
+<script language='JavaScript' src='/inc/pathReplace.js' type='text/JavaScript'></script>
+</head>
+
+<body>
+
+
+<div class="top"></div>
+<div class="menu">
+<a href="/index.htm">网站首页</a>
+	[@cms_channel_list parentId=957]
+	[#list tag_list as a]
+		&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${a.url}">${a.name}</a>
+	[/#list]
+	[/@cms_channel_list]
+</div>
+
+<table class="part2" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="250px;" valign="top">
+	<div class="left">
+    [@cms_channel id=957]
+     <a href="${tag_bean.url}" title="本专题首页" class="l1"></a>
+    [/@cms_channel]
+	[@cms_channel_list parentId=957]
+	[#list tag_list as a]
+		<a href="${a.url}" title="${a.name}" class="l${a_index+2}"></a>
+	[/#list]
+	[/@cms_channel_list]
+	</div></td>
+    <td valign="top">
+	<div class="right">
+	<div class="red16">${channel.name}</div>
+	<div class="right2">
+	[@cms_content_page count='10' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='4']
+	<ul>
+		[#list tag_pagination.list as a]
+		<li>
+			<a  target="_blank"  href="${a.url}" >${a.title}(${a.date?string(dateFormat)})</a>
+		</li>
+		[/#list]
+	 </ul>
+	<table width="95%" cellspacing="0" cellpadding="0" align="center">
+	  <tr>
+            <td height="60" align="center" class="pageno">
+            	 [@cms_pagination sysPage='1'/]
+            </td>
+      </tr>
+    </table>
+    [/@cms_content_page]
+	</div>
+	</div></td>
+  </tr>
+</table>
+
+<div class="bottom">
+[#include "../include/footer_ztzl.html"/]
+</div>
+</body>
+</html>

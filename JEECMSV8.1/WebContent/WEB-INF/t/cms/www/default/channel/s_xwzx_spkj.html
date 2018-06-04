@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <script language='JavaScript' src='/${res}/inc/jquery_1.7.js' type='text/JavaScript'></script>
+	<script language='JavaScript' src='/${res}/inc/roundabout.min.js' type='text/JavaScript'></script>
+	
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor floor_bottom_line">
+        <div class="spswitch" >
+       		<div class="rotate-focus clearfix">
+                <ul id="J_round" class="rotate-img">
+                    [@cms_content_list count='5' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='197' orderBy='4']
+                    [#list tag_list as a]
+                    <li>
+                        <a target=_blank href=${a.url} ><img src="${a.attr.pic1!a.typeImg!}" border=0 width=446 height=288></a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+        		<center>
+                <ul id="J_round_txt" class="rotate-title">
+                    [@cms_content_list count='5' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='197' orderBy='4']
+                    [#list tag_list as a]
+                    <li>
+                    	<a target="_blank" title="${a.title}" href="${a.url}">${a.title}</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+                </center>
+                <div class="turn-left"><img src=/${res}/images/turn-left.gif border="0" /></div>
+                <div class="turn-right"><img src=/${res}/images/turn-right.gif  border="0"/></div>
+        	</div>
+			<script type="text/javascript">
+                $(function(){
+					$("#J_round").roundabout({
+						autoplay: true,
+						autoplayDuration: 3000,
+						autoplayPauseOnHover: true,
+						btnPrev: ".turn-right",
+						btnNext: ".turn-left",
+						minScale:0.4,
+						clickToFocus: false,
+						reflect:false
+						},function(){}
+					);
+					
+					$("#J_round li").focus(function(){
+						var index = $("#J_round").roundabout("getChildInFocus");
+						$("#J_round_txt").children().hide();
+						$("#J_round_txt").children().eq(index).fadeIn();
+					});
+				});	
+            </script>
+            <script>
+				/*    此部分脚本在 IE6 下模拟了任意元素的 :hover 效果，而此页面 和 顶部通用导航都适用了此脚本。
+					同时此脚本解决了 IE6 下 :hover 对象的背景闪烁问题。
+				*/
+				if (!window.XMLHttpRequest && document.execCommand && window.attachEvent) {
+				(function (h) {
+				function x(e, n) { return e && e[c] && (' ' + e[c] + ' ').indexOf(' ' + n + ' ') >= 0 }
+				function a(e, n) { if (e) { if (!e[c]) { e[c] = n } else if (!x(e, n)) { e[c] += ' ' + n } } }
+				function r(e, n) { if (x(e, n)) { if (e[c] == n) { e[c] = '' } else { for (var m = e[c].split(' '), j = m.length - 1; j >= 0; j--) { if (m[j] == n || /^\s$/.test(m[j])) m.splice(j, 1) } e[c] = m.join(' ') } } }
+				function o(e, t, f) { e.attachEvent('onmouse' + t, function () { f(e, h) }) }
+				for (var i = 0, m = document.getElementsByTagName('*'), c = 'className', l = m.length, e, s = h + 's', q = ':' + h, v; i < l; i++) { if ((v = x(e = m[i], q)) || x(e.parentNode, s)) { if (v) r(e, q); o(e, 'over', a); o(e, 'out', r) } }
+				try { document.execCommand("BackgroundImageCache", false, true) } catch (e) { }
+				})('hover');
+				}
+			</script>
+        </div>
+        <div class="spkj_all">
+        	<div class="spkj_all_left">
+            	<div class="spkj_title color_f0f0f0">
+                    [@cms_channel id='194']
+                    <a href="${tag_bean.url}"><img src="/${res}/images/spkj_bnyw.jpg" border=0/></a>
+                    [/@cms_channel]
+                </div>
+                <div class="spkj_bnyw_content">
+                	[@cms_content_list count='7' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='194' orderBy='4']
+                    [#list tag_list as a]
+                    <div class="bnyw">
+                        <div class="tu">
+                            <a target=_blank href=${a.url} >
+                            	<img src="${a.attr.pic2!a.typeImg!}" border=0 width=91 height=58>
+                            </a>
+                        </div>
+                        <div class="wen">
+                            <a  target="_blank" title="${a.title}" href="${a.url}" >
+                            	[@text_cut s=a.title len=titLen append=append/]
+                                (${a.date?string(dateFormat)}) 
+                            	<img src="/${res}/images/spkj-arrow.gif" border="0" />
+                            </a>
+                        </div>
+                    </div>
+                    [/#list]
+                    [/@cms_content_list]
+                    
+                </div>
+            </div>
+            <div class="spkj_all_right">
+                <div class="spkj_title color_f0f0f0">
+                    [@cms_channel id='195']
+                    <a href="${tag_bean.url}"> <img src="/${res}/images/spkj_mtbd.jpg" border=0/></a>
+                    [/@cms_channel]
+                    
+                </div>
+                <div class="spkj_content">
+                    <div class="list">
+                        <ul>
+                        	[@cms_content_list count='5' titLen='32' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='195' orderBy='4']
+                        	[#list tag_list as a]
+                        	<li><a  target="_blank" title="${a.title}" href="${a.url}" >[@text_cut s=a.title len=titLen append=append/](${a.date?string(dateFormat)}) </a></li>
+                            [/#list]
+                            [/@cms_content_list]
+                        </ul>
+                    </div>
+                    [@cms_content_list count='1' titLen='25' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='195' orderBy='4']
+                    [#list tag_list as a]
+                    [#if a_index = 0]
+                    <div class="right-pic">
+                    	<a target=_blank title="${a.title}" href=${a.url} >
+                        	<img src="${a.attr.pic2!a.typeImg!}" border=0 width=179 height=116>
+                        </a>
+                    </div>
+                    [/#if]
+                    [/#list]
+                    [/@cms_content_list]
+                </div>
+                
+                <div class="spkj_title">
+                    [@cms_channel id='196']
+                    <a href="${tag_bean.url}"> <img src="/${res}/images/spkj_ztsp.jpg" border=0/></a>
+                    [/@cms_channel]
+                </div>
+                <div class="spkj_content">
+                    <div class="list">
+                        <ul>
+                        	[@cms_content_list count='5' titLen='32' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='196' orderBy='4']
+                        	[#list tag_list as a]
+                        	<li><a  target="_blank" title="${a.title}" href="${a.url}" >[@text_cut s=a.title len=titLen append=append/](${a.date?string(dateFormat)}) </a></li>
+                            [/#list]
+                            [/@cms_content_list]
+                        </ul>
+                    </div>
+                    [@cms_content_list count='1' titLen='25' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='196' orderBy='4']
+                    [#list tag_list as a]
+                    [#if a_index = 0]
+                    <div class="right-pic">
+                    	<a target=_blank title="${a.title}" href=${a.url} >
+                        	<img src="${a.attr.pic2!a.typeImg!}" border=0 width=179 height=116>
+                        </a>
+                    </div>
+                    [/#if]
+                    [/#list]
+                    [/@cms_content_list]
+                </div>
+                
+                <div class="spkj_title">
+                    [@cms_channel id='197']
+                    <a href="${tag_bean.url}"> <img src="/${res}/images/spkj_spzl.jpg" border=0/></a>
+                    [/@cms_channel]
+                </div>
+                <div class="spkj_content">
+                    <div class="list">
+                        <ul>
+                        	[@cms_content_list count='5' titLen='32' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='197' orderBy='4']
+                        	[#list tag_list as a]
+                        	<li><a  target="_blank" title="${a.title}" href="${a.url}" >[@text_cut s=a.title len=titLen append=append/](${a.date?string(dateFormat)}) </a></li>
+                            [/#list]
+                            [/@cms_content_list]
+                        </ul>
+                    </div>
+                    [@cms_content_list count='1' titLen='25' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='197' orderBy='4']
+                    [#list tag_list as a]
+                    [#if a_index = 0]
+                    <div class="right-pic">
+                    	<a target=_blank title="${a.title}" href=${a.url} >
+                        	<img src="${a.attr.pic2!a.typeImg!}" border=0 width=179 height=116>
+                        </a>
+                    </div>
+                    [/#if]
+                    [/#list]
+                    [/@cms_content_list]
+                </div>
+                
+            </div>
+        </div>
+			
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

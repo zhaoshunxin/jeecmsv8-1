@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	[#include "../include/dfkj/head.html" /]
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg">
+	[#include "../include/dfkj/top.html" /]
+    <div class="dfkj_floor">
+    	<div class="dfkj_floor3_left">
+        	<div class="dfkj_menu">
+            	<div class="dfkj deep14_b lh44">地方科技</div>
+                [@cms_channel_list parentId='192']
+                    [#list tag_list as a]
+                        [#if a.id!=561 && a.id!=713]
+                            <div class="df-l1 lh28 deep14_b"><a href="${a.url}">${a.name}</a></div>
+                            [@cms_channel_list parentId=a.id]	
+                                [#list tag_list as b]
+                                    <div class="df-l2 lh32 deep14"><a href="${b.url}">》》${b.name}</a></div>
+                                [/#list]
+                            [/@cms_channel_list]
+                        [/#if]
+                    [/#list]
+                [/@cms_channel_list]
+            </div>
+            <div class="arealist">
+            	[#include "../include/dfkj/arealist.html" /]
+            </div>
+        </div>
+        <div class="dfkj_floor3_right">
+        	<div class="dqwz">
+				[#include "../include/dfkj/dqwz.html" /]
+            </div>
+            
+            [#if channel.id=557 || channel.id=558]
+            [@cms_channel_list parentId=channel.id]
+            [#list tag_list as a]
+            <div class="content">
+            	<div class="nav_r1">
+                    <span class="red_h">${a.name}</span>
+                    <span class="red_more"><a href="${a.url}">更多》</a></span>
+                </div>
+                <div class="nav_r2">
+                	<div class="news1">
+                        <ul class="lh28 blue">
+                            [@cms_content_list count='8' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=a.id orderBy='3']
+                                [#list tag_list as b]
+                                     <li>
+                                         <a  target="_blank" href="${b.url}" title="${b.title}" >
+                                         ${b.title}(${b.date?string(dateFormat)})
+                                         </a>
+                                     </li>
+                                [/#list]
+                            [/@cms_content_list]
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav_r3"></div>
+            </div>
+            [/#list]
+            [/@cms_channel_list]
+            [#elseif channel.id=560]
+            <!--
+            科技视频
+            -->
+            [@cms_channel_list parentId=channel.id]
+            [#list tag_list as a]
+            <div class="content">
+            	<div class="nav_r1">
+                    <span class="red_h">${a.name}</span>
+                    <span class="red_more"><a href="${a.url}">更多》</a></span>
+                </div>
+                <div class="nav_r2">
+                	
+                    <div class="nav_r2_left">
+                        [@cms_content_list count='1' titLen='12' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=a.id orderBy='3']
+                        [#list tag_list as c]
+                    	<div class="nav_r2_left_img">
+                        	<a target="_blank" href="${c.url}" title="${c.title}" >
+                            	<img src="${c.typeImg!}" border="0" width="179">
+                            </a>
+                        </div>
+                        <div class="nav_r2_left_title red14_b">
+                        	<a target="_blank" href="${c.url}" title="${c.title}" >
+                                [@text_cut s=c.title len=titLen append=append/]
+                            </a>
+                        </div>
+                        [/#list]
+                        [/@cms_content_list]
+                    </div>
+                    <div class="nav_r2_right">
+                    	<div class="news1">
+                            <ul class="lh28">
+                                [@cms_content_list count='9' titLen='20' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=a.id orderBy='3']
+                                    [#list tag_list as b]
+                                    [#if b_index>0]
+                                         <li>
+                                             <a target="_blank" href="${b.url}" title="${b.title}">[@text_cut s=b.title len=titLen append=append/]</a>
+                                             <span>${b.date?string(dateFormat)}</span>
+                                         </li>
+                                    [/#if]
+                                    [/#list]
+                                [/@cms_content_list]
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav_r3"></div>
+            </div>
+            [/#list]
+            [/@cms_channel_list]
+            
+            [#else]
+            <div class="content">
+            	<div class="nav_r1">
+                    <span class="red_h">${channel.name}</span>
+                </div>
+                <div class="nav_r2">
+                	[@cms_content_page count='20' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='3']
+                    <div class="news1">
+                        <ul class="lh28 blue">
+                            [#list tag_list as a]
+                            <li>
+                                <a  target="_blank" href="${a.url}" title="${a.title}" >
+                                    ${a.title}(${a.date?string(dateFormat)})
+                                </a>
+                            </li>
+                            [/#list]
+                        </ul>
+                    </div>
+                    
+                    <div class="fy">
+                        [@cms_pagination sysPage='1'/]
+                    </div>
+                    [/@cms_content_page]
+                </div>
+                <div class="nav_r3"></div>
+            </div>
+            [/#if]
+            
+            
+        </div>
+        
+        
+	</div>
+    [#include "../include/dfkj/footer.html" /]
+</div>
+<div class="bottomline"></div>
+</div>
+</body>
+</html>

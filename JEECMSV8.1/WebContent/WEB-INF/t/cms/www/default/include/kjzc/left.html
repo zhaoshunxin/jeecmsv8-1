@@ -1,0 +1,16 @@
+            <div class="back">
+                [@cms_channel id='100']
+                    <a href="${tag_bean.url}"><img src="/${res}/kjzc/images/kjzc-left1.gif" border="0" /></a>
+                [/@cms_channel]
+            </div>
+            <div class="left_menu">
+                [@cms_channel_list parentId='100'  hasContent='false']
+                    [#list tag_list as c]
+                      [#if c.id != 131]
+                      <div class="lm${c_index + 1}[#if c.id=channel.id || c.id=channel.parent.id || c.id=127 && (channel.parent.id=148 || channel.parent.id=149 || channel.parent.id=150 || channel.parent.id=151) ] now[/#if]">
+                        <a href="${c.url}" title="${c.name!}"></a>
+                       </div>
+                       [/#if]
+                    [/#list]
+                [/@cms_channel_list]
+            </div>

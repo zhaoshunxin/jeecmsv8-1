@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/jeecms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+</script>
+</head>
+<body>
+<div class="page-positon ove">
+  <div class="position-div"><@s.m "global.position"/>: <@s.m "apiInfo.function"/> > <@s.m "global.edit"/></div>
+</div>
+<div class="box-positon ck">
+	<form class="ropt">
+		<input type="button" value="<@s.m "global.backToList"/>" onclick="history.back();" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<@p.form id="jvForm" action="o_update.do">
+<@p.text label="apiInfo.name" name="name" value=apiInfo.name required="true" class="required" maxlength="100"/>
+<@p.text label="apiInfo.url" name="url" value=apiInfo.url required="true" class="required" maxlength="100"/><@p.tr/>
+<@p.text label="apiInfo.code" name="code" value=apiInfo.code required="true" class="required" maxlength="20"/>
+<!-- 
+<@p.text label="apiInfo.limitCallDay" name="limitCallDay" value=apiInfo.limitCallDay  required="true" class="required digits" help="apiInfo.limitCallDay.help"  maxlength="10"/>
+ -->
+ <input type="hidden" name="limitCallDay" value="0"/>
+<@p.radio label="apiInfo.disabled" name="disabled" value=apiInfo.disabled  list={"true":"global.true","false":"global.false"} required="true" width="50" colspan="1" /><@p.tr/>
+<@p.td><@p.hidden name="id" value=apiInfo.id/><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

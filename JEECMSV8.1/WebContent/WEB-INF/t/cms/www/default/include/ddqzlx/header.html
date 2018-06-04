@@ -1,0 +1,53 @@
+<div class="logo">
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="1000" height="179">
+    <param name="movie" value="/${res}/ztzl/ddqzlxjysjhd/images/dangqunluxianpingtai3.swf" />
+    <param name="quality" value="high" />
+    <param name="wmode" value="opaque" />
+    <embed src="/${res}/ztzl/ddqzlxjysjhd/images/dangqunluxianpingtai3.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="1000" height="179"></embed>
+  </object>
+</div>
+<div class="dh" id="dh">
+  <div style="width:60px; float:left;" >&nbsp;</div>
+  <div class="n"><a href="/html/" >门户首页</a></div>
+  [@cms_channel_list parentId='934']
+	[#list tag_list as a]
+		[#if a.id == 939 || a.id == 940]
+			<div class="space">|</div>
+			<div class="n"><a href="${a.url}" target="_blank">${a.name}</a></div>
+		[#else]
+			[#if a.id < 939]
+				<div class="space">|</div>
+				<div class="s" onmouseover="showmenu('i_${a_index+1}')" onmouseout="hidemenu('i_${a_index+1}')" >${a.name}</div>
+			[/#if]
+		[/#if]		
+	[/#list]
+  [/@cms_channel_list]   
+</div>
+[@cms_channel_list parentId='934']
+	[#list tag_list as a]
+		[#if a.id < 939]
+			<div class="menu" id="i_${a_index+1}" style="top:212px; visibility:hidden"  onmouseout=hidemenu("i_${a_index+1}") onmouseover=showmenu("i_${a_index+1}") >
+				<table  align="right" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td width="9" bgcolor="#F7EAA6">&nbsp;</td>
+					<td width="100" bgcolor="#F7EAA6" style="padding-top:5px">
+						<table width="100" border="0" cellspacing="0" cellpadding="0">
+							[@cms_channel_list parentId = a.id]
+								[#list tag_list as b]
+								  <tr>
+									<td valign="bottom" class="item line"><a href="${b.url}">${b.name}</a></td>
+								  </tr>	
+								[/#list]
+							[/@cms_channel_list]
+						</table>
+					</td>
+			<td width="11" style="background:url(/${res}/ztzl/ddqzlxjysjhd/images/m-right.gif) right repeat-y">&nbsp;</td>
+			</tr>
+			<tr>
+			<td colspan="3"><img src="/${res}/ztzl/ddqzlxjysjhd/images/m-b.gif"/></td>
+			</tr>	
+		  </table>
+		</div>
+		[/#if]
+	[/#list]
+[/@cms_channel_list]

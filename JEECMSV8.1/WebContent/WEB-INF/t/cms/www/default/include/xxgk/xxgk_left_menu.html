@@ -1,0 +1,92 @@
+            <span class="left_menu_span">
+            	www.most.gov.cn
+            </span>
+            <span class="left_menu_title bgcolor_00477d">
+
+                [#if channel.parent.id=111 || channel.parent.id=460]
+                
+                [@cms_channel id=111 ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+                
+                [#elseif channel.parent.id=112]
+                
+                [@cms_channel id=112 ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+                
+                [#elseif channel.parent.id=113]
+                
+                [@cms_channel id=113 ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+                
+                [#elseif channel.parent.id=114]
+                
+                [@cms_channel id=114 ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+                
+                [#else]
+                
+                [@cms_channel id=channel.id ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+                
+                [/#if]
+            </span>
+            <ul class="floor_xwzx_left_menu ">
+                [#if channel.parent.id=111 || channel.parent.id=460]
+                
+                [@cms_channel_list parentId=111  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [#if c.id=460]
+                [@cms_channel_list parentId=460  hasContent='false']
+                [#list tag_list as d]
+                <li style="text-align:center;"><a href="${d.url}" >${d.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+                [/#if]
+                [/#list]
+                [/@cms_channel_list]
+                
+                [#elseif channel.parent.id=112]
+                
+                [@cms_channel_list parentId=112  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+                
+                [#elseif channel.parent.id=113]
+                
+                [@cms_channel_list parentId=113  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+                
+                [#elseif channel.parent.id=114]
+                
+                [@cms_channel_list parentId=114  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+                
+                [#else]
+                
+                [@cms_channel_list parentId=channel.id  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+                
+                [/#if]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+            <div class="dcwj">
+            	[#include "../dcwj.html"/]
+            </div>

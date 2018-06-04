@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/zzjg/inc/pure-min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/${res}/zzjg/inc/blue.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/${res}/zzjg/inc/grids.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/${res}/zzjg/inc/album.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/${res}/zzjg/inc/base.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/${res}/zzjg/inc/zzjg.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/${res}/zzjg/inc/carousel.js"></script>
+    <script type="text/javascript" src="/${res}/zzjg/inc/album.js"></script>
+
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        <div class="ldxc_title">
+            <p class="album-image-ft" id="album-image-ft">${content.title!}</p>
+        </div>
+        <div class="gray12">
+            日期：<span id="album-image-date">${content.releaseDate?string("yyyy年MM月dd日")}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            来源：<span id="album-image-from">[#if content.origin??]${content.origin}[#else]科技部[/#if]</span>
+        </div>
+        
+        <div class="album" id="album">
+            <div class="album-image-md" id="album-image-md">
+                <p class="album-image-bd"><img src="${content.typeImg!}" class="album-image" id="album-image" alt="${content.title!}"/></p>	  
+            
+                <a class="album-download" id="album-download" href="img/01.jpg" target="_blank"><span>下载图片</span></a>
+                <ul class="album-image-nav hide" id="album-image-nav">
+                    <li class="album-image-nav-left-block" id="album-image-nav-left-block"><a href="#prev-image" class="album-image-btn-prev" id="album-image-btn-prev">‹</a></li>
+                    <li class="album-image-nav-right-block" id="album-image-nav-right-block"><a href="#next-image" class="album-image-btn-next" id="album-image-btn-next">›</a></li>
+                </ul>
+                <p class="album-image-loading-overlay hide" id="album-image-loading-overlay"><img src="/${res}/zzjg/images/loading.gif" alt="loading..." width="100" height="100" /></p>
+            </div>
+            <div class="album-carousel" id="album-carousel">
+                <a href="#prev-group" class="album-carousel-btn-prev" id="album-carousel-btn-prev">‹</a>
+                <div class="album-carousel-zone" id="album-carousel-zone">
+                    <ul class="album-carousel-list" id="album-carousel-list">
+                        <li class="album-carousel-thumb">
+                            <a href="${content.typeImg!}">
+                                <img src="${content.typeImg!}" alt="${content.title!}" date="${content.releaseDate?string("yyyy年MM月dd日")}" from="[#if content.origin??]${content.origin}[#else]科技部[/#if]" />
+                            </a>
+                        </li>
+                        [@cms_content_list channelId=content.channel.id orderBy='2' channelOption='1']
+                        [#list tag_list as a]
+                        [#if a.id != content.id]
+                        <li class="album-carousel-thumb">
+                            <a href="${a.typeImg!}">
+                                <img src="${a.typeImg!}" alt="${a.title!}" date="${a.releaseDate?string("yyyy年MM月dd日")}" from="[#if a.origin??]${a.origin}[#else]科技部[/#if]" />
+                            </a>
+                        </li>
+                        [/#if]
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+                <a href="#next-group" class="album-carousel-btn-next" id="album-carousel-btn-next">›</a>
+            </div>
+        </div>
+        
+		<script type="text/javascript">
+        var Album = new jQuery.Album();
+        </script>
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

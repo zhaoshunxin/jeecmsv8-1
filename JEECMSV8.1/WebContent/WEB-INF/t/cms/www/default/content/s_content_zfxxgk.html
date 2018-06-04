@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/inc/detail.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="background-color: #EBEBEB;">
+<div class="div_center">
+<div class="bg" id="bg" id="#top">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+		<div class="xxgk_table">
+        	<span class="xxgk_table_top"></span>
+            <table width="100%" border="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <th nowrap="">信息名称：</th>
+                    <td colspan="3">${content.title}</td>
+                </tr>
+                <tr>
+                    <th nowrap="">索 引 号：</th>
+                    <td>${content.attr.indexNum!}</td>
+                    <th nowrap="">信息类别：</th>
+                    <td>${content.attr.info_type!}</td>
+                </tr>
+                <tr>
+                    <th nowrap="">发布机构：</th>
+                    <td>${content.author!}</td>
+                    <th nowrap="">发文日期：</th>
+                    <td>${content.attr.pub_date!}</td>
+                </tr>
+                <tr>
+                    <th nowrap="">文　　号：</th>
+                    <td>${content.attr.info_num!}</td>
+                    <th nowrap="">实施日期：</th>
+                    <td>${content.attr.impl_date!}</td>
+                </tr>
+            </tbody>
+            </table>
+            <span class="xxgk_table_bottom"></span>
+        </div>
+        <div class="xxgk_content">
+            <span class="xxgk_content_top"></span>
+            <div class="xxgk_detail">
+            	<div class="f20" id="Title" name="Title">
+                	${content.title}	
+                </div>
+                <div id="Zoom" class="trshui13 lh22">
+                    <meta name="ContentStart">
+                       [#if content.txt??] ${content.txt}[/#if]
+                    <meta name="ContentEnd"> 
+                    
+                    [#if content.attachments?size>0]
+                    <p style="margin-top:20px;"><strong>附件：</strong></p>	
+                    <ul class="fj">						
+                    [#list content.attachments as zndoc]
+                        <li><a href="${zndoc.path!}" target="_blank">${zndoc.name!}</a></li>
+                    [/#list]
+                    </ul>
+                    [/#if]
+                    
+                </div>
+            
+            	<hr width="820" style=" margin:50px 0 10px 0">
+                <table width="90%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;">
+                <tbody>
+                <tr>
+                  <td width="15%" align="left" nowrap="nowrap"><a onclick="Zoom.style.fontSize='16px';" href="#"><span class="style21">[放大字体]</span></a> </td>
+                  <td width="15%" align="left" nowrap="nowrap"><a onclick="Zoom.style.fontSize='12px';" href="#"><span class="style21">[缩小字体]</span></a></td>
+                  <td width="11%" align="left" nowrap="nowrap"><div align="left"><a class="style21" href="#" onclick="javaScript:printwin();">[打印]</a></div></td>
+                  <td width="11%" align="left" nowrap="nowrap"><div align="left">
+                      <a class="style21" href="mailto:?subject=&amp;body="><span class="style21">[发送]</span></a>
+                  </div></td>
+                  <td width="15%" align="left" nowrap="nowrap"><div align="left">
+    <a class="style21" href="mailto:jiucuo@most.cn?subject=">[我要纠错]</a>  
+                  </div></td>
+                  <td width="12%" align="left" nowrap="nowrap"><a href="javascript:close()" class="style21">[关闭窗口]</a></td>
+                  <td align="right" nowrap="nowrap"><table border="0">
+                      <tbody><tr>
+                        <td><img src="/${res}/images/arrow3.gif" width="8" height="8"></td>
+                        <td nowrap="nowrap"><a href="http://www.most.gov.cn/index.htm" class="linkOrange01">网站首页</a></td>
+                        <td><img src="/${res}/images/arrow3.gif" width="8" height="8"></td>
+                        <td nowrap="nowrap"><a href="http://www.most.gov.cn//dlwzt/index.htm" class="linkOrange01">网站导航</a></td>
+                        <td><img src="/${res}/images/arrow3.gif" width="8" height="8"></td>
+                        <td nowrap="nowrap"><a href="#top" class="linkOrange01">返回顶部</a></td>
+                      </tr>
+                  </tbody></table></td>
+                </tr>
+              </tbody>
+              </table>
+            </div>
+            <span class="xxgk_content_bottom"></span>
+        </div>
+        
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<div id="main" style="width:100%;height: 270px;"></div>
+<script type="text/javascript">
+	//数据
+	var pv = [];xdata=[];
+	<#if type??>
+	<#if type=="day">
+	<#list pvList as s>
+		pv.push(${s[0]!});
+		xdata.push(${s[4]});
+	</#list>
+	</#if>
+	<#if type=="year">
+	<#list pvList as s>
+		pv.push(${s[0]!});
+		xdata.push(${s[4]});
+	</#list>
+	</#if>
+	<#if type=="week">
+	<#list pvList as s>
+		 var date="${s[4]}".split(" ")[0];
+		 var timeArray=date.split("-");
+		 var day=timeArray[1]+"/"+timeArray[2];
+		 pv.push(${s[0]});
+		 xdata.push(day);
+	</#list>
+	</#if>
+	<#if type=="month">
+	<#list pvList as s>
+		 var date="${s[4]}".split(" ")[0];
+		 var timeArray=date.split("-");
+		 var day=timeArray[1]+"/"+timeArray[2];
+		 pv.push(${s[0]});
+		 xdata.push(day);
+	</#list>
+	</#if>
+	</#if>
+   // 基于准备好的dom，初始化echarts实例
+   var myChart = echarts.init(document.getElementById('main'));
+   // 指定图表的配置项和数据
+   var option = {	
+    title: {
+        text: 'PV'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['PV']
+    },
+    grid: {
+        left: '1%',
+        right: '1%',
+        bottom: '1%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: xdata
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'PV',
+            type:'line',
+            stack: 'PV',
+            data:pv
+        }
+    ]
+ };
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+</script>

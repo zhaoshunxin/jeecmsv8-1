@@ -1,0 +1,71 @@
+            <span class="left_menu_span">
+            	www.most.gov.cn
+            </span>
+[#if channel.id=105 || channel.parent.id=105]
+            <span class="left_menu_title bgcolor_00477d">
+            	[@cms_channel id=105 ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_xwzx_left_menu ">
+                [@cms_channel_list parentId=105  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+[#elseif channel.id=107]
+
+<img src="/${res}/images/tztg_lefttu.jpg" width="163" height="99">
+
+[#elseif channel.id=109 || channel.parent.id=109]
+            <span class="left_menu_title bgcolor_00477d">
+            	[@cms_channel id=109 ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_xwzx_left_menu ">
+                [@cms_channel_list parentId=109  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+[#elseif channel.id=106|| channel.parent.id=106]
+            <span class="left_menu_title bgcolor_00477d">
+            	[@cms_channel id=106]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_xwzx_left_menu ">
+                [@cms_channel_list parentId=106  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+[#elseif channel.parent.id=639]
+			<span class="left_menu_title bgcolor_00477d">
+            	[@cms_channel id=639]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_xwzx_left_menu ">
+                [@cms_channel_list parentId=639  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+[/#if]
+            <div class="dcwj">
+            	[#include "../include/dcwj.html"/]
+            </div>

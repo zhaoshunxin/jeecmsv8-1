@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  <head>
+    [#include "../include/head.html"/]
+    <title>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</title>
+  </head>
+  
+  <body>
+    <div id="bg">
+      [#include "../include/top.html"/]
+      [#include "../include/navigator.html"/]
+      <div class="content">
+<TABLE width=980 border=0 cellPadding=0 cellSpacing=0 bgcolor="#FFFFFF" align=center>
+  <TBODY>
+  <TR>
+    <TD vAlign=top bgColor=#02497f>
+      <TABLE width=165 border=0 cellPadding=0 cellSpacing=0>
+        <TBODY>
+        <TR>
+          <TD background="/${res}/images/yel.jpg" bgColor=#f4cf42>
+            <TABLE width="163" border=0 align="right" cellPadding=0 cellSpacing=3>
+              <TBODY>
+              <TR>
+                <TD colSpan=2 valign="bottom">
+                  <DIV  class=style21 STYLE28>&nbsp;&nbsp;<span class="STYLE32">www.most.gov.cn</span></DIV></TD>
+              </TR>
+			</TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+        <tr>
+          <td bgcolor="#CCCCCC"><TABLE cellSpacing=0 cellPadding=0 border=0 width=165>
+            <TBODY>
+              <TR>
+                <TD bgColor=#01487e height=22>&nbsp;&nbsp;&nbsp;<SPAN 
+            class=style22>视频科技</SPAN></TD>
+              </TR>
+              <TR>
+                <TD bgColor=#00477d><table cellspacing=0 cellpadding=0 width="96%" bgcolor=#4678b7 
+            border=0>
+                    <tbody>
+                      <tr>
+                        <td><table cellspacing=0 cellpadding=0 width="100%" border=0>
+                            <tbody>
+                              <tr>
+                                <td height="10"><TABLE cellSpacing=1 cellPadding=0 width="100%" bgColor=#90aed4 
+            border=0>
+                                  <TBODY>
+									
+                                    [@cms_channel_list parentId = channel.parent.id]
+[#list tag_list as t]                                               
+                                                  <tr>
+                                                    <td bgcolor=#E5EAF0 height=18><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                          <td width="144">&nbsp;&nbsp;&nbsp;<a href="${t.url}" class=sl12>${t.name}</a></td>
+                                                          <td width="14"><img src="/${res}/images/arrow.gif" width="5" height="7"></td>
+                                                        </tr>
+                                                    </table></td>
+                                                  </tr>
+[/#list]
+[/@cms_channel_list] 									
+                                    
+                                    <TR>
+                                      <TD bgColor=#c2d3e7 height=18>&nbsp;</TD>
+                                    </TR>
+                                    <TR>
+                                      <TD bgColor=#c2d3e7 height=18>&nbsp;&nbsp; <a class=sl12 
+            href="/download/1.rar" >视频播放软件下载</a>&nbsp;&nbsp;&nbsp;<img src="/${res}/spzl/images/arrow5.gif" width="7" height="9"></TD>
+                                    </TR>
+                                    <TR>
+                                      <TD bgColor=#c2d3e7 height=18>&nbsp;</TD>
+                                    </TR>
+                                  </TBODY>
+                                </TABLE></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                            <script language='JavaScript' src='/${res}/inc/left2.js'  type='text/JavaScript'></script>
+						 
+<script language='JavaScript'> wsdc("媒体报道")</script></td>
+                      </tr>
+                    </tbody>
+                </table></TD>
+              </TR>
+            </TBODY>
+          </TABLE></td>
+        </tr>
+      </table></TD>
+    <TD vAlign=top width=599>
+      <TABLE cellSpacing=0 cellPadding=0 width="82%" border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG height=66 alt="" src="${channel.titleImg}" 
+        width=654></TD>
+        </TR>
+        <TR>
+          [#assign  str =  '&nbsp;&gt;&nbsp;<a href=' + channel.url +  ' class=sl12>' + channel.name + '</a>']
+              [#assign a = channel]
+              [#list 1..10 as t]
+                   [#if a.parent??]
+                       [#assign str = '&nbsp;&gt;&nbsp;<a href=' +a.parent.url +  ' class=sl12>' + a.parent.name + '</a>' + str]
+                       [#assign a = a.parent]
+                   [/#if]
+              [/#list] 
+              <TD height="19" valign="bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/" class=sl12>科技部门户</a>${str} </TD> 
+        </TR>
+        <TR>
+          <TD>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="60"><p>&nbsp;</p>                <table width="591" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="left"><img src="${channel.contentImg}" width="591" height="40">
+					<span class="STYLE30"> </span></td>
+                  </tr>
+                </table>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                      <TR>
+                            <TD width=40>&nbsp; </TD>
+                        <TD>
+<p>
+                              <TABLE width="100%" border=0 cellspacing="2">
+                              <TBODY>
+                                <TR>
+                                  <TD width="168" valign="top">
+                                    <DIV>
+                                      <DIV 
+                        align=left>
+                                          <table width="100%" border="0" cellspacing="0">
+     [@cms_content_page count='10' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='4']
+	[#list tag_list as b]	
+                            [#if b_index =0]                                       
+                                            <tr> 
+                                              <td valign="top"><table width="100%" border="0" cellspacing="0">
+                                                  <!--<tr> 
+                                                    <td><img src="/${res}/spzl/images/xw1.jpg" width="159" height="76"></td>
+                                                  </tr>-->
+												   
+												   <tr> 
+                                                    <td><a target=_blank href=${b.url} ><img src="[#if b.typeImg??]${b.typeImg!}[/#if]"  border=0 width=179></a></td>
+                                                  </tr>
+                                                 
+												 
+                                                  <tr> 
+                                                    <td><a href="${b.url}" class=sl12  target=_blank>${b.title}</a>
+                                                      <img src="/${res}/spzl/images/arrow2.gif" width="5" height="9"> 
+                                                      <br>
+                                                      <br>
+                                                    </td>
+                                                  </tr>
+												  
+                                                </table></td>
+                                            </tr>
+                                           
+                                          </table>
+                                        
+                                      </DIV>
+                                  </DIV></TD>
+                                  <TD width="401" colspan="3" rowspan="3" valign="top">
+			 <DIV STYLE="display:block">
+                                  [/#if]              
+                                                        
+
+<DIV NAME=TRS ID=TRS>
+                                      <table width="100%"  border="0" cellspacing="5">
+                                        <tr> 
+                                      <td valign="top" width="15"><img src="/r/cms/www/default/spzl/images/arrow3.gif" width="7" height="5" vspace="4"></td>
+                                          <td><a href="${b.url}" class=style37 target=_blank>${b.title}</a><span class="style37">${b.title}</span>(${b.date?string(dateFormat)})</td>
+                                        </tr>
+                                    
+                                      </table>
+</DIV>
+                [/#list]
+
+
+                                                        
+                                                
+</DIV></DIV>
+							<DIV ID=content></DIV>		
+		  </TD>
+                                  </TR>
+                                <TR>
+                                  <TD width="168"><p>&nbsp;</p>
+                                      <p>&nbsp;</p>
+                                      <p>&nbsp;</p>
+                                      <p>&nbsp;</p>
+                                      <p>&nbsp;</p>
+                                      <p>&nbsp;</p></TD>
+                                  </TR>
+                                <TR>
+                                  <TD width="168"><p>&nbsp;</p>
+                                    </TD>
+                                  </TR>
+                                <TR>
+                                  <TD>&nbsp;</TD>
+                                  <TD colspan="3"><SPAN id=pl NAME="pl">[@cms_pagination sysPage='1'/]
+</SPAN><INPUT class='text' id='CP' size='2' value='1' name='CP' type='hidden'></TD>
+                                </TR>
+                              </TBODY>
+                            </TABLE> 
+                            <p>&nbsp;</p></TD>
+                        <TD 
+            width=35></TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                      <TR>
+                        <TD width=40>&nbsp; </TD>
+                        </TR>
+                    </TBODY>
+                  </TABLE>                  </td>
+              </tr>
+              <tr>
+                <td height="40"><div align="right"><a href="#top"><img src="/${res}/spzl/images/top.jpg" width="77" height="21" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+              </tr>
+            </table></TD></TR></TBODY></TABLE></TD>
+      <TD vAlign=top width=162 bgColor=#d7d7d7><script language='JavaScript' src='/${res}/inc/right.js' type='text/JavaScript'></script></TD></TR></TBODY></TABLE>
+         </div>
+[/@cms_content_page]
+    </div>
+    [#include "../include/footer.html"/]
+  </body>
+</html>

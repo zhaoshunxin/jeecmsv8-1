@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+	<style>
+
+    </style>
+</head>
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor" id="floor">
+        <div class="floor_banner">
+            <img src="${channel.titleImg!site.defImg}"/>
+        </div>
+        <div class="dqwz">
+            [#include "../include/current_position.html"/]
+        </div>
+        <div class="floor_content">
+            
+			${channel.txt!}
+                            
+            <a href="#bg" class="fhdb"></a>
+        </div>
+    
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+</body>
+</html>

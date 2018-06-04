@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/inc/detail.css" rel="stylesheet" type="text/css" />
+    <script src="${resSys}/ckplayer/ckplayer.js" type="text/javascript"></script>
+    <script src="${resSys}/ckplayer/offlights.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor bg_gray">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        <div class="topline">
+        	<div class="size">
+            	【字体：<a onclick="Zoom.style.fontSize='16px';" href="#">大</a> <a href="#" onclick="Zoom.style.fontSize='15px';">中</a> <a href="#" onclick="Zoom.style.fontSize='12px';">小</a>】
+            </div>
+        </div>
+        <div class="red36 bold lh30">
+        	<div id="Title" name="Title" class="style14">
+            	${content.title}
+            </div>
+        </div>
+        <div class="bottom_line"><img src="/${res}/images/detail-line.jpg" width="890" height="11"></div>
+        <div class="gray12 lh22">
+            日期：${content.releaseDate?string("yyyy年MM月dd日")}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            来源：[#if content.origin??]${content.origin}[#else]科技部[/#if]
+        </div>
+        <div id="Zoom" class="trshui13 lh22">
+            <meta name="ContentStart">
+                [#if content.txt??] ${content.txt}[/#if]
+            <meta name="ContentEnd"> 
+
+			[#if content.mediaPath?? && content.mediaType??]
+				<div class="video-con clearfix">
+					
+						<!--ckplayer播放视频-->
+						<div id="video" style="position:relative;z-index: 100;width:600px;height:500px;margin: 5px auto 10px auto;"><div id="a1"></div></div>
+						<script type="text/javascript">
+						//函数名称不允许更改
+						var flashvars={f:'rtmpt://124.207.147.172:8082/video|${content.mediaPath!}',s:0,c:0,my_url:'${content.url!}',my_pic:'${content.typeImg!}'};
+						var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};
+						CKobject.embedSWF('${resSys}/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','500',flashvars,params);
+						var box = new LightBox();
+						function closelights(){//关灯
+							box.Show();
+						}
+						function openlights(){//开灯
+							box.Close();
+						}
+						</script>
+					
+				</div>
+			[/#if]
+            
+            [#if content.attachments?size>0]
+            <p style="margin-top:20px;"><strong>附件：</strong></p>	
+            <ul class="fj">						
+            [#list content.attachments as zndoc]
+            	<li><a href="${zndoc.path!}" target="_blank">${zndoc.name!}</a></li>
+            [/#list]
+            </ul>
+            [/#if]
+            
+        </div>
+        <div class="print">
+        	<a href="#" onclick="javaScript:printwin();"><img src="/${res}/images/detail-print.jpg" border="0"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="javaScript:void(0)" onclick="javascript:window.close();"><img src="/${res}/images/detail-close.jpg" border="0"></a>
+        </div>
+        <div class="bottom_line"><img src="/${res}/images/detail-line2.jpg"></div>
+    </div>
+    [#include "../include/footer_gray.html"/]
+</div>
+</div>
+
+</body>
+</html>>

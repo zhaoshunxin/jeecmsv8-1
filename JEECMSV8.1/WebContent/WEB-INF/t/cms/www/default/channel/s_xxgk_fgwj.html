@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/ztzl/inc/ztzl.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/css.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/xxgk.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.9.1.js" type="text/javascript"></script>
+    
+    <script>
+    	$(function(){
+			var floor_height = $("#floor").height();
+			$("#floor_ztzl_left").height(floor_height);
+			$("#floor_ztzl_middle").height(floor_height);
+		});	
+    </script>
+</head>
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor floor_bottom_line" id="floor">
+    	<div class="floor_ztzl_left color_00477d" id="floor_ztzl_left">
+			[#include "../include/xxgk/xxgk_left_menu.html"/]
+        </div>
+        <div class="floor_xxgk_right" id="floor_ztzl_middle">
+        	<div class="floor_xxgk_right_banner">
+            	<img src="${channel.titleImg!site.defImg}"/>
+            </div>
+            <div class="dqwz_fgwj">
+                [#include "../include/current_position.html"/]
+            </div>
+            <div class="floor_xxgk_right_content">
+                <!-- 法规文件检索 -->
+                <div class="title1">
+                    <img src="/${res}/images/fgwj_title_fgwjjs.gif" border="0" />
+                </div>
+                <div class="content1">
+                    <table width="700" border="0" align="center" cellpadding="0" cellspacing="0" style="border: 1px solid #DCDCDC; font-size:12px">
+                    <tbody>
+                    	<tr> 
+                    		<td align="right" class="searchtd1" width="85">检索条件：</td>
+                    		<td width="465" colspan="3" bgcolor="#DBDBDB"> 
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin-left:10px">
+                                <tbody>
+                                	<tr> 
+                                		<td width="65">标题</td>
+                                		<td width="75">
+                                        	<select name="dengyu1">
+                                				<option value="=">含有</option>
+                                				<option value="!=">排除</option>
+                                			</select> 
+                                        </td>
+                                        <td width="150">
+                                            <input type="text" name="title" style="width:110px ">&nbsp;
+                                        </td>
+                                        <td width="160">
+                                            <select name="relationtype">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                		<td>发布机关</td>
+                                		<td>
+                                        	<select name="dengyu2">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                			</select>
+                                        </td>
+                                		<td>
+                                        	<input type="text" name="FL" style="width:110px ">
+                                        </td>
+                                		<td>
+                                        	<select name="relationtype2">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                			</select>
+                                        </td>
+                               		</tr>
+                                    <tr> 
+                                        <td>文号</td>
+                                        <td>
+                                            <select name="dengyu3">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="WH" style="width:110px ">
+                                        </td>
+                                        <td>
+                                            <select name="relationtype3">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                    
+                    
+                    			<table width="90%" height="30" border="0" cellspacing="0" cellpadding="0" style="margin-left:10px">
+                    			<tbody>
+                                    <tr height="10"> 
+                                        <td width="65" rowspan="2" valign="bottom">发文日期</td>
+                                        <td width="58" rowspan="2" valign="bottom">
+                                            <select name="dengyu4">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                            </select>
+                                        </td>
+                                        <td width="17"> 从: </td>
+                                        <td width="150"> 
+                                            <input id="idStartDate2" onfocus="this.blur()" readonly="" name="dc12" style="width:70px"> 
+                                            <a hidefocus="" onclick="pickDate(idStartDate2)" href="javascript:void(0)"> 
+                                            <img height="22" alt="" src="/${res}/images/calbtn.gif" width="34" align="absMiddle" border="0" name="popcal"></a> 
+                                        </td>
+                                        <td width="160" rowspan="2" valign="bottom">
+                                            <select name="relationtype4">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select> 
+                                        </td>
+                                    </tr>
+                                    <tr height="10"> 
+                                        <td> 到: </td>
+                                        <td>
+                                            <input id="idEndDate2" onfocus="this.blur()" readonly="" size="9" name="dc22" style="width:70px"> 
+                                            <a hidefocus="" onclick="pickDate(idEndDate2)" href="javascript:void(0)"> 
+                                            <img height="22" alt="" src="/${res}/images/calbtn.gif" width="34" align="absMiddle" border="0" name="popcal"></a> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            
+                                <table width="90%" height="30" border="0" cellspacing="0" cellpadding="0" style="margin-left:10px">
+                                <tbody>
+                                    <tr height="10"> 
+                                        <td width="65" rowspan="2" valign="bottom">实施日期 </td>
+                                        <td width="58" rowspan="2" valign="bottom">
+                                            <select name="dengyu5">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                            </select>
+                                        </td>
+                                        <td width="17"> 从: </td>
+                                        <td width="150"> 
+                                            <input id="idStartDate" onfocus="this.blur()" readonly="" name="dc1" style="width:70px"> 
+                                            <a hidefocus="" onclick="pickDate(idStartDate)" href="javascript:void(0)"> 
+                                            <img height="22" alt="" src="/${res}/images/calbtn.gif" width="34" align="absMiddle" border="0" name="popcal"></a> 
+                                        </td>
+                                        <td width="160" rowspan="2" valign="bottom">
+                                            <select name="relationtype5">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select> 
+                                        </td>
+                                    </tr>
+                                    <tr height="10"> 
+                                        <td>到: </td>
+                                        <td><input id="idEndDate" onfocus="this.blur()" readonly="" size="9" name="dc2" style="width:70px"> 
+                                        <a hidefocus="" onclick="pickDate(idEndDate)" href="javascript:void(0)"> 
+                                        <img height="22" alt="" src="/${res}/images/calbtn.gif" width="34" align="absMiddle" border="0" name="popcal"></a> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                    
+                    
+                                <table width="90%" border="0" cellspacing="0" cellpadding="0" style="margin-left:10px">
+                                <tbody>
+                                    <tr>
+                                        <td width="65">法规效力</td>
+                                        <td width="75">
+                                            <select name="dengyu6">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                            </select>
+                                        </td>
+                                        <td width="150">
+                                            <select name="FGXL" style="width:110px ">
+                                                <option value="" selected="">请选择</option>
+                                                <option value="法律">法律</option>
+                                                <option value="行政法规">行政法规</option>
+                                                <option value="部门规章">部门规章</option>
+                                            </select>
+                                        </td>
+                                        <td width="160">
+                                            <select name="relationtype6">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>有效性</td>
+                                        <td>
+                                            <select name="dengyu7">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input name="YXX" type="radio" value="有效">有效&nbsp; 
+                                            <input name="YXX" type="radio" value="失效">失效
+                                        </td>
+                                        <td>
+                                            <select name="relationtype7">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>效力说明</td>
+                                        <td>
+                                            <select name="dengyu8">
+                                                <option value="=">含有</option>
+                                                <option value="!=">排除</option>
+                                            </select>
+                                        </td>
+                                        <td width="150"><input type="text" name="XLSM" style="width:110px "></td>
+                                        <td>
+                                            <select name="relationtype8">
+                                                <option value="and">同时满足</option>
+                                                <option value="or">或者</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                    
+                    		</td>
+                    	</tr>
+                        <tr> 
+                            <td align="right" class="searchtd1" width="100">结果排序：</td>
+                            <td colspan="3" bgcolor="#DBDBDB" style=" padding-left:10px"> 
+                            &nbsp;
+                                <select name="sortfield">
+                                    <option value="-DOCRELTIME" selected="">日期倒序</option>
+                                    <option value="+DOCRELTIME">日期升序</option>
+                                </select> 
+                            </td>
+                        </tr>
+                    <tr> 
+                        <td colspan="4" align="center" height="40"> 
+                        <input type="image" name="Submit3" src="/${res}/images/js.gif" onclick="return advsearch()"> 
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    
+                </div>
+                
+               <!-- 法律 -->
+               <div class="law mr29">
+                   [@cms_channel id='457']
+                   <div class="title2">
+                        <a href="${tag_bean.url}"><img src="${tag_bean.titleImg!}" border="0" /></a>
+                    </div>
+                    <div class="content2 mr29">
+                        <ul>
+                        	[@cms_content_list count=5 channelId=tag_bean.id orderBy='4' dateFormat='yyyy-MM-dd' channelOption='1']
+                            [#list tag_list as a]
+                            <li>
+                                <li><a href="${a.url}" target="_blank">${a.title!}</a>(${a.date?string(dateFormat)})</li>
+                            </li>
+                            [/#list]
+                            [/@cms_content_list]
+                        </ul>
+                    </div>
+                    [/@cms_channel]
+                </div>
+                <!-- 法规 -->
+                <div class="law">
+                    [@cms_channel id='458']
+                    <div class="title2">
+                        <a href="${tag_bean.url}"><img src="${tag_bean.titleImg!}" border="0" /></a>
+                    </div>
+                    <div class="content2">
+                         <ul>
+                        	[@cms_content_list count=5 channelId=tag_bean.id orderBy='4' dateFormat='yyyy-MM-dd' channelOption='1']
+                            [#list tag_list as a]
+                            <li>
+                                <li><a href="${a.url}" target="_blank">${a.title!}</a>(${a.date?string(dateFormat)})</li>
+                            </li>
+                            [/#list]
+                            [/@cms_content_list]
+                        </ul>
+                    </div>
+                    [/@cms_channel]
+                </div>
+                
+                <!-- 部门规章 -->
+                [@cms_channel id='459']
+                <div class="title1">
+                	<a href="${tag_bean.url}"><img src="${tag_bean.titleImg!}" border="0" /></a>
+                </div>
+                <div class="content1">
+                     <ul>
+                        [@cms_content_list count=5 channelId=tag_bean.id orderBy='4' dateFormat='yyyy-MM-dd' channelOption='1']
+                        [#list tag_list as a]
+                        <li>
+                            <li><a href="${a.url}" target="_blank">${a.title!}</a>(${a.date?string(dateFormat)})</li>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+                [/@cms_channel]
+                
+                <!-- 政府文件 -->
+                [@cms_channel id='460']
+                <div class="title1" style="background: url(${tag_bean.titleImg!}) no-repeat;">
+                    <span class="selector">
+                        [@cms_channel_list parentId=tag_bean.id]
+                		[#list tag_list as a]
+                        [#if a_index<12]
+                         <a href="${a.url}">${a.name}</a>
+                        [/#if]
+                        [/#list]						
+                		[/@cms_channel_list]
+                    </span>
+                </div>
+                <div class="content1">
+                    <ul>
+                        [@cms_content_list count=5 channelId=tag_bean.id orderBy='4' dateFormat='yyyy-MM-dd' channelOption='1']
+                        [#list tag_list as a]
+                        <li>
+                            <li><a href="${a.url}" target="_blank">${a.title!}</a>(${a.date?string(dateFormat)})</li>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+                [/@cms_channel]
+                
+                <a href="#bg" class="fhdb"></a>
+            </div>
+        </div>
+    
+    </div>
+    [#include "../include/footer_gray.html"/]
+</div>
+</div>
+</body>
+</html>

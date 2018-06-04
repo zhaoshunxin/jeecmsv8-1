@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>“两学一做”学习教育</title>
+<meta name="channel" content="“两学一做”学习教育">
+<style type="text/css">
+<!--
+html{margin:0px; padding:0px; overflow-x:visible; background-color:#EFEBE2;}
+body { background:url(/${res}/ztzl/lxyzxxjy/images/2j-bg.jpg) repeat-x; margin:0px auto; text-align:center;overflow-x:hidden; font-size:12px;} 
+
+a{ color:#666465; font-size:12px;text-decoration:none;outline: none;star:expression(this.onFocus=this.blur());}
+a:link{color:#666465;  font-size:12px;text-decoration:none;}
+a:visited{color:#666465  font-size:12px;text-decoration:none;}
+a:hover{color:#666465; font-size:12px;text-decoration: none;}
+a:active {outline: none;star:expression(this.onFocus=this.blur()); }
+ul { list-style-type:none; margin:0px; padding:0px;}
+li { text-align:left;}
+img{ border:0px;}
+/* 字体 行高 */
+
+.bold {font-weight: bold; }
+.lh20{line-height:20px;}
+.lh22{line-height:22px;}
+.lh24{line-height:24px;}
+.lh26{line-height:26px;}
+.lh30{line-height:30px;}
+
+.top{ width:960px; height:206px; margin:0px auto;}
+.menu{ width:960px; height:39px;background:url(/${res}/ztzl/lxyzxxjy/images/2j-dh-1.jpg) no-repeat; margin:0px auto;}
+.menu a{ display:block; float:left; height:39px;}
+.menu .m1{ width:130px;}
+.menu .m2{ width:130px; margin-left:80px}
+.menu .m3{ width:150px;}
+.menu .m4{ width:145px;}
+.menu .m5{ width:140px;}
+
+.part2{ width:960px; margin:0px auto; background-color:#FFFFFF;}
+
+.left { width:230px; height:490px; margin-top:15px;  background:url(/${res}/ztzl/lxyzxxjy/images/2j-left1.jpg) no-repeat; margin-left:15px; }
+.left a{ display:block;  float:left; height:36px;}
+.left .l1{ width:200px; height:30px;}
+.left .l2{ width:200px; height:40px;}
+.left .l3{ width:200px; height:38px;}
+.left .l4{ width:200px; height:38px;}
+.left .l5{ width:200px; height:40px;}
+
+.right{ width:700px; height:480px;  margin-top:10px;}
+.red16{ width:630px; height:30px; line-height:30px;text-align:left;  font-size:16px; color:#8E0C0A; font-weight:bold; padding-left:5px; border-bottom: 2px #B41A18 solid; margin:auto;}
+
+.right2{ width:640px; line-height:32px; margin:5px auto; font-size:14px;}
+.right2 a{ font-size:14px;}
+.right2 li{ background:url(/${res}/ztzl/lxyzxxjy/images/2j-dot1.jpg) no-repeat 8px 10px; padding-left:20px;}
+.right2 span{ float:right;}
+
+.bottom{ width:960px; height:120px; background-color:#A70103; margin:auto; line-height:30px; font-size:12px; color:#ffffff;}
+.bottom a{ font-size:12px; color:#ffffff;}
+-->
+.hl2{ width:960px; text-align:left; background: #FFFFFF; margin:0px auto;COLOR: #666666;}
+.hl2 a{
+	COLOR: #666666; TEXT-DECORATION: none;font-size:12px;
+}
+</style>
+<script language='JavaScript' src='/inc/pathReplace.js' type='text/JavaScript'></script>
+</head>
+
+<body>
+<div class="top">
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="960" height="206">
+    <param name="movie" value="/${res}/ztzl/lxyzxxjy/images/lxyz.swf" />
+    <param name="quality" value="high" />
+    <embed src="/${res}/ztzl/lxyzxxjy/images/lxyz.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="960" height="206"></embed>
+  </object>
+</div>
+<div class="menu">
+<a href="/index.htm" title="网站首页" class="m1"></a>
+[@cms_channel_list parentId=953]
+[#list tag_list as a]
+	<a href="${a.url}" title="${a.name}" class="m${a_index+2}"></a>
+[/#list]
+[/@cms_channel_list]
+
+</div>
+<div class="hl2 lh26">
+[#include "../include/channel_position_ztzl.html"/]
+</div>
+<table class="part2" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="250px;" valign="top">
+	<div class="left">
+	[@cms_channel id=953]
+     <a href="${tag_bean.url}" title="本专题首页" class="l1"></a>
+    [/@cms_channel]
+	[@cms_channel_list parentId=953]
+	[#list tag_list as a]
+		<a href="${a.url}" title="${a.name}" class="l${a_index+2}"></a>
+	[/#list]
+	[/@cms_channel_list]
+	</div></td>
+    <td valign="top">
+	<div class="right">
+	<div class="red16">${channel.name}</div>
+	<div class="right2">
+	[@cms_content_page count='10' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='4']
+	<ul>
+     
+		[#list tag_pagination.list as a]
+		<li>
+			<a  target="_blank"  href="${a.url}" >${a.title}(${a.date?string(dateFormat)})</a>
+		</li>
+		[/#list]
+		
+	 </ul>
+	 <table width="95%" cellspacing="0" cellpadding="0" align="center">
+	  <tr>
+            <td height="60" align="center" class="pageno">
+            	 [@cms_pagination sysPage='1'/]
+            </td>
+      </tr>
+      </table>
+      [/@cms_content_page]
+	</div>
+	</div>	
+	</td>
+  </tr>
+</table>
+	</div>
+	</div></td>
+  </tr>
+</table>
+
+<div class="bottom">[#include "../include/footer_ztzl.html"/]
+</div>
+</body>
+</html>

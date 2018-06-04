@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/jeecms_sys/head.html"/>
+<script src="${base}/res/plug/echarts/echarts.min.js" type="text/javascript"></script>
+<script src="${base}/res/plug/echarts/dataTool.min.js"  type="text/javascript" ></script>
+<script src="${base}/res/plug/echarts/china.js"  type="text/javascript" ></script>
+<script src="${base}/res/plug/echarts/world.js"  type="text/javascript" ></script>
+<script src="${base}/res/plug/echarts/bmap.min.js"  type="text/javascript" ></script>
+<script class="code" type="text/javascript">
+$(function() {
+	var countData=[];
+	var xdata=[];
+<!--小时或者月pv-->
+<#if dayList??>
+<#list dayList as s>
+countData.push(${s[0]!});
+xdata.push(${s[1]});
+</#list>
+</#if>
+<#if yearList??>
+<#list yearList as s>
+countData.push(${s[0]!});
+xdata.push(${s[1]});
+</#list>
+</#if>
+<#if monthList??>
+<#list monthList as s>
+countData.push(${s[0]!});
+xdata.push(${s[1]});
+</#list>
+</#if>
+//基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('placeholder'));
+// 指定图表的配置项和数据
+var option = {	
+ title: {
+     text: '<@s.m "statistic.function.guestbook"/>'
+ },
+ tooltip: {
+     trigger: 'axis'
+ },
+ legend: {
+     data:['<@s.m "statistic.function.guestbook"/>']
+ },
+ grid: {
+     left: '1%',
+     right: '1%',
+     bottom: '1%',
+     containLabel: true
+ },
+ toolbox: {
+     feature: {
+         saveAsImage: {}
+     }
+ },
+ xAxis: {
+     type: 'category',
+     boundaryGap: false,
+     data: xdata
+ },
+ yAxis: {
+     type: 'value'
+ },
+ series: [
+     {
+         name:'<@s.m "statistic.function.guestbook"/>',
+         type:'line',
+         stack: '<@s.m "statistic.function.guestbook"/>',
+         data:countData
+     }
+ ]
+};
+// 使用刚指定的配置项和数据显示图表。
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+});
+function query(reply){
+	$("#isReplyed").val(reply);
+	$("#queryForm").submit();
+}
+</script>
+</head>
+<body>
+<div class="page-positon ove">
+  <div class="position-div"><@s.m "global.position"/>: <@s.m "cms.function.statistic"/> > <@s.m "statistic.function.comment"/></div>
+</div>
+<div class="statistic">
+  <div class="five">
+    <div class="item" style="margin-left:0;">
+      <p class="eng">TODAY</p>
+      <p class="coun timer" data-to="${dayCount!}" data-speed="1000"></p>
+      <p class="chi"><@s.m "statistic.by.day"/></p>
+    </div>
+    <div class="item">
+      <p class="eng">THIS WEEK</p>
+      <p class="coun timer" data-to="${weekCount!}" data-speed="1000"></p>
+      <p class="chi"><@s.m "statistic.by.week"/></p>
+    </div>
+    <div class="item">
+      <p class="eng">THIS MONTH</p>
+      <p class="coun timer" data-to="${monthCount!}" data-speed="1000"></p>
+      <p class="chi"><@s.m "statistic.by.month"/></p>
+    </div>
+    <div class="item">
+      <p class="eng">THIS YEAR</p>
+      <p class="coun timer" data-to="${yearCount!}" data-speed="1000"></p>
+      <p class="chi"><@s.m "statistic.by.year"/></p>
+    </div>
+    <div class="item">
+      <p class="eng">TOTAL</p>
+      <p class="coun timer" data-to="${totalCount!}" data-speed="1000"></p>
+      <p class="chi"><@s.m "statistic.comment.totalComments"/></p>
+    </div>
+    <script src="${base}/res/jeecms/js/index.js" type="text/javascript"></script>
+  </div>
+  <div class="sta-tab">
+    <div class="sta-tab-nav">
+    <a <#if statisticModel=="day">class="day on"<#else>class="day"</#if>target="rightFrame" href="v_list.do?queryModel=day"><span></span><@s.m "statistic.function.days"/></a>
+    <a <#if statisticModel=="month">class="month on"<#else>class="month"</#if>class="month on" target="rightFrame" href="v_list.do?queryModel=month"><span></span><@s.m "statistic.function.month"/></a>
+    <a <#if statisticModel=="year">class="year on"<#else>class="year"</#if>class="year" target="rightFrame" href="v_list.do?queryModel=year"><span></span><@s.m "statistic.function.years"/></a>
+    </div>
+    <div class="tab-con">
+      <div class="tab-con-top">
+      <form action="v_list.do" target="rightFrame" id="queryForm" >
+      	<input name="queryModel" value="${statisticModel!}" type="hidden"/>
+      	<input name="isReplyed" id="isReplyed" value="" type="hidden"/>
+        <input type="button" onclick="query('')" value="<@s.m 'statistic.comment.all'/>" <#if !isReplyed??>class="all-input year-did"<#else>class="all-input"</#if> />
+        <input type="button" onclick="query('true')" value="<@s.m 'statistic.reply.isReplyed'/>" <#if isReplyed??><#if isReplyed>class="all-input year-did"<#else>class="all-input"</#if><#else>class="all-input"</#if> />
+        <input type="button" onclick="query('false')" value="<@s.m 'statistic.reply.notReplyed'/>" <#if isReplyed??><#if !isReplyed>class="all-input year-did"<#else>class="all-input"</#if><#else>class="all-input"</#if>/>
+       </form>
+      <a class="change-tab txt"><@s.m 'statistic.display.table'/></a>
+      </div>
+      <div class="tab-main">
+        <div>
+			<div id="placeholder" class="demo-placeholder" style="float:left; width:99%; height:380px;"></div>
+		</div>
+      </div>
+      <script type="text/javascript">
+		$(document).ready(function () {
+          $(".change-tab").click(function(){
+			if($(this).text() == "<@s.m 'statistic.display.table'/>"){
+			  $(this).text("<@s.m 'statistic.display.img'/>");
+			  $(this).removeClass('txt');
+		      $(this).addClass('img');
+			  $(".tab-main").css("display","none");
+			  $(".tab-pic-main").css("display","block"); 
+				}else{
+			  $(this).text("<@s.m 'statistic.display.table'/>");
+			  $(this).removeClass('img');
+			  $(this).addClass('txt');
+			  $(".tab-main").css("display","block");
+			  $(".tab-pic-main").css("display","none");  
+			  }
+		  })
+		});
+	  </script>
+      <div class="tab-pic-main">
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr class="hui">
+	            <td class="hui">
+	            	<#switch statisticModel>
+					<#case "year">
+						<@s.m "statistic.month2"/>
+					<#break>
+					<#case "month">
+						<@s.m "statistic.date2"/>
+					<#break>
+					<#case "day">
+						<@s.m "statistic.hour"/>
+					<#default>
+					<#break>
+					</#switch>
+	            </td>
+	            <td><@s.m "channel.contentcounttotal"/></td>
+	            <td><@s.m "statistic.percent"/></td>
+            </tr>
+            <#list list as cmsStatistic>
+            <tr>
+            <td class="hui">
+            <#switch statisticModel>
+				<#case "year">
+					${cmsStatistic.description}<@s.m "statistic.month"/>
+				<#break>
+				<#case "month">
+					${cmsStatistic.description}<@s.m "statistic.date"/>
+				<#break>
+				<#case "day">
+					${cmsStatistic.description}
+				<#default>
+				<#break>
+			</#switch>
+            </td>
+            <td>${cmsStatistic.count}</td>
+            <td><img src="${base}/res/jeecms/img/admin/vote_bar.gif" width="${cmsStatistic.barWidth}" height="10px" border="0"/>${cmsStatistic.percent}</td>
+            </tr>
+            </#list>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

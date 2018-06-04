@@ -1,0 +1,11 @@
+            	[#assign  str =  '&nbsp;&gt;&nbsp;<a href=' + channel.url +  ' >' + channel.name + '</a>']
+                [#assign a = channel]
+                [#list 1..10 as t]
+                   [#if a.parent??]
+                       [#if a.parent.id != 561]
+                            [#assign str = '&nbsp;&gt;&nbsp;<a href=' +a.parent.url +  ' class=sl12>' + a.parent.name + '</a>' + str]
+                       [/#if]
+                       [#assign a = a.parent]
+                   [/#if]
+                [/#list] 
+                <a href="${site.staticDir}/index.html" class="f12">科技部门户</a>${str}

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+</head>
+<body>
+<div class="div_center">
+	[#include "../include/xwzx_mtjj_top.html"/]
+    <div class="mtjj_content_floor">
+    	<div class="mtjj_floor">
+            [@cms_channel id='198']
+            <div class="mtjj_title">
+                <a href="${tag_bean.url}">
+                    <img src="${tag_bean.titleImg!}" border="0" />
+                </a>
+            </div>
+            <div class="mtjj_content">
+                <ul class="mtjj_ul1">
+                    [@cms_content_list channelId=tag_bean.id orderBy='4' count='8' titLen='40' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                    [#list tag_list as b]
+                    <li>
+                        <a href="${b.url}" title="${b.title}" target="_blank">[@text_cut s=b.title len=titLen append=append/](${b.date?string(dateFormat)})</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+            </div>
+            [/@cms_channel]
+            
+            [@cms_channel id='719']
+            <div class="mtjj_title">
+                <a href="${tag_bean.url}">
+                    <img src="${tag_bean.titleImg!}" border="0" />
+                </a>
+            </div>
+            <div class="mtjj_content">
+                <ul class="mtjj_ul1">
+                    [@cms_content_list channelId=tag_bean.id orderBy='4' count='8' titLen='40' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                    [#list tag_list as b]
+                    <li>
+                        <a href="${b.url}" title="${b.title}" target="_blank">[@text_cut s=b.title len=titLen append=append/](${b.date?string(dateFormat)})</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+                [@cms_channel_list parentId=tag_bean.parent.id  hasContent='false']
+            	[#list tag_list as a]
+                [#if a.id !=tag_bean.id]
+                <div class="zttitle">
+                	<img src="${a.titleImg!}" border="0" />
+                </div>
+                <div class="ztcontent">
+                	<ul class="mtjj_ul2">
+                    [@cms_channel_list parentId=a.id  hasContent='false']
+                    [#list tag_list as c]
+                    <li>
+                        <a href="${c.url}" title="${c.name}" target="_blank">${c.name}</a>
+                    </li>
+                    [/#list]
+                    [/@cms_channel_list]
+                    </ul>
+                </div>
+                [/#if]
+                [/#list]
+            	[/@cms_channel_list]
+            </div>
+            [/@cms_channel]
+            
+        </div>
+    </div>
+	
+    [#include "../include/footer_gray.html"/]
+</div>
+</body>
+</html>

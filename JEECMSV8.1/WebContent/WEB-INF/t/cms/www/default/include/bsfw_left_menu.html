@@ -1,0 +1,20 @@
+            <span class="left_menu_span">
+            	www.most.gov.cn
+            </span>
+            <span class="left_menu_title">
+            	[@cms_channel id=channel.id ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_ztzl_left_menu">
+                [@cms_channel_list parentId=channel.id  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+            <div class="dcwj">
+            	[#include "../include/dcwj.html"/]
+            </div>

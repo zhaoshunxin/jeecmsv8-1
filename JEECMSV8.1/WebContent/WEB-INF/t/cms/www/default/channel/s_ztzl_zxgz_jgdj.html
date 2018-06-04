@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>科技部直属机关党委</title>
+<meta name="channel" content="机关党建">
+<style type="text/css">
+<!--
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+body,ul,ol,li,p,form,fieldset,table,td{font-family:"宋体";color:#444444;}
+body{ background:url(/${res}/jgdj/images/all-bg1.jpg) repeat-y; ; background-position-x: 50%; text-align:center; background-color:#FEEEEC; }
+td,p,li,select,input,textarea,div{font-size:12px;color:#444444;}
+ul{list-style-type:none; margin-left:10px;}
+
+a{text-decoration:none;}
+a:link{color:#444444;}
+a:visited{color:#444444;}
+a:hover{color:#444444;text-decoration:underline;}
+a:active,a:focus{color:#444444;}
+
+.dh_hl { width:980px; height:37px; margin:0px auto; background-image:url(/${res}/jgdj/images/top-2.jpg); color:#FFFFFF; font-weight:bold; line-height:37px;}
+.dh_hl a{ color:#FFFFFF; font-weight:bold;}
+.dh_hl a:link{ color:#FFFFFF; font-weight:bold; font-size:14px;}
+.dh_hl a:visited{ color:#FFFFFF; font-weight:bold;font-size:14px;}
+.dh_hl a:hover{ color:#FFFFFF; font-weight:bold;font-size:14px;}
+
+
+#main { width:980px; font-size: 12px; margin:0px auto;background-color:#FFFFFF;}
+#left1 { width:718px; margin-top:5px; float:left;background-color:#FFFFFF;}
+#left2 { width:718px; margin-top:5px; float:left; text-align:left;background-color:#FFFFFF;}
+#right{ width:252px; float:right; background-color:#FFFFFF;}
+
+.wskt1 { height:35px; background:url(/${res}/jgdj/images/wskt-1.jpg) no-repeat; padding-left:40px; padding-top:15px; text-align:left; }
+.title{font-size:14px; font-weight:bold; color:#912206; text-align:left;}
+.wskt2 { background:url(/${res}/jgdj/images/wskt-1.jpg) no-repeat 0px -50px;}
+.wskt2_nav { width:240px; background:url(/${res}/jgdj/images/wskt-1.jpg) no-repeat 0px -50px; text-align:left; float:left; padding:5px;}
+.wskt2_nav li{ background:url(/${res}/images/dot-1.jpg)  no-repeat 0px 8px; padding-left:15px; line-height:22px;}
+.wskt3 { width:250px;margin-left:1px;}
+.xxyd { height:100px; background:url(/${res}/jgdj/images/xxyd-bg-1.jpg) no-repeat; padding:50px 0px 0px 0px;}
+.xxyd  li{ background:url(/${res}/images/dot-1.jpg)  no-repeat 0px 6px; padding-left:15px; line-height:32px; display:inline; font-size:14px;}
+.ztbd { height:255px; background:url(/${res}/jgdj/images/ztbd-bg-1.jpg) no-repeat; padding-top:45px;}
+
+.tpxw{ background: url(/${res}/jgdj/images/tpxw-1.jpg) no-repeat; width:265px; height:280px; float:left; line-height:36px;}
+
+.djyw{ margin-left:5px; text-align:left; background: url(/${res}/jgdj/images/tpxw-1.jpg) no-repeat 0px -458px; width:445px; height:280px; float:left; line-height:36px;}
+.djyw li{ background:url(/${res}/images/dot-1.jpg)  no-repeat 0px 8px; padding-left:15px; line-height:24px;}
+
+.t8{ width:210px; float:left; margin-top:4px;}
+.dwgz{ width:478px; background:url(/${res}/jgdj/images/dwgz-bg-1.jpg) no-repeat; padding-left:20px; padding-top:16px; text-align:left;
+ float:right;}
+.dwgz ul{ margin-top:15px}
+.dwgz li{ background:url(/${res}/images/dot-1.jpg)  no-repeat 0px 8px; padding-left:15px; line-height:24px;}
+.dwgz2 { float:right;}
+
+.footer { width:980px; line-height:22px; margin:0px auto; }
+
+.clearit{clear:both;}
+-->
+</style>
+<script language=JavaScript> 
+
+var bannerAD=new Array(); 
+var bannerADlink=new Array(); 
+var adNum=0; 
+
+[@cms_content_list count='3' channelId='872']
+	[#list tag_list as a]
+		bannerAD[${a_index}]="${a.typeImg!}"; 
+		bannerADlink[${a_index}]="${a.url}"
+	[/#list]
+[/@cms_content_list]
+
+
+
+//bannerAD[2]="#"; 
+//bannerADlink[2]="#"
+var preloadedimages=new Array(); 
+for (i=1;i<bannerAD.length;i++){ 
+preloadedimages[i]=new Image(); 
+preloadedimages[i].src=bannerAD[i]; 
+} 
+
+function setTransition(){ 
+var TransitionArr=new Array(); 
+TransitionArr[0]=5;
+TransitionArr[1]=6;
+TransitionArr[2]=7;
+TransitionArr[3]=13;
+
+
+
+if (document.all){ 
+bannerADrotator.filters.revealTrans.Transition=TransitionArr[Math.floor(Math.random()*3)];  bannerADrotator.filters.revealTrans.apply(); 
+} 
+} 
+
+function playTransition(){ 
+if (document.all) 
+bannerADrotator.filters.revealTrans.play() 
+} 
+
+function nextAd(){ 
+if(adNum<bannerAD.length-1)
+{
+    adNum++ ; 
+	if (bannerAD[adNum] =="") adNum=0;
+}
+else adNum=0; 
+setTransition(); 
+document.images.bannerADrotator.src=bannerAD[adNum]; 
+playTransition(); 
+theTimer=setTimeout("nextAd()", 6000); 
+} 
+
+function jump2url(){ 
+jumpUrl=bannerADlink[adNum]; 
+jumpTarget='_blank'; 
+if (jumpUrl != ''){ 
+if (jumpTarget != '')window.open(jumpUrl,jumpTarget); 
+else location.href=jumpUrl; 
+} 
+} 
+function displayStatusMsg() { 
+status=bannerADlink[adNum]; 
+document.returnValue = true; 
+} 
+
+
+function handle_select(select_obj)
+ {
+  var URL = select_obj.options[select_obj.selectedIndex].value;
+select_obj.selectedIndex = 0;
+  if(URL == '') {
+   return;
+  }
+  else {
+   self.open(URL,"_blank");
+   return;
+  }
+ }
+//--> 
+              </script>
+
+</head>
+
+<body>
+<div><img src="/${res}/jgdj/images/top-1.jpg"></div>
+<div class="dh_hl">
+	[#include "../include/jgdj/navigator.html"] 
+</div>
+
+<div id="main">
+
+<div id="right">    
+<div class="wskt3" >
+<a onMouseOver="displayStatusMsg();return document.returnValue" href="javascript:jump2url()">
+<img src="/${res}/jgdj/images/P020131213352199843456.jpg"  name=bannerADrotator  border=0 align="middle" 
+style="FILTER: revealTrans(duration=2,transition=40)" width=250 height=87></a> 
+                  <script language=JavaScript>nextAd()</script>
+</div>	
+	<div class="wskt1">
+		[@cms_channel id = '857']
+		<a href="${tag_bean.url}">
+			<span class="title">${tag_bean.name}</span>		
+		</a>
+		[/@cms_channel]
+	</div>
+	<div class="wskt2_nav">
+		[@cms_content_list count='5' titLen='16' channelId='857']
+			[#list tag_list as a]
+				<ul>
+			   		<li>
+						<a  target="_blank"  href="${a.url}" title="${a.title}" >[@text_cut s=a.title len=titLen append='...'/]</a>
+					</li>
+				</ul>               
+			[/#list]
+        [/@cms_content_list]
+    </div>
+	<div class="wskt3"><img src="/${res}/jgdj/images/wskt-2.jpg"></div>
+	
+	<div class="wskt1">
+		[@cms_channel id = '858']
+		<a href="${tag_bean.url}">
+			<span class="title">${tag_bean.name}</span>		
+		</a>
+		[/@cms_channel]
+	</div>
+	<div class="wskt2_nav">
+        [@cms_content_list count='5' titLen='16' channelId='858']
+			[#list tag_list as a]
+				<ul>
+			   		<li>
+						<a  target="_blank"  href="${a.url}" title="${a.title}" >[@text_cut s=a.title len=titLen append='...'/]</a>
+					</li>
+				</ul>               
+			[/#list]
+        [/@cms_content_list]      
+    </div>
+	<div class="wskt3"><img src="/${res}/jgdj/images/wskt-2.jpg"></div>
+	
+	<div class="xxyd">
+	     <ul>
+		 [@cms_channel_list count='5' titLen='16' parentId='859']
+			[#list tag_list as a]
+				<li>
+					<a  target="_blank"  href="${a.url}">${a.name}</a>
+					[#if a_index%2==0]&nbsp;&nbsp;&nbsp;&nbsp;[#else]</br>[/#if]
+				</li>              
+				[#if ((a_index+1)==tag_list?size) && a_index%2==0]
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				[/#if]
+			[/#list]
+        [/@cms_channel_list]   
+           </ul> 
+	</div>
+
+	<div class="ztbd">
+		[@cms_content_list count='3' channelId='861']
+			[#list tag_list as a]
+				<a href="${a.url}">
+					<img src="${a.typeImg!}" border=0>
+				</a><br /><br />
+			[/#list]
+		[/@cms_content_list]
+		
+	</div>
+</div>
+<!-- 右侧完 -->
+
+<div id="left1" style="height:286px;">
+   <div class="tpxw">
+	   [@cms_channel id = '854']
+		<a href="${tag_bean.url}">
+			<span class="title">${tag_bean.name}</span>		
+		</a>
+		[/@cms_channel]
+		<br/>
+		[@cms_content_list count='1' titLen='20' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='854' orderBy='3']
+			[#list tag_list as a]
+				<a  target=_blank href=${a.url} >
+					<img src="${a.typeImg!}" border=0 width=250 height=193 style='padding:4px; border:1px #CCCCCC solid;'>
+				</a>
+			   <span>
+			   <a href="${a.url}" target="_blank" title="${a.title}" >[@text_cut s=a.title len=titLen append=append/]</a>
+			   </span>
+			[/#list]
+		[/@cms_content_list]
+   </div>
+   <div class="djyw">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		[@cms_channel id = '853']
+			<a href="${tag_bean.url}">
+				<span class="title">${tag_bean.name}</span>		
+			</a>
+		[/@cms_channel]
+        <ul>
+			[@cms_content_list count='1' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='853' orderBy='3']
+				[#list tag_list as a]
+				   <li>
+					   <a  target="_blank"  href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" >
+						[@text_cut s=a.title len=titLen append=append/](${a.date?string(dateFormat)})
+						</a>
+					</li>
+				[/#list]
+			[/@cms_content_list]           
+        </ul>
+
+	</div> 
+</div>	
+	
+<div style="float:left">
+
+<!--script language=JavaScript> 
+<!--
+var bannerAD=new Array(); 
+var bannerADlink=new Array(); 
+var adNum=0; 
+
+bannerAD[0]="/jgdj/images/jgdjcxzy.jpg"; 
+bannerADlink[0]="http://www.most.gov.cn/ztzl/srkzcxzyhd/index.htm"
+
+bannerAD[1]="/jgdj/images/sbd.jpg";  
+bannerADlink[1]="http://www.most.gov.cn/ztzl/xxgcddsbdjs/index.htm"
+
+
+
+//bannerAD[2]="#"; 
+//bannerADlink[2]="#"
+var preloadedimages=new Array(); 
+for (i=1;i<bannerAD.length;i++){ 
+preloadedimages[i]=new Image(); 
+preloadedimages[i].src=bannerAD[i]; 
+//preloadedimages[i].style="margin-bottom:4px;"
+} 
+
+function setTransition(){ 
+var TransitionArr=new Array(); 
+TransitionArr[0]=5;
+TransitionArr[1]=6;
+TransitionArr[2]=7;
+TransitionArr[3]=13;
+
+
+
+if (document.all){ 
+bannerADrotator.filters.revealTrans.Transition=TransitionArr[Math.floor(Math.random()*3)];  bannerADrotator.filters.revealTrans.apply(); 
+} 
+} 
+
+function playTransition(){ 
+if (document.all) 
+bannerADrotator.filters.revealTrans.play() 
+} 
+
+function nextAd(){ 
+if(adNum<bannerAD.length-1)
+{
+    adNum++ ; 
+	if (bannerAD[adNum] =="") adNum=0;
+}
+else adNum=0; 
+setTransition(); 
+document.images.bannerADrotator.src=bannerAD[adNum]; 
+playTransition(); 
+theTimer=setTimeout("nextAd()", 6000); 
+} 
+
+function jump2url(){ 
+jumpUrl=bannerADlink[adNum]; 
+jumpTarget='_blank'; 
+if (jumpUrl != ''){ 
+if (jumpTarget != '')window.open(jumpUrl,jumpTarget); 
+else location.href=jumpUrl; 
+} 
+} 
+function displayStatusMsg() { 
+status=bannerADlink[adNum]; 
+document.returnValue = true; 
+} 
+
+
+function handle_select(select_obj)
+ {
+  var URL = select_obj.options[select_obj.selectedIndex].value;
+select_obj.selectedIndex = 0;
+  if(URL == '') {
+   return;
+  }
+  else {
+   self.open(URL,"_blank");
+   return;
+  }
+ }
+//--> 
+              <!--/script>
+
+<a onMouseOver="displayStatusMsg();return document.returnValue" href="javascript:jump2url()">
+<img src="/jgdj/images/sbd.jpg"  name=bannerADrotator  border=0 align="middle" 
+style="FILTER: revealTrans(duration=2,transition=40);margin-bottom:4px;"></a> 
+                  <script language=JavaScript>nextAd()</script-->
+[@cms_content_list count='1' channelId='873']
+	[#list tag_list as a]
+		<a href="${a.url}"><img src="${a.typeImg!}" border=0></a>
+	[/#list]
+[/@cms_content_list]
+
+</div>
+
+<div id="left2">
+
+     <div class="t8"><img src="/${res}/jgdj/images/8title-3.jpg" border="0" usemap="#Map2">
+       <map name="Map2" id="Map2">
+         <area shape="rect" coords="16,3,206,47" href="[@cms_channel id='862']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="13,64,206,115" href="[@cms_channel id='863']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="14,132,205,177" href="[@cms_channel id='864']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="13,199,205,243" href="[@cms_channel id='865']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="12,259,204,304" href="[@cms_channel id='866']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="10,325,205,370" href="[@cms_channel id='867']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="9,390,206,439" href="[@cms_channel id='868']${tag_bean.url}[/@cms_channel]" />
+         <area shape="rect" coords="9,455,205,497" href="[@cms_channel id='869']${tag_bean.url}[/@cms_channel]" />
+       </map>
+    <br/><br/><a href="http://appweblogic.most.gov.cn/jgdj/ly.htm" ><img border="0" src="/${res}/jgdj/images/wyly-1.jpg"></a></div>
+	 <div class="dwgz">&nbsp;&nbsp;&nbsp;&nbsp;
+		[@cms_channel id = '855']
+			<a href="${tag_bean.url}">
+				<span class="title">${tag_bean.name}</span>		
+			</a>
+		[/@cms_channel]
+	    <ul>
+			[@cms_content_list count='1' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='855' orderBy='3']
+				[#list tag_list as a]
+				   <li>
+					   <a  target="_blank"  href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" >
+						[@text_cut s=a.title len=titLen append=append/](${a.date?string(dateFormat)})
+						</a>
+					</li>
+				[/#list]
+			[/@cms_content_list]  
+	      
+        </ul><br/>
+    </div>
+	  <div class="dwgz2"><img src="/${res}/jgdj/images/dwgz-2.jpg"></div>
+	   <div class="dwgz">&nbsp;&nbsp;&nbsp;&nbsp;
+	   [@cms_channel id = '856']
+			<a href="${tag_bean.url}">
+				<span class="title">${tag_bean.name}</span>		
+			</a>
+		[/@cms_channel]
+	    <ul>
+ 
+           [@cms_content_list count='1' titLen='26' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='856' orderBy='3']
+				[#list tag_list as a]
+				   <li>
+					   <a  target="_blank"  href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" >
+						[@text_cut s=a.title len=titLen append=append/](${a.date?string(dateFormat)})
+						</a>
+					</li>
+				[/#list]
+			[/@cms_content_list]  
+	      
+        </ul><br/>
+	  </div>
+	  <div class="dwgz2"><img src="/${res}/jgdj/images/dwgz-2.jpg"></div>
+	
+	 
+</div>
+<!-- 左侧完 -->
+
+</div>
+<div class="clearit"></div>
+
+<div><img src="/${res}/jgdj/images/link.jpg" border="0" usemap="#Map">
+<map name="Map" id="Map">
+<area shape="rect" coords="27,19,148,63" href="http://www.people.com.cn" target="_blank" /><area shape="rect" coords="187,20,309,64"href="http://cpc.people.com.cn/GB/64156/index.html" target="_blank" />
+<area shape="rect" coords="345,20,456,62" href="http://www.qstheory.cn/" target="_blank"> <area shape="rect" coords="502,19,620,62" href="http://www.djyj.cn/" target="_blank" />
+<area shape="rect" coords="663,17,779,62" href="http://www.zgg.gov.cn/" target="_blank" />
+<area shape="rect" coords="820,18,937,62" href="http://www.studytimes.com.cn/" target="_blank" />
+</map></div>
+
+
+[#include "../include/jgdj/footer.html"/]
+
+</body>
+</html>

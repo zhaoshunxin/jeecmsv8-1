@@ -1,0 +1,26 @@
+	<div class="banner">
+        [#if channel.titleImg??]
+        <img src="${channel.titleImg!}">    
+        [/#if]
+    </div>
+    <div class="menu">
+    	<div class="menu_list">
+            <a href="/">网站首页</a>
+            <span>|</span>
+            [@cms_channel id='561']
+            <a href="${tag_bean.url}">频道首页</a>
+            [/@cms_channel]
+            [@cms_channel_list parentId='192']
+            [#list tag_list as a]
+            [#if a.id !=561 && a.id !=713]
+            <span>|</span>
+            <a href='${a.url}' >${a.name}</a>
+            [/#if]
+            [/#list]
+            [/@cms_channel_list]  
+        </div>
+        <div class="menu_search">
+            <div class="inputtxt"><input name="searchword" type="text" size="20" onfocus="this.value=''" value="关键词检索" onkeydown="if(window.event.keyCode==13){return  changSearch();}"></div>
+            <div class="imagebutton"><input type="image" name="Submit" src="/${res}/images/index-dh-s.jpg" onclick="return changSearch()"></div>
+        </div>
+    </div>

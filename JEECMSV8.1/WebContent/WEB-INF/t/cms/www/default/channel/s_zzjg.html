@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/zzjg/inc/zzjg.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        <div class="zzjg_floor kjbzn">
+            [@cms_channel id='116']
+            <div class="title">
+                <a href="${tag_bean.url}">科技部职能</a>
+                <span class="more">
+                    <a href="${tag_bean.url}">更多&gt;&gt;</a>
+                </span>
+            </div>
+            <div class="content">
+                ${tag_bean.txt1}
+            </div>
+            [/@cms_channel]
+        </div>
+        <div class="zzjg_floor bld">
+            <div class="title">
+                <a  name='z1'>部领导</a>
+            </div>
+            <div class="content">
+                <div id="leader1">
+                    [@cms_channel_list parentId='122' hasContent='false']
+                    [#list tag_list as c]
+					[#if c_index<2]
+                    <div class="leader_info">
+                        <div class="leader_pic">
+                            <a href="${c.url}">
+                                <img src="${c.titleImg}" width="110" height="160" border="0">
+                            </a>
+                        </div>
+                        <div class="leader_intro">
+                            <span class="leader_name"><a href="${c.url}">${c.name}</a></span>
+                            <span class="leader_duty">${c.attr.zw!}</span>
+                        </div>
+                    </div>
+                    [/#if]    
+                    [/#list]
+                    [/@cms_channel_list]
+                </div>
+                <div id="leader2">
+                   [@cms_channel_list parentId='122' hasContent='false']
+                    [#list tag_list as c]
+					[#if c_index>1]
+                    <div class="leader_info">
+                        <div class="leader_pic">
+                            <a href="${c.url}">
+                                <img src="${c.titleImg}" width="110" height="160" border="0">
+                            </a>
+                        </div>
+                        <div class="leader_intro">
+                            <span class="leader_name"><a href="${c.url}">${c.name}</a></span>
+                            <span class="leader_duty">${c.attr.zw!}</span>
+                        </div>
+                    </div>
+                    [/#if]    
+                    [/#list]
+                    [/@cms_channel_list]
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- 驻部纪检组 -->
+        <div class="zzjg_floor">
+            [@cms_channel id='776']
+            <div class="title">
+                <a name="zzjjz" href="${tag_bean.url}/jtzz/">${tag_bean.name}</a>
+            </div>
+            [/@cms_channel]
+        </div>
+        
+		<div class="zzjg_floor nsjg">
+            <div class="title">
+                <a name='z2'>机关司局</a>
+            </div>
+            <div class="content">
+                <ul>
+                    [@cms_channel_list parentId=118]
+					[#list tag_list as a]
+                    <li>
+                    	[#if !a.link?? || a.link !="#"]
+						<a href="${a.url}/jtzz/">${a.name!}</a>
+						[#else]
+                        <a href="javascript:volid(0);">${a.name!}</a>
+						[/#if]
+                    </li>
+                    [/#list]
+					[/@cms_channel_list]
+                </ul>
+            </div>
+		</div>
+        
+        <div class="zzjg_floor zssydw" id="z3">
+            <div class="title">
+                <a href="#">直属事业单位</a>
+            </div>
+            <div class="content">
+                <ul>
+                    [@cms_channel_list parentId=119]
+					[#list tag_list as a]
+                    <li>
+                    	[#if !a.link?? || a.link !="#"]
+						<a href="${a.url}">${a.name!}</a>
+						[#else]
+                        <a href="javascript:volid(0);">${a.name!}</a>
+						[/#if]
+                    </li>
+                    [/#list]
+					[/@cms_channel_list]
+                </ul>
+            </div>
+        </div>
+        
+        <div  class="zzjg_floor">
+            [@cms_channel id='120']
+            <div class="title">
+                <a href="${tag_bean.url}">驻外科技机构</a>
+            </div>
+            <div class="content">
+                
+            </div>
+            [/@cms_channel]
+        </div>
+        
+        <div  class="zzjg_floor">
+            <div class="title">
+                <a name="z3">主管社会组织</a>
+            </div>
+            <div class="content">
+                
+            </div>
+        </div>
+        
+        <div  class="zzjg_floor">
+            [#include "../include/xglj.html"/]
+            
+            <a href="#bg" class="fhdb"></a>
+        </div>
+        
+       
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

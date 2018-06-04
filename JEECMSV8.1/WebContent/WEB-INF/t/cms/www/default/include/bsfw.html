@@ -1,0 +1,43 @@
+            <div class="floor_ztzl_right_banner">
+            	<img alt="" src="/${res}/images/00_08.gif">
+                &nbsp;&nbsp;
+                <span class="style22">办事服务</span>
+            </div>
+            <div class="floor_ztzl_right_title">
+            	<span class="style212">■</span>
+                <span class="style25">&nbsp;在线服务</span>
+            </div>
+            <ul class="zxfw">
+            	[@cms_content_list channelId='753' orderBy='1' channelOption='1']
+                [#list tag_list as a]
+                <li><a href="${a.url}" class="hui12" target="_blank">${a.title}</a></li>
+                [/#list]
+                [/@cms_content_list]
+            </ul>
+            <div class="floor_ztzl_right_title color_C6C6C6">
+            	<span class="style212">■</span>
+                <span class="style25">&nbsp;查询服务</span>
+            </div>
+            <div class="floor_ztzl_right_content color_C6C6C6">
+            	[@cms_content_list channelId='754' orderBy='1' channelOption='1']
+                [#list tag_list as a]
+                <a href="${a.url}" class="hui12" target="_blank">${a.title}</a>
+                [/#list]
+                [/@cms_content_list]
+            </div>
+             <div class="floor_ztzl_right_title">
+            	<span class="style212">■</span>
+                <span class="style25">&nbsp;其他服务</span>
+            </div>
+            <div class="floor_ztzl_right_content">
+            	[@cms_content_list channelId='755' orderBy='1' channelOption='1']
+                [#list tag_list as a]
+                <a href="${a.url}" class="hui12" target="_blank">${a.title}</a>
+                [/#list]
+                [/@cms_content_list]
+            </div>
+            <div class="bsfw">
+            	[@cms_channel id='756']
+                    <a href="${tag_bean.url}"><img height="80" alt="" src="${tag_bean.titleImg}" width="155"></a>
+                [/@cms_channel]
+            </div>

@@ -1,0 +1,37 @@
+            <span class="left_menu_span">
+            	www.most.gov.cn
+            </span>
+            [#if channel.id=838 || channel.id=843]
+            <span class="left_menu_title">
+            	[@cms_channel id=channel.id ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_ztzl_left_menu">
+                [@cms_channel_list parentId=channel.id  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+            [#else]
+            <span class="left_menu_title">
+            	[@cms_channel id=channel.parent.id ]
+                    ${tag_bean.name}
+                [/@cms_channel]
+            </span>
+            <ul class="floor_ztzl_left_menu">
+                [@cms_channel_list parentId=channel.parent.id  hasContent='false']
+                [#list tag_list as c]
+                <li><a href="${c.url}" >${c.name!}</a></li>
+                [/#list]
+                [/@cms_channel_list]
+
+                <li style="background-image: none;"><a href="#"></a></li>
+            </ul>
+            [/#if]
+            <div class="dcwj">
+            	[#include "../include/dcwj.html"/]
+            </div>

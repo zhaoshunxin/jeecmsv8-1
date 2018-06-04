@@ -1,0 +1,55 @@
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td>
+        <div class="home-view">
+          <div class="home-view-img"><img src="${base}/res/jeecms/images/view-icon.png"></div>
+          <div class="home-view-txt"><span>${pv!}</span><p><@s.m "statistic.site.pvCount"/></p></div>
+        </div>
+      </td>
+      <td>
+        <div class="home-publish">
+          <div class="home-view-img"><img src="${base}/res/jeecms/images/publish-icon.png"></div>
+          <div class="home-view-txt"><span id="releaseCount${type!}"><img src="${base}/res/common/img/theme/loading.gif" alt="" /></span><p><@s.m "statistic.content.releaseCount"/></p></div>
+        </div>
+      </td>
+      <td>
+        <div class="home-examine">
+          <div class="home-view-img"><img src="${base}/res/jeecms/images/examine-icon.png"></div>
+          <div class="home-view-txt"><span id="checkingCount${type!}"><img src="${base}/res/common/img/theme/loading.gif" alt="" /></span><p><@s.m "statistic.content.checkingCount"/></p></div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="home-comment">
+          <div class="home-view-img"><img src="${base}/res/jeecms/images/comment-icon.png"></div>
+          <div class="home-view-txt"><span id="commentCount${type!}"><img src="${base}/res/common/img/theme/loading.gif" alt="" /></span><p><@s.m "statistic.comment.comments"/></p></div>
+        </div>
+      </td>
+      <td>
+        <div class="home-message">
+          <div class="home-view-img"><img src="${base}/res/jeecms/images/message-icon.png"></div>
+          <div class="home-view-txt"><span id="guestbookCount${type!}"><img src="${base}/res/common/img/theme/loading.gif" alt="" /></span><p><@s.m "statistic.guestbook.guestbooks"/></p></div>
+        </div>
+      </td>
+      <td>
+        <div class="home-member">
+          <div class="home-view-img"><img src="${base}/res/jeecms/images/member-icon.png"></div>
+          <div class="home-view-txt"><span id="memberCount${type!}"><img src="${base}/res/common/img/theme/loading.gif" alt="" /></span><p><@s.m "statistic.member.registers"/></p></div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<script type="text/javascript">
+$.post("statisticCountAjax.do", {
+	type:"${type!}"
+}, function(data) {
+	$("#releaseCount${type!}").html(data.releaseCount);
+	$("#checkingCount${type!}").html(data.checkingCount);
+	$("#commentCount${type!}").html(data.commentCount);
+	$("#guestbookCount${type!}").html(data.guestbookCount);
+    $("#memberCount${type!}").html(data.memberCount);
+}, "json");
+</script>

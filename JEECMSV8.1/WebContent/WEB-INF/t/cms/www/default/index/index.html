@@ -1,0 +1,407 @@
+<!--
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery.img_silder.js" type="text/javascript"></script>
+    <script src="/${res}/inc/tab.js" type="text/javascript"></script>
+    <script>
+		$(function(){
+			$('#silder').imgSilder({
+				s_width:357, //容器宽度
+				s_height:276, //容器高度
+				is_showTit:true, // 是否显示图片标题 false :不显示，true :显示
+				s_times:3000 //设置滚动时间
+			});
+		});	
+	</script>
+	<script type="text/javascript"> 
+		var t; 
+		var speed = 5;//图片切换速度 
+		var nowlan=0;//图片开始时间 
+		function changepic() { 
+			var imglen = $("#xctp_list").find("li").length; 
+			$("#xctp_list").find("li").hide(); 
+			$("#xctp_list").find("li").eq(nowlan).show(); 
+			nowlan = nowlan+1 ==imglen ?0:nowlan + 1; 
+			t = setTimeout("changepic()", speed * 1000); 
+		} 
+		onload = function () { changepic(); } 
+		$(document).ready(function () { 
+			//鼠标在图片上悬停让切换暂停 
+			$("#xctp_list").hover(function () { clearInterval(t); }); 
+			//鼠标离开图片切换继续 
+			$("#xctp_list").mouseleave(function () { changepic(); }); 
+		}); 
+	</script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor width988">
+    	<div class="floor_left">
+        	<!-- 图片新闻 -->
+            <div class="tpxw">
+                <div class="silder" id="silder">
+                    <ul class="silder_list" id="silder_list">
+                        [@cms_content_list count='5' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='190' orderBy='3']
+                        [#list tag_list as a]
+                        <li> <img src="${a.typeImg!}" border="0" alt="${a.title}" href="${a.url}"> </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+            <!-- 视频科技 -->
+            <div class="spkj">
+                [@cms_channel id='106']
+                <a href="${tag_bean.url}" class="a1"><strong>${tag_bean.name}</strong></a>
+                [/@cms_channel]
+                [@cms_channel_list parentId='106']
+				[#list tag_list as a]
+					[#if a.id!=197]
+						<a href="${a.url}">${a.name}</a> 
+					[/#if]
+				[/#list]
+				[/@cms_channel_list]
+            </div>
+        
+        </div>
+        
+        <div class="floor_right">
+        
+            <!-- 标题新闻 -->
+			[@cms_channel id='189']
+				[#if tag_bean.attr.display_on_index=="是"]
+					<div class="btxw">
+						[@cms_content_list count='1' channelId=tag_bean.id orderBy='2' dateFormat='yyyy-MM-dd']
+							[#list tag_list as a]
+								[#if a.typeImg??]
+									<a href="${a.url}" target="_blank" title="${a.title}(${a.date?string(dateFormat)})">
+										<img src="${a.typeImg!}" width="624" height="47" border="0">
+									</a>
+									[#break]
+								[/#if]
+							[/#list]
+						[/@cms_content_list]
+					</div>
+				[/#if]
+			[/@cms_channel]
+            
+            <!-- 新闻区域 -->
+            <div class="news_area[@cms_channel id='189'][#if tag_bean.attr.display_on_index=="否"] h327[/#if][/@cms_channel]">
+            	<!-- 新闻类信息列表TAB -->
+                <div class="news">
+                	<div class="menu_sub">
+                        [@cms_channel_list parentId='105']
+                        [#list tag_list as a]
+                        [#if a.id!=189&&a.id!=190]
+                        <a href="${a.url}" class="[#if a.id=191]now[/#if]"  onmousemove="showDivForA(this,'list_news')">
+                        <div>${a.name}</div>
+                        </a> 
+                        [/#if]
+                        [/#list]
+                        [/@cms_channel_list]
+                        [@cms_channel id='108']
+                        <a href="${tag_bean.url}"  onmousemove="showDivForA(this,'list_news')">
+                        <div>${tag_bean.name}</div>
+                        </a> 
+                        [/@cms_channel]
+                    </div>
+                    <div class="news_content">
+                        [@cms_channel_list parentId='105']
+                        [#list tag_list as a]
+                        [#if a.id!=189&&a.id!=190]
+                        <div id="list_news${a_index}" [#if a.id != 191]style="display:none;"[/#if]>
+                            [@cms_content_list count='7' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=a.id  orderBy='2']
+                            [#list tag_list as b]
+                            <div class="info">
+                                <a href="${b.url}" title="${b.title}" target="_blank">
+                                   ${b.title}
+                                </a>
+                                <span>(${b.date?string(dateFormat)})</span>
+                            </div>
+                            [/#list]
+                            [/@cms_content_list]
+                        </div>
+                        [/#if]
+                        [/#list]
+                        [/@cms_channel_list]
+                        
+                        [@cms_channel id='108']
+                        <div id="list_news4" style="display:none;">
+                            [@cms_content_list count='7' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=tag_bean.id  orderBy='2']
+                            [#list tag_list as b]
+                            <div class="info">
+                                <a href="${b.url}" title="${b.title}" target="_blank">
+                                   ${b.title}
+                                </a>
+                                <span>(${b.date?string(dateFormat)})</span>
+                            </div>
+                            [/#list]
+                            [/@cms_content_list]
+                        </div>
+                        [/@cms_channel]
+                        
+                    </div>
+                </div>
+                
+            	<!-- 宣传图片 -->
+                <div class="xctp">
+                    <ul id="xctp_list">
+                        [@cms_content_list channelOption='1' channelId='664'  orderBy='2']
+                        [#list tag_list as b]
+                        <li>
+                            <a href="${b.url}" target="_blank">
+                                <img src="${b.typeImg!}" width="612" height="95"/>
+                            </a>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+   
+    </div>
+    
+    <div class="floor width988" style="height:296px;">
+    	<div class="floor_tztg">
+        	<div class="bt">
+                [@cms_channel id='107']
+                <a href="${tag_bean.url}" id="tztg">
+                	<img src="/${res}/images/index_mp2.gif" style="vertical-align:top; margin-top:0px;">
+                    ${tag_bean.name}
+                </a>
+            	[/@cms_channel]
+                
+                [@cms_channel id='109']
+                <a href="${tag_bean.url}" id="xwfb">
+                	<img src="/${res}/images/index_mp4.gif" style="vertical-align:top; margin-top:0px;">
+                    ${tag_bean.name}
+                </a>
+            	[/@cms_channel]
+            </div>
+            <div class="text">
+            	[@cms_content_list count='10' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='107' orderBy='3']
+                    [#list tag_list as a]
+                        <a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank" >
+                            ${a.title}
+                        </a>
+                    [/#list]
+                [/@cms_content_list]
+            </div>
+        
+        </div>
+        <div class="floor_xxgk">
+        	<div class="bt">
+                <div class="bt1">
+                    [@cms_channel id='110']
+                        <a href="${tag_bean.url}">
+                            ${tag_bean.name}
+                        </a>
+                    [/@cms_channel]
+                </div>
+                
+                <div class="bt2"> 
+                    [@cms_channel_list parentId='110']
+                        [#list tag_list as a]
+                            <a href="${a.url}">
+                                ${a.title!}
+                            </a> | 
+                        [/#list]
+                    [/@cms_channel_list]
+                </div>
+            </div>
+            <div class="text">
+            	<!-- 待修改 政府信息公开为概览目下最近更新 -->
+                [@cms_content_list count='10' titLen='27' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='454' orderBy='3']
+				[#list tag_list as t]
+                <a href="${t.url}" title="${t.title}(${t.date?string(dateFormat)})" target="_blank">
+                	[@text_cut s=t.title len=titLen append=append/]
+                </a>
+				[/#list]
+				[/@cms_content_list]
+            </div>
+        </div>
+        <div class="floor_rdzl">
+        	<div class="bt" id="m_2">
+                [@cms_channel id='386']
+                    <a href="${tag_bean.url}" class="now" onmousemove="showDivForA(this,'list_rdzl')">
+                        ${tag_bean.name}							
+                    </a>
+                [/@cms_channel]
+                [@cms_channel id='387']
+                    <a href="${tag_bean.url}" onmousemove="showDivForA(this,'list_rdzl')">
+                        ${tag_bean.name}
+                    </a>
+                [/@cms_channel]
+            </div>
+            <div class="text">
+            	<div id="list_rdzl0" class="rdzl">
+                [@cms_content_list count='7' channelOption='1' channelId='386' orderBy='3']
+				[#list tag_list as t]
+                    <a href="${t.url}">
+                        ${t.title}
+                    </a>
+				[/#list]
+				[/@cms_content_list]
+					
+                </div>
+                <div id="list_rdzl1" class="zxgz" style="display:none;">
+				[@cms_content_list count='7' channelOption='1' channelId='387' orderBy='3']
+				[#list tag_list as t]
+                    <a href="${t.url}">
+                        ${t.title}
+                    </a>
+				[/#list]
+				[/@cms_content_list]
+                </div>
+            </div>
+            <div class="imgs">
+                <a href="#">
+                    <img class="imgsPic1" src="/${res}/images/lhzt2017.jpg" width="187" height="44" border="0">
+                </a>
+			</div>
+        </div>
+    </div>
+    
+    <div class="floor width988 serve">
+    	<div class="title">
+            <div class="t1">
+            	[@cms_channel id='101']
+                    <a href="${tag_bean.url}" >
+                        <img src="/${res}/images/s_t1_b.gif"  border=0/>
+                    </a>
+                [/@cms_channel]
+            </div>
+            <a href="http://service.most.gov.cn/" class="at2" target="_blank"><div>科技管理信息系统</div></a>
+            <a href="http://program.most.gov.cn/" class="at2" target="_blank"><div>科技计划申报</div></a>
+            <a href="http://finance.most.gov.cn/" class="at2" target="_blank"><div>科技经费预算申报</div></a>
+            <a href="https://168.160.10.158/" class="at2" target="_blank"><div>科技资金管理</div></a>
+            <div class="t2">
+            	<img src="/${res}/images/s_t2_b.gif">
+            </div>
+        </div>
+        <div class="ss">
+        	<div class="step">
+            	<div class="bt" id="m_3">      
+                    [@cms_channel_list parentId='377']
+                    [#list tag_list as a]
+                        [#if a.id!=385]
+                        <a title="${a.name}" href="${a.url}" onmousemove="showDivForA_Step(this,'list_step','s')" class="s${a_index+1} [#if a.id=380]now[/#if]"></a>
+                        [/#if]
+                    [/#list]						
+                	[/@cms_channel_list]
+                </div>
+                <div class="step_content">
+					[@cms_channel_list parentId='377']
+                    [#list tag_list as a]
+                    [#if a.id!=385]
+                    <div id="list_step${a_index}" [#if a.id != 380]style="display:none;"[/#if]>
+                        [@cms_content_list count='9' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=a.id  orderBy='2']
+                        [#list tag_list as b]
+                        <div class="step_info">
+                            <a href="${b.url}" title="${b.title}" target="_blank">
+                               ${b.title}
+                            </a>
+                            <span>(${b.date?string(dateFormat)})</span>
+                        </div>
+                        [/#list]
+                        [/@cms_content_list]
+                    </div>
+                    [/#if]
+                    [/#list]
+                    [/@cms_channel_list]
+				</div>
+                <div class="option">                   
+                    [@cms_channel id='385']
+                        <a href="${tag_bean.url}" >
+                            ${tag_bean.name}
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;　|　&nbsp;&nbsp;&nbsp;&nbsp;
+                    [/@cms_channel]
+                    [@cms_channel id='379']
+                        <a href="${tag_bean.url}">
+                            ${tag_bean.name}
+                        </a>
+                    [/@cms_channel]
+                </div>
+            </div>
+        	<div class="ser">
+            	<div class="bt">
+                    [@cms_channel id='392']
+                        <a href="${tag_bean.url}" class="bsfw1_now" title="${tag_bean.name}" id="a_bsfw1" onmousemove="showDivForA_Bsfw(this,'bsfw')"></a>
+                    [/@cms_channel]
+                    [@cms_channel id='393']
+                        <a href="${tag_bean.url}" class="bsfw2" title="${tag_bean.name}" id="a_bsfw2" onmousemove="showDivForA_Bsfw(this,'bsfw')"></a>
+                    [/@cms_channel]
+                    <a href="/flash/bnbs.htm" class="bsfw3" title="办事预演" id="a_bsfw3" onmousemove="showDivForA_Bsfw(this,'bsfw')"></a>
+                </div>
+            	[@cms_channel_list parentId='392']
+                    [#list tag_list as a]								
+                        <div style="background:url(${a.titleImg}) no-repeat; height:45px"></div>
+                        <div class="xzxk_content">
+                            [@cms_channel_list parentId=a.id]
+                                [#list tag_list as b]
+                                    <a href="${b.url}">${b.name}</a>
+                                                                   [/#list]
+                            [/@cms_channel_list]										
+                        </div>									
+                    [/#list]
+                [/@cms_channel_list]
+            </div>
+        </div>
+    </div>
+    
+    <div class="floor width988 hdjl">
+    	<div class="bt"><img src="/${res}/images/change_bt.gif"></div>
+        <div class="text">
+        	<div class="tt">
+            	<div class="bzxx">
+                	<a href="#">您的建议是对我们工作的最大支持。</a>
+                </div>
+                <div class="wsdc">
+                	<span><a href="#">更多...</a></span>
+                    <a href="#">关于《关于研究开发机构和高等院校报送科技成果转化年度报告工作有关...</a>
+                </div>
+                <div class="gzwd">
+					<a href="#">业务咨询</a>
+                    <a href="#">政策咨询</a>
+                    <a href="#">提出建议</a>
+                    <a href="#">反应问题</a>
+                </div>
+                <div class="jdts">
+                	<a href="#">科研诚信举报信箱</a>
+                    <a href="#" target="_blank">中央国家机关举报网站</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    [#include "../include/xglj.html"/]
+    <div class="about">
+    	<a href="#">联系我们</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">网站声明</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">帮助信息</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">网站地图</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">最新更新</a>
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

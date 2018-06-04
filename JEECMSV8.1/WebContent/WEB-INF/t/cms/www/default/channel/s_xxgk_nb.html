@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <meta name="channel" content="信息公开">
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/xxgk.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/css/zTreeStyle.css" rel="stylesheet" type="text/css" ignoreapd="1">
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+    [#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+	<div class="floor">
+    	<div class="xxgk_left">
+        	[@cms_channel_list parentId=110  hasContent='false']
+    		[#list tag_list as c]
+            [#if c.id==channel.id] 
+                <span class="xxgk_menu_cur">
+                [#if c.id==454] 
+                    [@cms_channel id=110]
+                        <a href="${tag_bean.url}">${c.name}</a>
+                    [/@cms_channel]
+                [#else]
+                    <a href="${c.url}">${c.name}</a>
+                [/#if]
+                </span>
+         	[#else]
+            	<span class="xxgk_menu">
+                [#if c.id==454] 
+                    [@cms_channel id=110]
+                        <a href="${tag_bean.url}">${c.name}</a>
+                    [/@cms_channel]
+                [#else]
+                    <a href="${c.url}">${c.name}</a>
+                [/#if]
+                </span>
+            [/#if]
+           
+            [#if c_has_next]
+            	<div class="separator"></div>
+            [/#if]
+            [/#list]
+            [/@cms_channel_list]
+            
+        </div>
+    	<div class="xxgk_right">
+            <div class="dqwz">
+                当前位置：
+                [@cms_channel id=channel.id]
+                    <a href="${tag_bean.url}">${tag_bean.name}</a>
+                [/@cms_channel]
+            </div>
+            
+            <div class="xxgkml_content">
+                [@cms_content_page count='20' titLen='40' dateFormat='yyyy年MM月dd日' channelOption='1' append='...' channelId=channel.id orderBy='4'] 
+                <table class="table_xxgkml">
+                    <tr>
+                        <th width="80">序号</th>
+                        <th width="528">名称</th>
+                        <th width="120">发文日期</th>
+                    </tr>
+                    [#list tag_pagination.list as a]
+                    <tr>
+                        <td>
+                            ${a_index+1}
+                        </td>
+                        <td>
+                             <script type=text/javascript>
+                                $(function() {
+                                    $(".${a.attr.indexNum}").powerFloat({
+                                        target: $("#${a.attr.indexNum}")	
+                                    });
+                                });
+                            </script>
+                            <a href="${a.url}" class="${a.attr.indexNum}" target="_blank">${a.title}</a>
+                            <div id="${a.attr.indexNum}" class="shadow target_box dn" style="width:510px;background:#FFF;color:#000000;">
+                                <div class="target_list" style="width:500px;">			
+                                    <table width="100%">
+                                        <tr>
+                                            <th width="15%">索引号：</th>
+                                            <td width="35%">${a.attr.indexNum!}</td>
+                                            <th width="15%">信息类别：</th>
+                                            <td width="35%">${a.attr.info_type!}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>发文机构：</th>
+                                            <td>${a.author!}</td>
+                                            <th>发文日期：</th>
+                                            <td>${a.attr.pub_date!}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>文　　号：</th>
+                                            <td>${a.attr.info_num!}</td>
+                                            <th>实施日期：</th>
+                                            <td>${a.attr.impl_date!}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            ${a.attr.pub_date!}
+                        </td>
+                    </tr>
+                    [/#list]
+                </table>
+                
+                <div class="page">
+                    [@cms_pagination sysPage='1'/]
+                </div>
+                [/@cms_content_page]
+            
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div>
+[#include "../include/footer.html"/]
+</body>
+</html>

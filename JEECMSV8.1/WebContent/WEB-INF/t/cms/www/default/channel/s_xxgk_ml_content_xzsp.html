@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <meta name="channel" content="信息公开">
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/xxgk.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/${res}/inc/jquery-powerFloat.js"></script>
+</head>
+
+<body>
+	<div class="xxss">
+		[#include "../include/xxgk/xxss.html"/]
+    </div>
+    
+    <div class="dqwz">
+    	当前位置：
+        [@cms_channel id=channel.id]
+            <a href="${tag_bean.url}">${tag_bean.name}</a>
+        [/@cms_channel]
+    </div>
+    
+    [@cms_content_list channelId=channel.id channelOption='1' orderBy='1']
+    [#list tag_list as c]
+    <div class="dqwz">
+    	${c.title}
+    </div>   
+    <div class="xxgkml_content">
+    	${c.txt!}
+    </div>
+    [/#list]
+    [/@cms_content_list]
+    
+    
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	[#include "../include/dfkj/head.html" /]
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg">
+	[#include "../include/dfkj/top.html" /]
+    <div class="dfkj_floor">
+    	<div class="dfkj_floor2_left">
+        	<div class="arealist">
+            	[#include "../include/dfkj/arealist.html" /]
+            </div>
+            <div class="contentImg">
+            [#if channel.contentImg??]
+            	<a href="${channel.attr.contentImgUrl!}" target="_blank">
+                <img src="${channel.contentImg}" border="0">
+                </a>
+            [/#if]
+            </div>
+        </div>
+        <div class="dfkj_floor2_right">
+        	<div class="dqwz">
+            	[#include "../include/dfkj/dqwz.html" /]
+            </div>
+            [@cms_content_page count='20' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='3']
+            <div class="news1">
+                <ul class="lh28 blue">
+                    [#list tag_list as a]
+                    <li>
+                        <a  target="_blank" href="${a.url}" >
+                        	${a.title}(${a.date?string(dateFormat)})
+                        </a>
+                    </li>
+                    [/#list]
+                </ul>
+        	</div>
+            
+            <div class="fy">
+				[@cms_pagination sysPage='1'/]
+			</div>
+            [/@cms_content_page]
+        </div>
+        
+        
+	</div>
+    [#include "../include/dfkj/footer.html" /]
+</div>
+<div class="bottomline"></div>
+</div>
+</body>
+</html>

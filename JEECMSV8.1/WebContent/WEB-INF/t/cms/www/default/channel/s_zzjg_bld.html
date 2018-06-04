@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/zzjg/inc/zzjg.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        <div class="zzjg_floor bld_introduction">
+            <div class="zzjg_floor_left">
+                <a href="#" id="bld_pic">
+                    <img src="${channel.contentImg!}" width="129" height="188" border="0">
+                </a>
+                <span id="duty_name">${channel.name}：${channel.attr.zw!}</span>
+                <div id="bld_introduction_into">
+                    <span>电话：${channel.attr.dh!}</span>
+                    <span>地址：${channel.attr.dz!}</span>
+                    <span>邮编：${channel.attr.yb!}</span>
+                    <a href="http://appweblogic.most.gov.cn/bzxx/index.htm">
+                    	<img src="/${res}/zzjg/images/bzxx-1.jpg" width="134" height="16" border="0">
+                    </a>
+                </div>
+            </div>
+            <div class="zzjg_floor_middle">
+                <div class="title">
+                    领导简介
+                </div>
+                <div class="content">
+                    ${channel.txt}
+                </div>
+            </div>
+            <div class="zzjg_floor_right">
+                <ul>
+                	<li><a href="#" style="color: #cc0000;">部领导>></a></li>
+                    [@cms_channel_list parentId="122"]
+                    [#list tag_list as a]
+                    	<li><a href="${a.url}">${a.name!}</a></li>
+                    [/#list]
+                    [/@cms_channel_list]
+                </ul>
+            </div>
+        </div>
+        [@cms_channel_list parentId=channel.id]
+        [#list tag_list as a]
+          [#if a_index == 0]
+            [#assign ldhd = a/]
+          [#else]
+            [#assign ldxc = a/]
+          [/#if]
+        [/#list]
+        [/@cms_channel_list]
+        <div class="zzjg_floor bld_activity">
+            <div class="bld_title"><a href="${ldhd.url!"#"}">领导活动</a></div>
+            <div class="text">
+                <ul>
+                    [@cms_content_page count='8' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=ldhd.id  orderBy='4']
+					[#list tag_list as a]
+                    <li><a target="_blank" href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})">${a.title}</a></li>
+                    [/#list]
+					[/@cms_content_page]
+                </ul>
+                <ul>
+                    [@cms_content_page count='16' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=ldhd.id  orderBy='4']
+					[#list tag_list as a]
+                    [#if a_index>7]
+                    <li><a target="_blank" href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})">${a.title}</a></li>
+                    [/#if]
+                    [/#list]
+					[/@cms_content_page]
+                </ul>
+            </div>
+        </div>
+        <div class="zzjg_floor bld_photo">
+            <div class="bld_title"><a href="${ldxc.url!'#'}">领导相册</a></div>
+            <div class="pic_silder">
+                <div class="bd">
+                    <ul class="picList">
+                        [@cms_content_list channelId=ldxc.id orderBy='2' channelOption='1']
+                        [#list tag_list as a]
+                        <li>
+                            <div class="pic"><a href="${a.url}" title="${a.title!}" target="_blank"><img src="${a.attr.bld_pic!a.typeImg!}" /></a></div>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+                <script type="text/javascript">
+                jQuery(".pic_silder").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:4,interTime:50});
+                </script>
+            </div>
+        </div>
+       
+       
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <meta name="channel" content="科技政策">
+    <link href="/${res}/kjzc/inc/kjzc.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/kjzc/inc/Calendar.js" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+    [#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+	<div class="floor" style="height:740px;">
+    	[#include "../include/kjzc/kjzc_zccx.html"/]
+        <div class="left">
+            <div class="gjkjzc">
+                <div class="tt">
+                	[@cms_channel id='126']
+                        <a href="${tag_bean.url}"><img src="/${res}/kjzc/images/kjzc-title1.gif" border="0" /></a>
+                    [/@cms_channel]
+                </div>
+                <div class="sub">
+                    <ul>
+                    	[@cms_channel_list parentId='126'  hasContent='false']
+                            [#list tag_list as c]
+                              <li [#if c.id=133 || c.id=137 || c.id=141 || c.id=145]style="width:190px"[/#if]><a href="${c.url}">${c.name!}</a></li>
+                            [/#list]
+                        [/@cms_channel_list]
+                    </ul>
+                </div>
+            </div>
+            <div class="gjsdkjzc">
+                <div class="tt">
+                    <div class="part">
+                    	[@cms_channel id='127']
+                            <a href="${tag_bean.url}"><img src="/${res}/kjzc/images/kjzc-title2.gif" border="0" /></a>
+                        [/@cms_channel]
+                    </div>
+                    <div class="part">
+                    	[@cms_channel id='128']
+                            <a href="${tag_bean.url}"><img src="/${res}/kjzc/images/kjzc-title3.gif" border="0" /></a>
+                        [/@cms_channel]
+                    </div>
+                </div>
+                <div class="sub">
+                    <div class="part">
+                        <ul>
+                            <li style="width:160px;">
+                            	[@cms_channel id='147']
+                                	<a href="${tag_bean.url}" target="_blank">${tag_bean.name}</a>
+                                [/@cms_channel]
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="part">
+                        <ul>
+                            [@cms_channel_list parentId='128'  hasContent='false']
+                                [#list tag_list as c]
+                                  <li><a href="${c.url}">${c.name!}</a></li>
+                                [/#list]
+                            [/@cms_channel_list]
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="kjzcdt">
+                <div class="tt">
+                	[@cms_channel id='129']
+                        <a href="${tag_bean.url}"><img src="/${res}/kjzc/images/kjzc-title4.gif" border="0" /></a>
+                    [/@cms_channel]
+                
+                </div>
+                <div class="sub">
+                    <ul>
+                    	[@cms_content_list channelId='129' orderBy='2' count='7' titLen='45' descLen='80' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                        [#list tag_list as a]
+                        <li>
+                        	<a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+        </div><!--下右-->
+        
+        <div class="right">
+            <div class="zcjd">
+                <div class="tt">
+                	[@cms_channel id='172']
+                        <a href="${tag_bean.url}"><img src="/${res}/kjzc/images/kjzc-title5.gif" border="0" /></a>
+                    [/@cms_channel]
+                </div>
+                <div class="sub">
+                	[@cms_channel id='172']
+                        <a href="${tag_bean.url}">${tag_bean.name}</a>
+                    [/@cms_channel]
+                </div>
+                <ul>
+                	[@cms_content_list channelId='172' orderBy='1' count='2' titLen='20' descLen='80' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                    [#list tag_list as a]
+                    <li>
+                        <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                    	
+                </ul>
+                <div class="sub">
+                	[@cms_channel id='173']
+                        <a href="${tag_bean.url}">${tag_bean.name}</a>
+                    [/@cms_channel]
+                </div>
+                <ul>
+                	[@cms_content_list channelId='173' orderBy='1' count='2' titLen='20' descLen='80' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                    [#list tag_list as a]
+                    <li>
+                        <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                       
+                </ul>
+                <div class="sub">
+                	[@cms_channel id='174']
+                        <a href="${tag_bean.url}">${tag_bean.name}</a>
+                    [/@cms_channel]
+                </div>
+                <ul>
+                	[@cms_content_list channelId='174' orderBy='1' count='2' titLen='20' descLen='80' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                    [#list tag_list as a]
+                    <li>
+                        <a href="${a.url}" title="${a.title}" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                    	
+                </ul>
+                <!--div style="border-bottom:1px solid #CCCCCC; margin-left:15px; margin-right:15px; margin-bottom:5px"></div-->
+                <div style="border-bottom:1px  dotted #CCCCCC;  margin-left:15px; margin-right:15px;margin-bottom:5px;"></div>
+                [@cms_content_list channelId='175' orderBy='2' count='4' titLen='50' descLen='80' append='...' channelOption='1' dateFormat='yyyy-MM-dd']
+                [#list tag_list as a]
+                <div class="sub">
+                    <a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" target="_blank">[@text_cut s=a.title len=titLen append=append/]</a>
+                </div>
+                [/#list]
+                [/@cms_content_list]
+            </div>
+    
+            <div class="zczx">
+                <div class="tt"><img src="/${res}/kjzc/images/kjzc-title6.gif" border="0" /></div>
+                <div class="sub">
+                    [@cms_content id=192] 
+                    [#if tag_bean??] 
+                    ${tag_bean.txt}[/#if] 
+                    [/@cms_content]
+                    
+                </div>
+            </div>
+            
+        </div><!--下左-->
+    </div>
+</div>
+</div>
+[#include "../include/footer.html"/]
+</body>
+</html>

@@ -1,0 +1,12 @@
+[#assign  str =  '&nbsp;&gt;&nbsp;<a href=/' + channel.url +  ' class=sl12>' + channel.name + '</a>']
+[#assign a = channel]
+[#list 1..10 as t]
+   [#if a.parent??]
+	   [#if a.parent.id==880 || a.parent.id==881]
+	   	   [#break]
+	   [/#if]
+	   [#assign str = '&nbsp;&gt;&nbsp;<a href=/' +a.parent.url +  ' class=sl12>' + a.parent.name + '</a>' + str]
+	   [#assign a = a.parent]
+   [/#if]
+[/#list] 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.htm" class=sl12>科技部门户</a>&nbsp;&gt;&nbsp;专题专栏&nbsp;&gt;&nbsp;${str} 

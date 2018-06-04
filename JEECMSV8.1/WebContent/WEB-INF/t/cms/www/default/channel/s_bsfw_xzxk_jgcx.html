@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/zzjg/inc/zzjg.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/jquery-ui-1.12.1.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.12.4.js" type="text/javascript"></script>
+    <script src="/${res}/inc/jquery-ui-1.12.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+    	<img src="${channel.parent.parent.parent.titleImg}" width="996" height="52">
+    </div>
+    <div class="floor">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        
+        <div class="zzjg_floor">
+        	<div class="bsfw_title">
+            	${channel.parent.name}
+            </div>
+            <div class="text">
+            	<div class="xzxk_tab">
+                [@cms_channel_list parentId=channel.parent.id]
+                [#list tag_list as a]
+                    <a [#if a.id != channel.id] href="${a.url}" [/#if] class="[#if a.id != channel.id]tab[#else]tab_cur[/#if]">
+                    	${a.name}
+                    </a>
+                [/#list]
+                [/@cms_channel_list]
+                </div>
+                <div class="xzxk_content">
+                	[@cms_content_page count='10' titLen='40' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id  orderBy='4']
+                    <ul class="jgcx">
+                    [#list tag_list as b]											
+                    	<li>
+                        	<a target="_blank" href="${b.url}" >${b.title!}</a>(${b.date?string(dateFormat)})
+                        </li>
+                    [/#list]
+                    
+                    </ul>
+                    
+                    <div class="page">
+                    	[@cms_pagination sysPage='1'/]
+                    </div>
+                    [/@cms_content_page]
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="zzjg_floor">
+            <a href="#bg" class="fhdb"></a>
+        </div>
+        
+       
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

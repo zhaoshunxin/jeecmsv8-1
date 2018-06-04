@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/ztzl/inc/ztzl.css" rel="stylesheet" type="text/css" />
+    <link href="/${res}/inc/css.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/inc/jquery-1.9.1.js" type="text/javascript"></script>
+    
+    <script>
+    	$(function(){
+			var floor_height = $("#floor").height();
+			$("#floor_ztzl_left").height(floor_height);
+			$("#floor_ztzl_middle").height(floor_height);
+			$("#floor_ztzl_right").height(floor_height);
+		});	
+    </script>
+</head>
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor floor_bottom_line" id="floor">
+    	<div class="floor_ztzl_left color_818284" id="floor_ztzl_left">
+			[#include "../include/ztzl_left_menu.html"/]
+        </div>
+        <div class="floor_ztzl_middle" id="floor_ztzl_middle">
+        	<div class="floor_ztzl_middle_banner">
+            	<img height="66" alt="" src="/${res}/ztzl/images/banner.jpg" width="670">
+            </div>
+            <div class="dqwz">
+                [#include "../include/current_position.html"/]
+            </div>
+            <div class="floor_ztzl_middle_content">
+            	<div class="title">
+                    [@cms_channel id=channel.id]
+                    <img src="${tag_bean.titleImg!site.defImg}"/>
+                    [/@cms_channel]
+                </div>
+                <div class="content">
+                	<ul class="rdzl">
+                        [@cms_content_list channelId=channel.id orderBy='2' channelOption='1']
+                        [#list tag_list as a]
+                        <li class="b letter_spacing2"><a href="${a.url}" target="_blank">${a.title!}</a></li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+               
+                <a href="#bg" class="fhdb"></a>
+            </div>
+        </div>
+        <div class="floor_ztzl_right" id="floor_ztzl_right">
+        	[#include "../include/bsfw.html"/]
+        </div>
+    
+    </div>
+    [#include "../include/footer_gray.html"/]
+</div>
+</div>
+</body>
+</html>

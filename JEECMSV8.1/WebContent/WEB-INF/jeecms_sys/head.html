@@ -1,0 +1,43 @@
+<link href="${base}/res/jeecms/css/admin.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/res/common/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/res/common/css/jquery.validate.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/res/common/css/jquery.treeview.css" rel="stylesheet" type="text/css"/>
+<link href="${base}/res/common/css/jquery.ui.css" rel="stylesheet" type="text/css"/>
+
+<script src="${base}/thirdparty/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script src="${base}/res/common/js/jquery.js" type="text/javascript"></script>
+<script src="${base}/res/common/js/jquery.ext.js" type="text/javascript"></script>
+<script src="${base}/res/common/js/jquery-ui.js" type="text/javascript"></script>
+<script src="${base}/res/common/js/jeecms.js" type="text/javascript"></script>
+<script src="${base}/res/jeecms/js/admin.js" type="text/javascript"></script>
+
+<script src="${base}/thirdparty/ueditor/ueditor.config.js" type="text/javascript" ></script>
+<script src="${base}/thirdparty/ueditor/ueditor.all.js" type="text/javascript" ></script>
+<script src="${base}/thirdparty/ueditor/lang/zh-cn/zh-cn.js" type="text/javascript" ></script>
+<script type="text/javascript">
+$(function(){
+   <#if ssoEnable>
+   	Pn.loginSSO('${base}');
+   </#if>
+   <#if site??>MARK="${site.mark?string('true','false')}";<#else>MARK="true";</#if>
+   <#if sessionId??>SID="${sessionId!}";</#if>
+   UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+   UE.Editor.prototype.getActionUrl = function(action) {
+	    if (action == 'uploadimage') {
+	        return "${base+appBase}/ueditor/upload.do;jsessionid="+SID+"?Type=Image&mark="+MARK;
+	    } else if (action == 'uploadvideo') {
+	        return "${base+appBase}/ueditor/upload.do;jsessionid="+SID+"?Type=Media";
+	    }else if (action == 'uploadfile') {
+	        return "${base+appBase}/ueditor/upload.do;jsessionid="+SID+"?Type=File";
+	    }else if (action == 'catchimage') {
+	        return "${base+appBase}/ueditor/getRemoteImage.do";
+	    }else if (action == 'uploadscrawl') {
+	        return "${base+appBase}/ueditor/scrawlImage.do?Type=Image";
+	    }else if (action == 'listimage'||action == 'listfile') {
+	        return "${base+appBase}/ueditor/imageManager.do?picNum=50&insite=false";
+	    }else {
+	        return this._bkGetActionUrl.call(this, action);
+	    }
+   }
+});
+</script>

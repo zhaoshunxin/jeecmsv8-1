@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/ztzl/inc/kjfz.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        
+        [@cms_content_list channelId=channel.id orderBy='1' channelOption='1']
+        [#list tag_list as a]
+        <div class="kjfz_title">
+        	${a.title}
+        </div>
+        <div class="kjfz_content">
+        	${a.txt!}
+        </div>
+        [/#list]
+        [/@cms_content_list]
+       
+        <a href="#bg" class="fhdb"></a>
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+
+</body>
+</html>

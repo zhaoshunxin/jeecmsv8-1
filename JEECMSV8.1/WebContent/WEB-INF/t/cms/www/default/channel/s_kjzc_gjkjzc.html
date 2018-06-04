@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <meta name="channel" content="科技政策">
+    <link href="/${res}/kjzc/inc/kjzc.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/kjzc/inc/Calendar.js" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+	<div class="floor" style="height:640px;">
+    	[#include "../include/kjzc/kjzc_zccx.html"/]
+        <div class="left_2j"  style="height:480px">
+			[#include "../include/kjzc/left.html"/]
+        </div>
+        
+        <div class="right_2j" style="height:480px">
+            <div class="dqwz">
+            	[#include "../include/current_position.html"/]
+            </div>
+            <div class="tt"><img src="/${res}/kjzc/images/kjzc-2j-title1.gif" /></div>
+            <div class="list">
+                [@cms_channel_list parentId=channel.id  hasContent='false']
+                    [#list tag_list as c]
+                      <a href="${c.url}" class="sub">
+                        <div class="sub w${c_index%3 + 1}">${c.name!}</div>
+                      </a>
+                      <div class="space"></div>
+                    [/#list]
+                [/@cms_channel_list]
+            </div>
+      </div>
+  </div>
+</div>
+</div>
+[#include "../include/footer.html"/]
+</body>
+</html>

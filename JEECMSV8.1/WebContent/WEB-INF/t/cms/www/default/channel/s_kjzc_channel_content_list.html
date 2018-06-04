@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <meta name="channel" content="科技政策">
+    <link href="/${res}/kjzc/inc/kjzc.css" rel="stylesheet" type="text/css" />
+    <script src="/${res}/kjzc/inc/Calendar.js" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+	<div class="floor" style="height:710px;">
+    	[#include "../include/kjzc/kjzc_zccx.html"/]
+        <div class="left_2j"  style="height:550px">
+			[#include "../include/kjzc/left.html"/]
+        </div>
+        
+        <div class="right_2j" style="height:550px">
+            <div class="dqwz">
+				[#include "../include/current_position.html"/]
+            </div>
+            <div class="tt">
+            	[@cms_channel id=channel.id]
+                <img src="${tag_bean.titleImg!site.defImg}"/>
+                [/@cms_channel]
+                
+             </div>
+            [@cms_content_page count='10' titLen='35' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='4']
+            <div class="list">
+                <ul>
+                    [#list tag_list as a]
+                    <li><a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" target="_blank" class=STYLE30>[@text_cut s=a.title len=titLen append=append/]</a>(${a.date?string(dateFormat)})</li>
+                    [/#list]
+                </ul>
+            </div>
+            <div class="page">
+                <table width="95%" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                        <td height="60" align="center" class="pageno">
+                        	[@cms_pagination sysPage='1'/]
+                        </td>
+                    </tr>
+                </table>
+			</div>
+            [/@cms_content_page]
+      </div>
+  </div>
+</div>
+</div>
+[#include "../include/footer.html"/]
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title></title>
+<#include "/jeecms_sys/head.html"/>
+<script type="text/javascript">
+$(function() {
+	$("#jvForm").validate();
+});
+function createKey(id,len){
+	$("#"+id).val(Pn.randomWord(false,false, len));
+}
+function createAppId(id,len){
+	$("#"+id).val(Pn.randomWord(false,true, len));
+}
+</script>
+</head>
+<body>
+<div class="page-positon ove">
+  <div class="position-div"><@s.m "global.position"/>: <@s.m "apiAccount.function"/> > <@s.m "global.add"/></div>
+</div>
+<div class="box-positon ck">
+	<form class="ropt">
+		<input type="submit" value="<@s.m "global.backToList"/>" onclick="this.form.action='v_list.do';" class="return-button"/>
+	</form>
+	<div class="clear"></div>
+</div>
+<div class="body-box">
+<#assign appIdExist><@s.m "error.appIdExist"/></#assign>
+<@p.form id="jvForm" action="o_save.do">
+<@p.td label="apiAccount.appId"  width="100" colspan="2" >
+<input  name="appId"  id="appId"  type="text" size="50" vld="{required:true,remote:'v_exist.do',messages:{remote:'${appIdExist}'}}"   maxlength="100"/>
+<@p.button code="apiAccount.appKey.create" class="submit" onclick="createAppId('appId',16)"/>
+</@p.td>
+<@p.tr/>
+<@p.td label="apiAccount.appKey"  width="100" colspan="2" >
+<input  name="appKey"  id="appKey"  type="text" size="50" required="true" class="required" maxlength="100"/>
+<@p.button code="apiAccount.appKey.create" class="submit" onclick="createKey('appKey',32)"/><@s.m "apiAccount.appKey.help"/>
+</@p.td>
+<@p.tr/>
+<@p.td label="apiAccount.aesKey"  width="100" colspan="2" >
+<input  name="aesKey"  id="aesKey"  vld="{minlength:16,maxlength:16}"  type="text" size="50" required="true" class="required" maxlength="16"/>
+<@p.button code="apiAccount.appKey.create" class="submit" onclick="createKey('aesKey',16)"/><@s.m "apiAccount.appKey.help"/>
+</@p.td>
+<@p.tr/>
+<@p.td label="apiAccount.ivKey"  width="100" colspan="2" >
+<input  name="ivKey"  id="ivKey" vld="{minlength:16,maxlength:16}"    type="text" size="50" required="true" class="required" maxlength="16" />
+<@p.button code="apiAccount.appKey.create" class="submit" onclick="createKey('ivKey',16)"/><@s.m "apiAccount.appKey.help"/>
+</@p.td>
+<@p.tr/>
+<@p.radio label="apiAccount.disabled" name="disabled" value="false" list={"true":"global.true","false":"global.false"} required="true" width="100" colspan="2" /><@p.tr/>
+
+<@p.td><@p.submit code="global.submit"/> &nbsp; <@p.reset code="global.reset"/></@p.td>
+</@p.form>
+</div>
+</body>
+</html>

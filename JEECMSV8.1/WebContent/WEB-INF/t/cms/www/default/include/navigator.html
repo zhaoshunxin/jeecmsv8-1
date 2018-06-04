@@ -1,0 +1,112 @@
+<!--
+############################################################################################################################
+############################################################################################################################
+############################################################################################################################
+############################################################################################################################
+############################################################################################################################
+-->
+<div class="menu" id="topimg">
+<script language='JavaScript' src='/${res}/inc/newnav9_utf8.js' type='text/JavaScript'></script>
+
+  <a href="#" class="m0"></a>
+  <a href="/" title="首页" class="m1"></a>
+[@cms_channel_list]
+	  [#assign i=1]
+      [#list tag_list as t]
+          [#if t.id <105]
+  <a href="[#if t.id !=99 && t.id !=102 && t.id !=103 && t.id !=104]${t.url}[#else]#[/#if]" title="${t.name}" class="m${i+1}" onmouseover="shLayer('menu${i}');" onmouseout="btnTimer();"></a>
+			[#assign i=i+1]
+          [/#if]
+      [/#list]
+[/@cms_channel_list]
+</div>
+[@cms_channel_list]
+	[#assign i=0]
+ [#list tag_list as t]
+     [#if t.id <105]
+<div style="Z-INDEX: 999; VISIBILITY:hidden ; POSITION: absolute; left:${70+100*i}px;width:[#if t.id=101]350px[#else]290px[/#if];" id="menu${i+1}" onmouseover="shLayer('menu${i+1}');"  onmouseout="btnTimer();">   
+	[#assign i=i+1]
+<table border="0"  cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+ <tr bgcolor="#E60002">
+   <td width="5" height="6" bgcolor="#E60002"></td>
+   <td bgcolor="#E60002"></td>
+   <td bgcolor="#E60002"></td>
+[#if t.id != 101]
+   <td bgcolor="#E60002"></td>
+[/#if]
+   <td width="14" bgcolor="#E60002"></td>
+ </tr>
+ <tr> 
+   <td width=5 height=8 background="/${res}/images/menu_left.jpg"></td> 
+   <td height=8 align="left"></td> 
+[#if t.id !=101]
+   <td height=8 align="left"></td> 
+[/#if]
+   <td align="left"></td>
+   <td width=14 height=8 background="/${res}/images/menu_right.jpg"></td> 
+ </tr>
+[@cms_channel_list parentId=t.id]
+[#list tag_list as a]
+    [#if t.id != 101 ]
+			[#if a_index%3=0]
+			 <tr>
+			   <td width=5 background="/${res}/images/menu_left.jpg" bgcolor="#FFFFFF"></td>
+			[/#if]
+                               [#if a.id != 131 && a.id!=751 && a.id!=752]
+   			            <td [#if a.id==127]width=110[#elseif a.id==128]width=80[#else]width=90[/#if] style="text-align:left">&nbsp;<a href="${a.url}" class="MenuItem">[#if a.id==776]${a.title}[#else]${a.name}[/#if]</a></td>
+                               [#else]
+                                     <td align="left">&nbsp;</td>
+                               [/#if]
+			[#if (tag_list?size>=(a_index+1)) && (a_index%3=2)]
+                                                   [#if tag_list?size>(a_index+1)]
+			   <td width=14 background="/${res}/images/menu_right.jpg"></td>
+                                                   [#else]
+                                                 <td width=14 rowspan="3" valign="bottom" background="/${res}/images/menu_jiao.gif"></td>
+                                                   [/#if]
+			 </tr>
+			[/#if]
+			[#if (tag_list?size=(a_index+1)) && (a_index%3=1)]
+			<td align="left">&nbsp;</td>
+			  <td width=14 rowspan="3" valign="bottom" background="/${res}/images/menu_jiao.gif"></td>
+			 </tr>
+			[/#if]
+			[#if (tag_list?size=(a_index+1)) && (a_index%3=0)]
+			<td align="left">&nbsp;</td>
+			<td align="left">&nbsp;</td>
+			  <td width=14 rowspan="3" valign="bottom" background="/${res}/images/menu_jiao.gif"></td>
+			 </tr>
+			[/#if]
+	[#else]
+                                              [#if a_index%2=0]
+			 <tr>
+			   <td width=5 background="/${res}/images/menu_left.jpg" bgcolor="#FFFFFF"></td>
+                                                 <td width='120px' style="text-align:left">&nbsp;<a href="${a.url}" class="MenuItem">${a.name}</a></td>
+			[/#if]			   			
+			[#if (tag_list?size>=a_index+1) && (a_index%2=1)]
+                                                 <td width='180px' style="text-align:left">&nbsp;<a href="${a.url}" class="MenuItem">${a.name}</a></td>
+                                                        [#if tag_list?size=(a_index+1)]
+			  <td  width=14 rowspan="3" valign="bottom"  width='14px' background="/${res}/images/menu_jiao.gif"></td>
+                                                        [#else]
+			  <td  width=14 background="/${res}/images/menu_right.jpg"></td>                        
+                                                        [/#if]
+			 </tr>
+			[/#if]
+			[#if (tag_list?size=a_index+1) && (a_index%2=0)]
+			<td align="left">&nbsp;</td>
+			  <td  rowspan="3" valign="bottom" width=14 background="/${res}/images/menu_jiao.gif"></td>
+			 </tr>
+			[/#if]
+	[/#if]
+[/#list]
+[/@cms_channel_list]
+ <tr> 
+   <td height="8" background="/${res}/images/menu_leftjiao.jpg"></td> 
+   <td width=90 height=8 align="left" background="/${res}/images/menu_Bottom.jpg"></td> 
+   <td height=8 align="left" background="/${res}/images/menu_Bottom.jpg"></td>
+   <td align="left" background="/${res}/images/menu_Bottom.jpg"></td>
+ </tr>
+</table>
+</div> 
+         [/#if]
+      [/#list]
+[/@cms_channel_list]

@@ -1,0 +1,47 @@
+	<div id="banner">
+        <!--flash-->
+        <div id="logo">
+       	  <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="577" height="116">
+       	    <param name="movie" value="/${res}/swf/1-4b3.swf" />
+       	    <param name="quality" value="high" />
+       	    <param name="wmode" value="opaque" />
+       	    <param name="swfversion" value="8.0.35.0" />
+        	  <!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 -->
+       	    <param name="expressinstall" value="../../js/expressInstall.swf" />
+        	  <!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 -->
+        	  <!--[if !IE]>-->
+        	  <object type="application/x-shockwave-flash" data="/${res}/swf/1-4b3.swf" width="577" height="116">
+        	    <!--<![endif]-->
+        	    <param name="quality" value="high" />
+        	    <param name="wmode" value="opaque" />
+        	    <param name="swfversion" value="8.0.35.0" />
+        	    <param name="expressinstall" value="../../js/expressInstall.swf" />
+        	    <!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 -->
+        	    <div>
+        	      <h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4>
+        	      <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="获取 Adobe Flash Player" width="112" height="33" /></a></p>
+      	      </div>
+        	    <!--[if !IE]>-->
+      	    </object>
+        	  <!--<![endif]-->
+      	  </object>
+    	</div>
+        <!--顶部链接-->
+        <div id="top_links">
+          <a href="http://www.most.gov.cn/" onclick="window.external.addFavorite(this.href,this.title);return false;" title="中华人民共和国科学技术部 - HTTP--WWW_MOST_GOV_CN" rel="sidebar">加入收藏</a>
+          <span>|</span>
+          <a href="http://mail.most.cn/" target="_blank">公务邮箱</a>
+          <span>|</span>
+          <a href="/eng">English</a>
+          <span>|</span>
+          <a href="http://weibo.com/ruikeji">微博微信</a>
+       </div>
+        <!--全站搜索-->
+        <div id="search">
+            <input value="请输入关键词" onfocus="if(this.value=='请输入关键词')this.value=''" onkeypress="qkeypress()" onblur="if(this.value=='')this.value='请输入关键词'" maxlength="50" autocomplete="off" name="q" type="text" id="filekeys" style="float:left;" class="ui-autocomplete-input"/>
+            <input type="image" name="button" src="/${res}/images/znjs.gif" onclick=""/>
+		</div>        
+    </div>
+    <script type="text/javascript">
+		swfobject.registerObject("FlashID");
+	</script>

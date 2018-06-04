@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+    <link href="/${res}/inc/detail.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor bg_gray">
+        <div class="dqwz">
+        	[#include "../include/current_position.html"/]
+        </div>
+        <div class="topline">
+        	<div class="size">
+            	【字体：<a onclick="Zoom.style.fontSize='16px';" href="#">大</a> <a href="#" onclick="Zoom.style.fontSize='15px';">中</a> <a href="#" onclick="Zoom.style.fontSize='12px';">小</a>】
+            </div>
+        </div>
+        <div class="red36 bold lh30">
+        	<div id="Title" name="Title" class="style14">
+            	${content.title}
+            </div>
+        </div>
+        <div class="bottom_line"><img src="/${res}/images/detail-line.jpg" width="890" height="11"></div>
+        <div class="gray12 lh22">
+            日期：${content.releaseDate?string("yyyy年MM月dd日")}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            来源：[#if content.origin??]${content.origin}[#else]科技部[/#if]
+        </div>
+        <div id="Zoom" class="trshui13 lh22">
+            <meta name="ContentStart">
+                [#if content.txt??] ${content.txt}[/#if]
+            <meta name="ContentEnd"> 
+            
+            [#if content.attachments?size>0]
+            <p style="margin-top:20px;"><strong>附件：</strong></p>	
+            <ul class="fj">						
+            [#list content.attachments as zndoc]
+            	<li><a href="${zndoc.path!}" target="_blank">${zndoc.name!}</a></li>
+            [/#list]
+            </ul>
+            [/#if]
+            
+        </div>
+        <div class="print">
+        	<a href="#" onclick="javaScript:printwin();"><img src="/${res}/images/detail-print.jpg" border="0"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="javaScript:void(0)" onclick="javascript:window.close();"><img src="/${res}/images/detail-close.jpg" border="0"></a>
+        </div>
+        <div class="bottom_line"><img src="/${res}/images/detail-line2.jpg"></div>
+    </div>
+    [#include "../include/footer_gray.html"/]
+</div>
+</div>
+
+</body>
+</html>

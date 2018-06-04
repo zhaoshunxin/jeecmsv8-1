@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>科技部直属机关党委</title>
+<meta name="channel" content="机关党建">
+<style type="text/css">
+<!--
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+body,ul,ol,li,p,form,fieldset,table,td{font-family:"宋体";color:#444444;}
+body{ background:url(/${res}/jgdj/images/all-bg2.jpg) repeat-y; ; background-position-x: 50%; text-align:center; background-color:#FEEEEC; }
+td,p,li,select,input,textarea,div{font-size:12px;color:#444444;}
+ul{list-style-type:none; margin-left:10px;}
+
+a{text-decoration:none;}
+a:link{color:#444444;}
+a:visited{color:#444444;}
+a:hover{color:#444444;text-decoration:underline;}
+a:active,a:focus{color:#444444;}
+
+.dh_hl02 { width:778px; height:29px; margin:0px auto; background-image:url(/${res}/jgdj/images/top-02-2.jpg); color:#FFFFFF; font-weight:bold; line-height:29px;}
+.dh_hl02 a{ color:#FFFFFF; font-weight:bold;}
+.dh_hl02 a:link{ color:#FFFFFF; font-weight:bold;}
+.dh_hl02 a:visited{ color:#FFFFFF; font-weight:bold;}
+.dh_hl02 a:hover{ color:#FFFFFF; font-weight:bold;}
+.nav003{ width:540px; height:22px; line-height:22px; padding-left:40px; text-align:left; margin:10px;}
+
+.nav002{ background:url(/${res}/jgdj/images/8title-2j-rightbg.jpg) no-repeat; width:520px; height:30px; line-height:30px; padding-left:40px; text-align:left; margin:10px;}
+.nav004{ background:url(/${res}/jgdj/images/8title-2j-rightbg02.jpg) no-repeat; width:500px; height:26px; line-height:26px; padding-left:35px; text-align:left;}
+
+.title{font-size:14px; font-weight:bold; color:#912206; text-align:left;}
+.title02{font-size:12px; font-weight:bold; color:#888888; text-align:left;}
+.more01{ padding-left:400px;}
+
+.nav_001{ width:540px; text-align:left; margin-bottom:10px;}
+.nav_001 ul{ margin-top:10px}
+.nav_001 li{ background:url(/${res}/jgdj/images/dot-1.jpg)  no-repeat 0px 8px; padding-left:15px; line-height:24px;}
+
+.footer { width:778px;border-top:1px #D6D4D3 solid; line-height:20px; margin:0px auto; padding-top:10px; }
+
+.clearit{clear:both;}
+-->
+</style>
+</head>
+
+<body onload='toPage(1)'>
+<div><img src="/${res}/jgdj/images/top-02-1.jpg"></div>
+<div class="dh_hl02">
+	[#include "../include/jgdj/navigator.html"/] 
+</div>
+<table width="778" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0px auto;">
+  <tr>
+    <td width="155" valign="top" background="/${res}/jgdj/images/8title-2j-leftbg.jpg"><img src="/${res}/jgdj/images/8title-2j.jpg" border="0" usemap="#Map"></td>
+    <td width="623" valign="top">
+	<div  class="nav003">
+		[#include "../include/zxgz_position.html"/]
+	</div>
+	<div class="nav002"><span class="title">${channel.name}</span></div>
+
+	<div class="nav_001">
+		<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 align="center">
+            <TBODY>
+                <TR>
+                    <TD width=10>&nbsp;</TD>
+                    <TD height="30">
+                        <TABLE height=1 cellSpacing=0 cellPadding=0 width="100%" border=0>
+                           <TBODY>
+							  <TR>
+								<TD height=10></TD>
+							  </TR>
+						   </TBODY>
+						</TABLE>
+				[@cms_content_page count='20' titLen='30' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId=channel.id orderBy='4']
+					[#list tag_list as a]
+                       <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                          <TBODY>
+                            <TR>
+                              <TD width=20 valign="top"><img src="/${res}/jgdj/images/dot-2.jpg"></TD>
+                              <TD width=531 height=27 valign="top"><DIV align=left><a  target="_blank"   href="${a.url}" >
+<script language="javascript">
+var str='';
+var str1='${a.title}';
+if(str!=""){
+document.write(str);}
+else document.write(str1);
+</script>
+(${a.date?string(dateFormat)})</a></span></DIV></TD>
+                            </TR>
+                          </TBODY>
+                        </TABLE>
+					[/#list]																					    												
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+      </div>
+		<table class="black" cellspacing="0" cellpadding="2" width="100%">
+			<tbody>
+				<tr>
+					<td valign="center" align="center">
+						[@cms_pagination sysPage='1'/]
+						[/@cms_content_page]	
+					</td>
+					<td valign="center" align="center"><input class="text" id="CP" size="2" value="1" name="CP" type="hidden"></td>
+				 </tr>
+			</tbody>
+	    </table>
+	</td>
+  </tr>
+</table>
+
+[#include "../include/jgdj/footer.html"/]
+<map name="Map" id="Map">
+  <area shape="rect" coords="7,5,175,56" href="[@cms_channel id='862']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="6,58,177,100" href="[@cms_channel id='863']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="7,105,177,149" href="[@cms_channel id='864']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="7,153,176,201" href="[@cms_channel id='865']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="7,207,176,252" href="[@cms_channel id='866']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="8,258,179,305" href="[@cms_channel id='867']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="11,311,173,354" href="[@cms_channel id='868']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="9,358,181,403" href="[@cms_channel id='869']${tag_bean.url}[/@cms_channel]" />
+  <area shape="rect" coords="10,411,177,452" href="http://appweblogic.most.gov.cn/jgdj/ly.htm" />
+</map>
+</body>
+</html>

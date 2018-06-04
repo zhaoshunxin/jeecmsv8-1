@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	[#include "../include/dfkj/head.html" /]
+    <script src="/${res}/inc/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+	<script>
+    	$(function(){
+			$(".tempWrap").css("width","900px");
+		});	
+    </script>
+</head>
+
+<body>
+<div class="div_center">
+<div class="bg">
+	[#include "../include/dfkj/top.html" /]
+    <div class="dfkj_floor">
+    	<div class="dfkj_floor1_left">
+        	<div class="zxdt mr21">
+            	<div class="title">
+                	[@cms_channel id='564']
+                    <a href="${tag_bean.url}"><img src="/${res}/images/i-yw1.jpg" border="0"></a>
+                    [/@cms_channel]
+                </div>
+                <div class="content">
+                	<ul>
+                        [@cms_content_list count='8' titLen='17' dateFormat='MM-dd' channelOption='1' append='...' channelId='564' orderBy='3']
+                        [#list tag_list as a]
+                        <li>
+                        	<span>${a.date?string(dateFormat)}</span>
+                            <a href="${a.url}" title="${a.title}"  target="_blank" >
+                        		[@text_cut s=a.title len=titLen append=append/]
+                            </a>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+            <div class="zxdt">
+            	<div class="title">
+                    [@cms_channel id='556']
+                    <a href="${tag_bean.url}"><img src="/${res}/images/i-yw2.jpg" border="0"></a>
+                    [/@cms_channel]
+                </div>
+                <div class="content">
+                	<ul>
+                        [@cms_content_list count='8' titLen='17' dateFormat='MM-dd' channelOption='1' append='...' channelId='556' orderBy='3']
+                        [#list tag_list as a]
+                        <li>
+                        	<span>${a.date?string(dateFormat)}</span>
+                            <a href="${a.url}" title="${a.title}"  target="_blank" >
+                        		[@text_cut s=a.title len=titLen append=append/]
+                            </a>
+                        </li>
+                        [/#list]
+                        [/@cms_content_list]
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="dfkj_floor1_right">
+			[#include "../include/dfkj/arealist.html" /]
+        </div>
+	</div>
+	
+    <div class="dfkj_floor bsld">
+	    <div class="bsldbg">
+            [@cms_channel_list parentId='558']
+            [#list tag_list as t]
+            <div class="gcls">
+            	<div class="title">
+                	<a href="${t.url}"><img src="${t.titleImg!site.defImg}" border="0"></a>
+                </div>
+            	<div class="content">
+            		<ul>
+                    [@cms_content_list count='8' titLen='16' dateFormat='yyyy-MM-dd' channelOption='2' append='...' channelId=t.id orderBy='3']
+                    [#list tag_list as a]									
+                    <li>
+                        <span>[#if a.attr.province??][${a.attr.province}][/#if]</span>
+                        <a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})"  target="_blank" >[@text_cut s=a.title len=titLen append=append/]</a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                	</ul>
+                </div> 
+            </div>
+            [/#list]
+            [/@cms_channel_list]
+            
+        </div>
+    </div>
+    <!-- 科技视频 -->
+    <div class="dfkj_floor">
+    	<div class="kjsp_title">
+        	[@cms_channel id='560']
+            <a href="${tag_bean.url}"><img src="/${res}/images/i-kjsp-1.jpg" border="0" style="margin-left:20px;"></a>
+            [/@cms_channel]
+            
+            [@cms_channel id='568']
+            <a href="${tag_bean.url}"><img src="/${res}/images/i-kjsp-2a.jpg" border="0" style="margin-left:20px;"></a>
+            [/@cms_channel]
+            
+            [@cms_channel id='576']
+            <a href="${tag_bean.url}"><img src="/${res}/images/i-kjsp-3b.jpg" border="0" style="margin-left:2px;"></a>
+            [/@cms_channel]
+           
+        </div>
+        <div class="kjsp_content">
+        	<a class="next">
+            	<img src="/${res}/images/i-kjsp-4.jpg" border="0" />
+            </a>
+            <div class="bd">
+                <ul class="picList">
+                    [@cms_content_list count='8' titLen='8' dateFormat='yyyy-MM-dd' channelOption='1' append='...' channelId='568' orderBy='3']
+                    [#list tag_list as a]
+                    <li>
+                        <div class="pic">
+                        	<a href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})" target="_blank">
+                            	<img src="${a.typeImg!site.defImg}"  width=124  border=0 />
+                           	</a>
+                        </div>
+                        <div class="title">
+                        	<a target="_blank" href="${a.url}" title="${a.title}(${a.date?string(dateFormat)})">
+                            	[@text_cut s=a.title len=titLen append=append/]
+                            </a>
+                        </div>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+            </div>
+            <a class="prev">
+            	<img src="/${res}/images/i-kjsp-5.jpg" border="0" />
+            </a>
+        </div>
+		<script type="text/javascript">
+		jQuery(".kjsp_content").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:6,interTime:50});
+		</script>
+    </div>
+    
+    <div class="dfkj_floor">
+    	<div class="dfkj_floor1_left">
+        	<div class="gzjl_title">
+                [@cms_channel id='559']
+                <a href="${tag_bean.url}"><img src="/${res}/images/i-gzjl-1a.jpg" width="697" height="42" border="0/"></a>
+                [/@cms_channel]
+            </div>
+            <div class="gzjl_content">
+            	<ul>
+                    [@cms_content_list count='7' titLen='17' dateFormat='MM-dd' channelOption='1' append='...' channelId='559' orderBy='3']
+                    [#list tag_list as a]
+                    <li>
+                        <span>${a.date?string(dateFormat)}</span>
+                        <a href="${a.url}" title="${a.title}"  target="_blank" >
+                            [@text_cut s=a.title len=titLen append=append/]
+                        </a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+                
+                <ul>
+                    [@cms_content_list count='14' titLen='17' dateFormat='MM-dd' channelOption='1' append='...' channelId='559' orderBy='3']
+                    [#list tag_list as a]
+                    [#if a_index>7]
+                    <li>
+                        <span>${a.date?string(dateFormat)}</span>
+                        <a href="${a.url}" title="${a.title}"  target="_blank" >
+                            [@text_cut s=a.title len=titLen append=append/]
+                        </a>
+                    </li>
+                    [/#if]
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+            </div>
+        
+        </div>
+        <div class="dfkj_floor1_right ztzl">
+        	<div class="title">
+            	<img src="/${res}/images/i-ztzl.jpg">
+            </div>
+            <div class="ztzlcontent">
+            	<ul>
+                	[@cms_content_list count='4' channelOption='1' channelId='713' orderBy='3']
+                    [#list tag_list as a]
+                    <li>
+                        <a href="${a.url}" title="${a.title}"  target="_blank" >
+                            <img src="${a.typeImg!site.defImg}"  width=249  border=0 />
+                        </a>
+                    </li>
+                    [/#list]
+                    [/@cms_content_list]
+                </ul>
+            </div>
+        </div>
+    </div>
+    [#include "../include/dfkj/footer.html" /]
+</div>
+<div class="bottomline"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+        <div class="js">
+            <form name="searchform" action="http://znjs.most.gov.cn/wasdemo/search" id="searchform" method="post" target="_blank">		
+            <div class="line"><input name="title" type="text"></div>		
+                <div class="line">
+                    <input type="hidden" name="channelid" value="62309">
+                    <input type="hidden" name="searchword" value="">
+                    <input type="hidden" name="templet" value="outline_kjzc.jsp">			
+                    <input class="calinput" id="idStartDate" name="dc1" readonly="readonly" onfocus="blur()">            
+                    <a hidefocus="" onclick="pickDate(idStartDate)" href="javascript:void(0)">			
+                    <img alt="" src="/${res}/kjzc/images/calbtn.gif" align="absMiddle" border="0" name="popcal"></a>		
+                </div>		
+                <div class="line">			
+                    <select name="sortfield"><option value="-DOCRELTIME" selected="">日期倒序</option>	            
+                        <option value="+DOCRELTIME">日期正序</option>    	        
+                        <option value="RELEVANCE">相关度</option>        	    
+                        <option value="LIFO">默认排序</option>			
+                    </select>		
+                </div>		
+                <a href="javascript:advsearch();" title="政策查询" class="btn"></a> 
+            </form>	
+        </div>

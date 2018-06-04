@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.cms.entity.main">
+	<class name="ContentChannel" table="jc_content_channel">
+		<meta attribute="sync-DAO">false</meta>
+		<!-- <cache usage="read-write"/> -->		
+		<composite-id name="namePk">
+			<key-property name="contentid" column="content_id" type="java.lang.Integer"></key-property>
+			<key-property name="channelid" column="channel_id" type="java.lang.Integer"></key-property>
+		</composite-id>
+		<property name="kjb_sort" column="sort" type="java.lang.Integer" not-null="true" length="5"/>
+		
+		
+	</class>
+</hibernate-mapping>

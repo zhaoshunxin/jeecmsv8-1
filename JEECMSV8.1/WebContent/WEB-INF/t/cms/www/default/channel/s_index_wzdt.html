@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    [#include "../include/head.html"/]
+    <TITLE>中华人民共和国科学技术部 - HTTP://WWW.MOST.GOV.CN</TITLE>
+</head>
+<body>
+<div class="div_center">
+<div class="bg" id="bg">
+	[#include "../include/top.html"/]
+    [#include "../include/navigator.html"/]
+    <div class="floor" id="floor">
+        <div class="floor_banner">
+            <img src="${channel.titleImg!site.defImg}"/>
+        </div>
+        <div class="dqwz">
+            [#include "../include/current_position.html"/]
+        </div>
+        <div class="floor_content">
+            [@cms_channel_list]
+			[#list tag_list as a]
+            [#if a.id!=539 && a.id!=540 && a.id!=541 && a.id!=553 && a.id!=554 && a.id!=639 && a.id!=664 && a.id!=665 && a.id!=670]
+            <div class="wzdt_title">
+            	<a href="${a.url}">${a.name}</a>
+            </div>
+            <div class="wzdt_content">
+            	[#if a.id=99]
+                	<!-- 信息公开 -->
+                    [@cms_channel_list parentId=a.id]
+                    [#list tag_list as b]
+                    [#if b.id!=115 ]
+                        <div class="wzdt_content_left">
+                            <a href="${b.url}">${b.name}：</a>
+                        </div>
+                        <div class="wzdt_content_right">
+                            [@cms_channel_list parentId=b.id]
+                            [#list tag_list as c]
+                                   <a href="${c.url}" [#if b.id=112]class="w280"[/#if]>${c.name}</a> 
+                            [/#list]
+                            [/@cms_channel_list]
+                        </div>
+                    [/#if]
+                    [/#list]
+                    [/@cms_channel_list]
+                    
+                    [@cms_channel id = '115']
+                     <a href="${tag_bean.url}">${tag_bean.name}</a>
+                    [/@cms_channel]
+                    
+                [#elseif a.id=102]
+                	<!-- 办事服务 -->
+                    [@cms_channel_list parentId=a.id]
+                    [#list tag_list as b]
+                    [#if b.id!=751 && b.id!=752 ]
+                        <a href="${b.url}">${b.name}</a>
+                    [/#if]
+                    [/#list]
+                    [/@cms_channel_list]
+                    
+                    [@cms_channel id = '753']
+                    <div class="wzdt_content_div">
+                        <div class="wzdt_content_left">
+                            <a href="${tag_bean.url}">${tag_bean.name}：</a>
+                        </div>
+                        <div class="wzdt_content_right">
+                            [@cms_content_list channelId=tag_bean.id orderBy='4' channelOption='1']
+                            [#list tag_list as c]
+                                   <a href="${c.url}" class="w280">${c.title}</a>       
+                            [/#list]
+                            [/@cms_content_list]
+                        </div>
+                    </div>
+                    [/@cms_channel]
+                
+                [#elseif a.id=103]
+                    <!-- 公众参与 -->
+                    [@cms_channel_list parentId=a.id]
+                    [#list tag_list as b]
+                    [#if b.id!=445 ]
+                        <a href="${b.url}">${b.name}</a>
+                    [/#if]
+                    [/#list]
+                    [/@cms_channel_list]
+                    
+                    [@cms_channel_list parentId=a.id]
+                    [#list tag_list as b]
+                    [#if b.id=445 ]
+                        <div class="wzdt_content_div">
+                            <div class="wzdt_content_left">
+                                <a href="${b.url}">${b.name}：</a>
+                            </div>
+                            <div class="wzdt_content_right">
+                                [@cms_channel_list parentId=b.id]
+                                [#list tag_list as c]
+                                       <a href="${c.url}">${c.name}</a> 
+                                [/#list]
+                                [/@cms_channel_list]
+                            </div>
+                        </div>
+                    
+                    [/#if]
+                    [/#list]
+                    [/@cms_channel_list]
+                
+                
+                [#else]
+                
+                    [@cms_channel_list parentId=a.id]
+                    [#list tag_list as b]
+                    [#if b.id=105 || b.id=106 || b.id=386 ]
+                        <div class="wzdt_content_left">
+                            <a href="${b.url}">${b.name}：</a>
+                        </div>
+                        <div class="wzdt_content_right">
+                            [@cms_channel_list parentId=b.id]
+                            [#list tag_list as c]
+                                   <a href="${c.url}">${c.name}</a> 
+                            [/#list]
+                            [/@cms_channel_list]
+                        </div>
+                    
+                    [#elseif b.id=387 || b.id=391]
+                        <div class="wzdt_content_div">
+                            <div class="wzdt_content_left">
+                                <a href="${b.url}">${b.name}：</a>
+                            </div>
+                            <div class="wzdt_content_right">
+                                [@cms_content_list channelId=b.id orderBy='4' channelOption='1']
+                                [#list tag_list as c]
+                                       <a href="${c.url}" class="w280">${c.title}</a>       
+                                [/#list]
+                                [/@cms_content_list]
+                            </div>
+                        </div>
+                    [#else]
+                        <a href="${b.url}">${b.name}</a>
+                    [/#if]
+                    [/#list]
+                    [/@cms_channel_list]
+                
+                [/#if]
+            </div>
+            [/#if]
+			[/#list]
+			[/@cms_channel_list]
+            
+            [@cms_channel id='554']
+            <div class="wzdt_title">
+            	网站服务功能
+            </div>
+            <div class="wzdt_content">
+            	[@cms_channel_list]
+				[#list tag_list as a]
+                [#if a.id=539 || a.id=540 || a.id=541 || a.id=553]
+                <a href="${a.url}">${a.name}</a>
+                [/#if]
+                [/#list]
+				[/@cms_channel_list]
+                
+                [@cms_channel id='750']
+                	<a href="${tag_bean.url!}">${tag_bean.name!}</a>
+                [/@cms_channel]
+                
+                <a href="http://mail.most.cn/">公务邮箱</a>
+            </div>
+            [/@cms_channel]
+            
+            [@cms_channel id='554']
+            <div class="wzdt_title">
+            	<a href="${tag_bean.url!}">${tag_bean.name!}</a>
+            </div>
+            <div class="wzdt_content">
+            	<a href="${tag_bean.url!}">${tag_bean.name!}</a>
+            </div>
+            [/@cms_channel]
+            
+                            
+            <a href="#bg" class="fhdb"></a>
+        </div>
+    
+    </div>
+    [#include "../include/footer.html"/]
+</div>
+</div>
+</body>
+</html>
